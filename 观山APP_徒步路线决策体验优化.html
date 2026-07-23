@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观山 APP｜徒步路线决策体验优化｜页面深度讲解版</title>
+<style>
+:root{
+  --ink:#152235;--muted:#66768a;--blue:#1677ff;--blue-2:#4da3ff;--cyan:#0ea5b7;
+  --red:#e5484d;--orange:#f59e0b;--green:#16a36a;--purple:#7c5ce7;
+  --line:#dce8f5;--paper:#f5faff;--white:#fff;--soft:#eaf5ff;--soft2:#f0f8ff;
+  --dark:#10243b;--shadow:0 22px 70px rgba(27,82,146,.13)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(rgba(22,119,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(22,119,255,.04) 1px,transparent 1px),var(--paper);background-size:28px 28px}button{font:inherit}.hero{padding:72px max(32px,calc((100vw - 1380px)/2));background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}.eyebrow{color:#0c91bd;font:800 12px ui-monospace,monospace;letter-spacing:.16em}.hero h1{margin:12px 0 16px;font-size:clamp(42px,5vw,72px);line-height:1.03;letter-spacing:-.05em}.hero p{max-width:850px;color:var(--muted);font-size:18px;line-height:1.75}.hero-card{padding:22px;border:1px solid #bfdbfe;background:var(--soft);color:#176bb7;line-height:1.75;border-radius:18px}.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.hero-meta span{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}.nav{position:sticky;top:0;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:13px max(24px,calc((100vw - 1380px)/2));background:rgba(246,251,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}.nav button{padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);white-space:nowrap;cursor:pointer}.nav button.active,.nav button:hover{background:var(--blue);color:white;border-color:var(--blue)}.container{width:min(1380px,calc(100% - 48px));margin:auto}.section{padding:78px 0;border-bottom:1px solid var(--line)}.section.hidden,.page-row.hidden{display:none}.section-kicker{color:var(--blue);font:800 12px ui-monospace,monospace;letter-spacing:.12em}.section h2{font-size:clamp(34px,4vw,56px);line-height:1.1;letter-spacing:-.04em;margin:12px 0 18px}.lead{max-width:980px;color:var(--muted);font-size:18px;line-height:1.8}.notice{margin:24px 0;padding:20px 22px;border:1px solid #f5ce7a;border-left:5px solid var(--orange);background:#fff9e9;border-radius:14px;color:#765614;line-height:1.75}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{padding:24px;border:1px solid var(--line);background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(20,70,125,.045)}.card.blue{background:var(--soft);border-color:#cfe6fb}.card.dark{background:var(--dark);color:#fff;border-color:var(--dark)}.card h3{margin:0 0 10px;font-size:21px}.card p,.card li{color:var(--muted);line-height:1.8;font-size:14px}.card.dark p,.card.dark li{color:#cbd9e8}.card ul{padding-left:18px;margin:0}.goal-band{margin:28px 0;padding:28px 32px;background:var(--dark);color:white;border-radius:20px;font-size:22px;line-height:1.6}.goal-band b{color:#8ed4ff}.metric{display:flex;align-items:flex-end;gap:8px;margin:12px 0}.metric strong{font-size:38px;color:var(--blue)}.metric span{color:var(--muted);font-size:12px;padding-bottom:7px}.research-status{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:999px;background:#fff6df;color:#8a5a00;border:1px solid #f3d38d;font-size:11px;font-weight:800}.method-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}.method-flow div{position:relative;padding:18px;border:1px solid var(--line);background:white;border-radius:14px}.method-flow div:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:44%;color:var(--blue);font-weight:900}.method-flow b{display:block;margin-bottom:8px}.method-flow span{color:var(--muted);font-size:13px;line-height:1.55}.chart-list{display:grid;gap:16px;margin-top:22px}.chart-item{display:grid;grid-template-columns:180px 1fr 52px;gap:12px;align-items:center}.chart-label{font-size:13px;color:#3f5167}.chart-track{height:11px;background:#edf3f9;border-radius:999px;overflow:hidden}.chart-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-2));border-radius:999px}.chart-val{font:800 12px ui-monospace,monospace;color:var(--blue)}.quote{padding:18px 20px;border-left:4px solid var(--blue);background:#f4f9ff;color:#41546a;line-height:1.75;border-radius:0 14px 14px 0}.persona{position:relative;overflow:hidden}.persona::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-45px;top:-45px;background:var(--soft)}.persona .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-weight:900;margin-bottom:14px}.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:30px}.journey-step{position:relative;padding:18px 15px;border:1px solid var(--line);background:#fff;border-radius:14px;min-height:176px}.journey-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:43%;font-weight:900;color:var(--blue)}.journey-step b{display:block;margin-bottom:8px}.journey-step small{display:block;color:var(--muted);line-height:1.55}.journey-step .pain{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);color:var(--red);font-size:12px;line-height:1.55}.priority{display:grid;grid-template-columns:80px 1fr 160px;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}.priority:first-child{border-top:0}.priority .level{font:900 24px ui-monospace,monospace;color:var(--blue)}.priority .level.p0{color:var(--red)}.priority .level.p1{color:var(--orange)}.priority b{display:block;margin-bottom:5px}.priority p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}.priority .impact{padding:8px 10px;border-radius:999px;background:var(--soft);color:#176bb7;font-size:12px;text-align:center}.new-flow{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:28px}.new-flow div{position:relative;padding:16px 10px;border:1px solid #b9dcff;background:#f1f8ff;border-radius:13px;text-align:center;font-size:13px;line-height:1.55}.new-flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:40%;color:var(--blue);font-weight:900}.page-row{min-height:940px;display:grid;grid-template-columns:540px 1fr;gap:74px;align-items:center;padding:76px 26px;border-bottom:1px solid var(--line)}.mock{position:relative;display:grid;place-items:center}.page-no{position:absolute;left:0;top:0;font:900 76px/1 ui-monospace,monospace;color:rgba(22,119,255,.15)}.mock button{padding:0;border:0;background:transparent;cursor:zoom-in}.phone{position:relative;width:365px;height:760px;border:3px solid var(--ink);border-radius:39px;background:#fff;overflow:hidden;box-shadow:var(--shadow);transition:.2s}.mock button:hover .phone{transform:translateY(-4px)}.phone-bar{height:32px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font:700 9px ui-monospace,monospace}.phone-content{height:674px;overflow:hidden;background:#f7f9fb}.phone-home{position:absolute;width:112px;height:4px;background:#1f2937;border-radius:5px;left:50%;bottom:9px;transform:translateX(-50%)}.phone-nav{height:50px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #edf1f5}.phone-nav b{font-size:16px}.p-icon{width:25px;height:25px;border:1px solid #c7d1dc;border-radius:8px;display:grid;place-items:center;color:#526375;font-size:11px}.p-body{padding:14px 16px}.p-greeting{font-size:20px;line-height:1.35;margin:0 0 4px}.p-sub{margin:0 0 14px;color:#7a8998;font-size:11px}.search{height:42px;border:1px solid #d7e0e8;background:#fff;border-radius:12px;display:flex;align-items:center;gap:9px;padding:0 12px;color:#8492a0;font-size:11px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.chip{padding:6px 9px;border:1px solid #d8e2ec;background:#fff;border-radius:999px;color:#596b7c;font-size:9px}.chip.active{background:#eaf4ff;color:#176bb7;border-color:#a8d1ff}.scene-box{padding:13px;border:1px solid #cfe3f8;background:linear-gradient(135deg,#eaf5ff,#fff);border-radius:15px;margin-bottom:12px}.scene-box strong{display:block;font-size:13px;margin-bottom:4px}.scene-box p{margin:0;color:#617386;font-size:9px;line-height:1.55}.mini-title{display:flex;justify-content:space-between;align-items:center;margin:13px 0 8px}.mini-title b{font-size:13px}.mini-title span{font-size:9px;color:#748496}.route-card{padding:12px;background:#fff;border:1px solid #e1e8ef;border-radius:14px;margin-bottom:10px}.route-cover{height:90px;border-radius:10px;background:linear-gradient(135deg,#b7dcff,#e8f5ff 55%,#c8eadc);position:relative;overflow:hidden;margin-bottom:10px}.route-cover::before{content:"";position:absolute;width:130px;height:65px;border-radius:50% 50% 0 0;background:#8fb6d9;bottom:-24px;left:-10px;transform:rotate(7deg)}.route-cover::after{content:"";position:absolute;width:160px;height:72px;border-radius:50% 50% 0 0;background:#6f9cc4;bottom:-35px;right:-35px;transform:rotate(-8deg)}.cover-tag{position:absolute;left:8px;top:8px;z-index:2;padding:4px 6px;background:rgba(255,255,255,.9);border-radius:6px;font-size:8px;color:#176bb7}.route-head{display:flex;justify-content:space-between;gap:8px}.route-head b{font-size:12px}.fit{padding:4px 7px;background:#e7f8ef;color:#14784f;border-radius:999px;font-size:8px;font-weight:800;white-space:nowrap}.fit.warn{background:#fff1df;color:#a45e00}.route-meta{display:flex;gap:8px;flex-wrap:wrap;color:#6f8192;font-size:8px;margin-top:7px}.risk{margin-top:8px;padding:7px 8px;background:#fff5f5;color:#a33b3f;border-radius:8px;font-size:8px;line-height:1.5}.bottom-tab{position:absolute;left:0;right:0;bottom:16px;height:56px;background:#fff;border-top:1px solid #e7edf3;display:flex;justify-content:space-around;align-items:center}.tab{font-size:8px;color:#8291a0;text-align:center}.tab.active{color:#1677ff;font-weight:800}.filter-section{padding:13px 0;border-bottom:1px solid #edf1f5}.filter-section b{display:block;font-size:11px;margin-bottom:8px}.option-row{display:flex;gap:7px;flex-wrap:wrap}.option{padding:7px 9px;border:1px solid #d8e2ec;border-radius:8px;background:#fff;color:#617184;font-size:9px}.option.sel{background:#eaf4ff;border-color:#9dc9ff;color:#176bb7}.sticky-btn{position:absolute;left:16px;right:16px;bottom:22px;height:45px;border-radius:12px;background:#1677ff;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}.compare-list{display:grid;gap:9px}.compare-row{display:grid;grid-template-columns:78px repeat(2,1fr);gap:6px;padding:9px 0;border-bottom:1px solid #edf1f5;font-size:8px}.compare-row b{font-size:9px}.compare-good{color:#138252;font-weight:800}.compare-warn{color:#b86b00;font-weight:800}.hero-route{height:210px;background:linear-gradient(180deg,#b9dcff,#eef8ff 60%,#c9e8d5);position:relative}.hero-route::before{content:"";position:absolute;width:260px;height:130px;left:-50px;bottom:-40px;background:#719ac0;border-radius:50% 50% 0 0;transform:rotate(8deg)}.hero-route::after{content:"";position:absolute;width:270px;height:120px;right:-60px;bottom:-47px;background:#537fa9;border-radius:50% 50% 0 0;transform:rotate(-5deg)}.back-btn{position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;z-index:3}.detail-card{position:relative;margin:-25px 14px 0;padding:15px;background:#fff;border:1px solid #e0e8ef;border-radius:16px;z-index:4}.detail-title{display:flex;justify-content:space-between;align-items:flex-start}.detail-title b{font-size:16px}.score{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#e7f8ef;color:#14784f;font-size:13px;font-weight:900}.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:13px 0}.fact{padding:9px 4px;text-align:center;background:#f6f9fb;border-radius:9px}.fact b{display:block;font-size:10px}.fact span{color:#7d8c99;font-size:7px}.decision-box{padding:11px;background:#f1f7ff;border:1px solid #cfe3fb;border-radius:12px}.decision-box b{font-size:11px}.decision-box p{margin:5px 0 0;color:#5f7285;font-size:8px;line-height:1.55}.alert-box{padding:10px;background:#fff2f2;border:1px solid #f2c8c9;border-radius:10px;color:#a33b3f;font-size:8px;line-height:1.55;margin-top:9px}.timeline{display:grid;gap:10px;margin-top:12px}.time-item{display:grid;grid-template-columns:38px 1fr;gap:8px;position:relative}.time-item::before{content:"";position:absolute;left:18px;top:18px;bottom:-12px;width:1px;background:#cfe0f1}.time-item:last-child::before{display:none}.time-dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#eaf4ff;color:#1677ff;font-size:8px;font-weight:800;z-index:2}.time-copy{padding:9px;background:#fff;border:1px solid #e1e8ef;border-radius:10px}.time-copy b{display:block;font-size:10px}.time-copy span{color:#748597;font-size:8px;line-height:1.45}.checklist{display:grid;gap:8px}.check{display:flex;align-items:center;gap:9px;padding:10px;background:#fff;border:1px solid #e1e8ef;border-radius:10px;font-size:9px}.check i{width:17px;height:17px;border:1px solid #9ec7ee;border-radius:5px;background:#eaf4ff}.status-card{padding:13px;background:#fff;border:1px solid #e1e8ef;border-radius:14px;margin-bottom:10px}.status-head{display:flex;justify-content:space-between;align-items:center}.status-head b{font-size:12px}.status-dot{display:inline-flex;gap:5px;align-items:center;color:#14784f;font-size:8px}.status-dot::before{content:"";width:6px;height:6px;border-radius:50%;background:#16a36a}.status-dot.red{color:#a33b3f}.status-dot.red::before{background:#e5484d}.alt{padding:10px;border:1px dashed #a9c9e8;background:#f4f9ff;border-radius:10px;font-size:8px;line-height:1.55;color:#526a80}.tag{display:inline-block;padding:6px 10px;border:1px solid #9ed2ff;border-radius:7px;background:#eaf6ff;color:#075985;font:800 11px ui-monospace,monospace}.page-title{margin:16px 0 8px;font-size:34px;letter-spacing:-.035em}.page-goal{margin:0 0 26px;color:#176bb7;font-size:17px;line-height:1.65}.block{margin:18px 0;padding-left:18px;border-left:4px solid var(--line)}.block h4{margin:0 0 8px;font-size:14px;letter-spacing:.05em}.block p,.block li{color:#435469;font-size:14px;line-height:1.8}.block p{margin:0}.block ul{padding-left:18px;margin:0}.scene{border-color:var(--blue)}.barrier{border-color:var(--red)}.need{border-color:var(--orange)}.changes{border-color:var(--green)}.why{border-color:#0ea5e9}.rules{border-color:var(--purple)}.value-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.value{padding:17px 20px;border:1px solid #bfdbfe;border-left:4px solid var(--blue);background:#f0f8ff;border-radius:10px}.value b{display:block;margin-bottom:5px}.value span{color:#435469;font-size:13px;line-height:1.6}.summary-table{display:grid;grid-template-columns:190px 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:white}.summary-table div{padding:16px 18px;border-bottom:1px solid var(--line)}.summary-table div:nth-last-child(-n+2){border-bottom:0}.summary-table .head{background:var(--soft);color:#176bb7;font-weight:800}.test-card{padding:20px;border:1px solid var(--line);background:#fff;border-radius:16px}.test-card b{display:block;margin-bottom:7px}.test-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.interview{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}.interview:first-child{border-top:0}.interview b{color:#176bb7}.interview p{margin:4px 0 0;color:var(--muted);line-height:1.75}.dialog{padding:0;border:0;background:transparent;max-width:min(94vw,1100px)}.dialog::backdrop{background:rgba(8,20,34,.78)}.dialog .phone{transform:scale(1.05);transform-origin:center;box-shadow:none}.dialog button.close{position:fixed;top:22px;right:26px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;font-size:26px;cursor:pointer}.footer{padding:36px 0 60px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:1000px){.hero-grid,.page-row{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.method-flow,.journey,.new-flow{grid-template-columns:1fr}.method-flow div:not(:last-child)::after,.journey-step:not(:last-child)::after,.new-flow div:not(:last-child)::after{content:"↓";right:50%;top:auto;bottom:-20px}.page-row{gap:30px;padding:50px 10px}.phone{width:365px}.priority{grid-template-columns:70px 1fr}.priority .impact{grid-column:2}}@media(max-width:680px){.container{width:calc(100% - 28px)}.grid2,.grid3,.grid4,.value-grid{grid-template-columns:1fr}.hero{padding:48px 20px}.section{padding:58px 0}.page-title{font-size:28px}.chart-item{grid-template-columns:110px 1fr 42px}.phone{width:min(92vw,365px)}.summary-table{grid-template-columns:120px 1fr}.interview{grid-template-columns:1fr}.priority{grid-template-columns:1fr}.priority .impact{grid-column:auto}.hero-meta{display:none}}
+@media print{@page{size:A4 landscape;margin:10mm}body{background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact}.hero,.nav,.dialog,.footer{display:none!important}.container{width:100%}.section{break-after:page;page-break-after:always;padding:10mm}.page-row{height:190mm;min-height:0;grid-template-columns:390px 1fr;gap:36px;padding:8mm 10mm;border:0;break-after:page;page-break-after:always;overflow:hidden}.phone{width:292px;height:608px;border-radius:30px;box-shadow:none}.phone-content{height:535px;transform:scale(.8);transform-origin:top left;width:365px}.phone-bar{height:28px}.phone-home{bottom:7px}.page-title{font-size:27px}.page-goal{font-size:13px;margin-bottom:12px}.block{margin:10px 0}.block p,.block li{font-size:10px;line-height:1.45}.value{padding:10px}.value span{font-size:10px}}
+
+/* 页面深度讲解版 */
+.page-row{grid-template-columns:500px minmax(0,1fr);gap:62px;align-items:start;min-height:auto;padding:96px 26px}
+.mock{position:sticky;top:92px;padding-top:24px}
+.page-explain{min-width:0}
+.decision-question{margin:26px 0;padding:22px 24px;border:1px solid #b9dcff;border-left:5px solid var(--blue);background:#f1f8ff;border-radius:14px}
+.decision-question>b,.scenario-panel h3,.detail-heading{display:block;margin:0 0 9px;font-size:16px}
+.decision-question p,.scenario-panel>p{margin:0;color:#40546a;font-size:14px;line-height:1.8}
+.question-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.question-chips span{padding:7px 10px;border-radius:999px;background:#fff;border:1px solid #cfe3f8;color:#176bb7;font-size:11px}
+.scenario-panel{margin:18px 0;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:16px}
+.scenario-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px}
+.scenario-list div{padding:11px 12px;border-radius:10px;background:#f6f9fc;color:#526579;font-size:12px;line-height:1.55}
+.problem-logic{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 30px}
+.problem-logic>div{padding:20px;border-radius:14px;border:1px solid var(--line);background:#fff}
+.problem-logic>div:first-child{border-top:4px solid var(--red)}
+.problem-logic>div:last-child{border-top:4px solid var(--green)}
+.problem-logic b{display:block;margin-bottom:8px;font-size:14px}
+.problem-logic p{margin:0;color:#526579;font-size:13px;line-height:1.75}
+.detail-heading{margin:32px 0 14px;font-size:20px}
+.change-card{display:grid;grid-template-columns:46px 1fr;gap:14px;margin:0 0 16px;padding:21px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 8px 26px rgba(20,70,125,.04)}
+.change-number{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#eaf4ff;color:#1677ff;font:900 12px ui-monospace,monospace}
+.change-main h3{margin:0 0 7px;font-size:17px;line-height:1.45}
+.change-target{margin:0 0 15px;color:#176bb7;font-size:12px;line-height:1.65}
+.change-grid,.detail-columns,.bottom-insight{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.change-grid>div,.detail-columns>div{padding:14px 15px;border-radius:11px;background:#f7f9fc}
+.change-grid b,.detail-columns b,.bottom-insight b{display:block;margin-bottom:6px;font-size:12px}
+.change-grid p{margin:0;color:#526579;font-size:12px;line-height:1.65}
+.detail-columns{margin-top:10px}
+.detail-columns ul,.bottom-insight ul{margin:0;padding-left:17px}
+.detail-columns li,.bottom-insight li{color:#526579;font-size:11.5px;line-height:1.65;margin:4px 0}
+.bottom-insight{margin:24px 0 16px}
+.bottom-insight>div{padding:18px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.bottom-insight>div:first-child{border-top:4px solid var(--orange)}
+.bottom-insight>div:last-child{border-top:4px solid var(--purple)}
+@media(max-width:1000px){.page-row{grid-template-columns:1fr}.mock{position:static}.problem-logic,.change-grid,.detail-columns,.bottom-insight{grid-template-columns:1fr}}
+@media(max-width:680px){.scenario-list{grid-template-columns:1fr}.change-card{grid-template-columns:1fr}.change-number{width:32px;height:32px}}
+@media print{.page-row{height:auto;min-height:190mm;grid-template-columns:310px 1fr;gap:24px;align-items:start;overflow:visible;padding:7mm 8mm;break-after:page;page-break-after:always}.mock{position:static}.page-title{font-size:23px}.page-goal{font-size:11px}.decision-question,.scenario-panel{padding:10px 12px;margin:9px 0}.decision-question p,.scenario-panel>p,.problem-logic p{font-size:8.5px;line-height:1.4}.question-chips{margin-top:6px}.question-chips span{font-size:7px;padding:4px 6px}.scenario-list{gap:4px;margin-top:6px}.scenario-list div{padding:5px 6px;font-size:7px}.problem-logic{gap:6px;margin:8px 0 10px}.problem-logic>div{padding:8px}.problem-logic b{font-size:8px}.detail-heading{font-size:11px;margin:10px 0 6px}.change-card{grid-template-columns:26px 1fr;gap:6px;padding:8px;margin-bottom:5px;break-inside:avoid}.change-number{width:24px;height:24px;font-size:7px}.change-main h3{font-size:9px;margin-bottom:2px}.change-target{font-size:7px;margin-bottom:5px;line-height:1.3}.change-grid,.detail-columns{gap:4px}.change-grid>div,.detail-columns>div{padding:5px}.change-grid b,.detail-columns b,.bottom-insight b{font-size:7px}.change-grid p,.detail-columns li,.bottom-insight li{font-size:6.5px;line-height:1.35}.detail-columns{margin-top:4px}.bottom-insight{gap:5px;margin:7px 0}.bottom-insight>div{padding:6px}.value{padding:7px}.value span{font-size:7px}}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">UX CASE STUDY · VIRTUAL PROJECT · T01 HTML</div>
+      <h1>观山 APP<br>徒步路线决策体验优化</h1>
+      <p>围绕“周末想去徒步，但不知道哪条路线真正适合自己”的场景，重构从表达需求、筛选候选、理解风险、比较判断到出行准备的完整决策流程</p>
+      <div class="hero-meta"><span>核心场景：选择一条适合自己的徒步路线</span><span>项目类型：虚拟体验改版</span><span>个人职责：研究 / 交互 / 产品规则 / UI</span></div>
+    </div>
+    <div class="hero-card"><b>核心判断</b><br>用户缺的不是更多路线，而是把“路线信息”转化为“这条路线是否适合我”的判断依据<br><br><b>核心链路</b><br>场景与目标 → 研究验证 → 关注点排序 → 核心流程 → 关键页面 → 规则与验证</div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="内容筛选">
+  <button class="active" data-filter="all">全部内容</button>
+  <button data-filter="overview">项目分析</button>
+  <button data-filter="research">调研洞察</button>
+  <button data-filter="flow">核心流程</button>
+  <button data-filter="design">设计方案</button>
+  <button data-filter="summary">验证总结</button>
+</nav>
+
+<main class="container">
+<section class="section" data-group="overview">
+  <div class="section-kicker">01 · PRODUCT INTRODUCTION</div>
+  <h2>观山介绍</h2>
+  <p class="lead">观山是一款面向城市徒步与轻户外用户的路线发现产品，用户可以搜索路线、查看轨迹、了解难度并收藏出行计划。本次不重做整个产品，而是聚焦用户出发前最关键的一次任务：从“想去徒步”到“确定走哪条路线”</p>
+  <div class="grid3">
+    <div class="card"><h3>目标用户</h3><p>有周末户外需求，但路线经验有限，常与朋友、伴侣或家人临时约徒步的城市用户</p></div>
+    <div class="card blue"><h3>核心任务</h3><p>在有限时间内，找到一条难度、交通、时长和体验都适合自己的路线</p></div>
+    <div class="card"><h3>设计范围</h3><p>需求表达 → 搜索筛选 → 候选比较 → 详情判断 → 出行确认，不延伸到完整户外社区</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="overview">
+  <div class="section-kicker">02 · REDESIGN BACKGROUND</div>
+  <h2>改版背景</h2>
+  <p class="lead">现有产品可以提供大量路线，但路线卡片主要展示里程、爬升、用时和热度。对于经验不足的用户，这些数据并不能直接回答“我能不能走完、适不适合同行的人、今天去是否安全”</p>
+  <div class="goal-band"><b>问题不是路线不够多，而是信息没有帮助用户完成判断</b><br>用户需要在多个页面、评论和外部平台之间拼凑信息，最后仍然依靠经验或朋友建议做决定</div>
+  <div class="grid4">
+    <div class="card"><h3>信息很多</h3><p>里程、爬升、轨迹、图片分散展示，却缺少清晰优先级</p></div>
+    <div class="card"><h3>理解门槛高</h3><p>“累计爬升 580m”对新手来说无法直接转化为难度感受</p></div>
+    <div class="card"><h3>风险更新弱</h3><p>临时封路、泥泞、补给中断等动态信息容易被埋在评论中</p></div>
+    <div class="card"><h3>选择成本高</h3><p>路线之间难以横向比较，用户会反复打开详情页并依赖记忆</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="overview">
+  <div class="section-kicker">03 · PROJECT OBJECTIVE</div>
+  <h2>项目目标与待验证问题</h2>
+  <p class="lead">在进入页面设计前，先明确这次要改善的用户行为，以及需要通过研究验证的假设</p>
+  <div class="grid2">
+    <div class="card dark"><h3>项目目标</h3><ul><li>降低路线筛选与比较成本</li><li>帮助用户理解路线是否适合自己</li><li>让关键风险在决策前被看见</li><li>提升从浏览路线到确认出行的任务完成效率</li></ul></div>
+    <div class="card"><h3>待验证问题</h3><ul><li>用户选择路线时最先看什么</li><li>用户在哪一步最容易犹豫或退出</li><li>哪些数字难以理解，需要翻译成场景语言</li><li>用户如何判断信息是否可信、是否仍然有效</li></ul></div>
+  </div>
+  <div class="method-flow"><div><b>产品走查</b><span>定位现有流程与信息结构</span></div><div><b>轻量问卷</b><span>判断高频关注点</span></div><div><b>典型访谈</b><span>理解犹豫原因</span></div><div><b>任务地图</b><span>找到关键决策节点</span></div><div><b>方案验证</b><span>测试任务是否更顺畅</span></div></div>
+</section>
+
+<section class="section" data-group="research">
+  <div class="section-kicker">04 · RESEARCH PLAN</div>
+  <h2>用户调研</h2>
+  <p class="lead">调研不用于证明“产品不好用”，而是回答用户怎样选择路线、如何理解难度、为什么不敢确定，以及哪些信息真正影响最后的决定</p>
+  <div class="notice"><b>虚拟项目说明：</b>本页的问卷结构、样本分层和结论为研究方案与模拟推演，不能表述为真实商业数据。正式放入作品集前，需要用真实问卷、访谈或可用性测试结果替换</div>
+  <div class="grid3">
+    <div class="card"><span class="research-status">拟执行</span><h3>产品任务走查</h3><p>以“找一条周末半日、适合两个新手的路线”为任务，记录查找、筛选、比较和确认过程</p></div>
+    <div class="card"><span class="research-status">拟执行</span><h3>轻量问卷</h3><p>面向近半年有徒步经历或有徒步意愿的用户，验证关注点、退出原因与信息理解难点</p></div>
+    <div class="card"><span class="research-status">拟执行</span><h3>半结构访谈</h3><p>选择新手、轻度用户和经验用户，回顾最近一次路线选择过程，避免直接询问“想要什么功能”</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="research">
+  <div class="section-kicker">05 · QUESTIONNAIRE</div>
+  <h2>问卷设计与模拟结论</h2>
+  <p class="lead">问卷重点不是收集功能愿望，而是筛出用户在选择路线时最关注的因素、最不理解的信息和最常发生的放弃节点</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>核心问题结构</h3>
+      <ul><li>最近一次徒步由谁发起、如何决定路线</li><li>选择路线时优先查看哪些信息</li><li>哪些数据看过但仍然无法判断</li><li>是否因信息不足放弃或更换路线</li><li>路线确定前是否会去其他平台查证</li><li>是否愿意参加后续访谈</li></ul>
+    </div>
+    <div class="card blue">
+      <h3>模拟发现：用户关注点排序</h3>
+      <div class="chart-list">
+        <div class="chart-item"><span class="chart-label">难度是否适合自己</span><div class="chart-track"><div class="chart-fill" style="width:92%"></div></div><span class="chart-val">P0</span></div>
+        <div class="chart-item"><span class="chart-label">路况与安全风险</span><div class="chart-track"><div class="chart-fill" style="width:88%"></div></div><span class="chart-val">P0</span></div>
+        <div class="chart-item"><span class="chart-label">往返时间与交通</span><div class="chart-track"><div class="chart-fill" style="width:77%"></div></div><span class="chart-val">P1</span></div>
+        <div class="chart-item"><span class="chart-label">同行人是否能完成</span><div class="chart-track"><div class="chart-fill" style="width:72%"></div></div><span class="chart-val">P1</span></div>
+        <div class="chart-item"><span class="chart-label">风景与拍照体验</span><div class="chart-track"><div class="chart-fill" style="width:58%"></div></div><span class="chart-val">P2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-group="research">
+  <div class="section-kicker">06 · INTERVIEW GUIDE</div>
+  <h2>访谈提纲</h2>
+  <p class="lead">基于问卷筛选典型用户，重点回顾真实经历，而不是让用户直接设计功能</p>
+  <div class="grid2">
+    <div class="card"><h3>访谈对象</h3><ul><li>新手：徒步少于 5 次，依赖朋友推荐</li><li>轻度用户：偶尔周末出行，能看懂基础路线数据</li><li>经验用户：会结合天气、轨迹、路况和撤退点判断</li><li>同行组织者：需要替团队承担选择与风险判断</li></ul></div>
+    <div class="card"><h3>问题大纲</h3><ul><li>最近一次从哪里产生徒步想法</li><li>最初考虑了哪些路线，为什么排除</li><li>看到里程、爬升后如何判断难度</li><li>确定前去了哪些平台，想确认什么</li><li>有没有到了现场才发现信息不一致</li><li>什么情况下会直接放弃这条路线</li></ul></div>
+  </div>
+</section>
+
+<section class="section" data-group="research">
+  <div class="section-kicker">07 · USER FEEDBACK</div>
+  <h2>用户反馈与关键洞察</h2>
+  <p class="lead">将零散反馈归纳为可以推导设计的原因，而不是只展示原话</p>
+  <div class="grid3">
+    <div class="card"><div class="quote">“我知道 12 公里不算短，但不知道对我来说到底要不要走 6 小时”</div><h3>数据无法转化为体感</h3><p>用户看到了数字，但缺少与自己的经验、同行人和时间预算之间的对应关系</p></div>
+    <div class="card"><div class="quote">“我最怕路线最近修路或者下雨后很滑，这些通常要翻评论才知道”</div><h3>动态风险没有前置</h3><p>用户真正担心的是今天是否还能走，而不是路线在理想状态下是什么样</p></div>
+    <div class="card"><div class="quote">“路线都写风景好，我最后还是一个个点进去看，很难快速比较”</div><h3>候选之间缺少差异</h3><p>结果页只能浏览，不能帮助用户排除不合适的路线并完成最后选择</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="research">
+  <div class="section-kicker">08 · USER SEGMENTATION</div>
+  <h2>用户分群</h2>
+  <p class="lead">不按年龄做泛化画像，而是按路线判断能力与决策责任进行分群</p>
+  <div class="grid3">
+    <div class="card persona"><div class="avatar">A</div><h3>新手跟随型</h3><p>能表达想看什么风景，但不会根据爬升、路况判断难度，依赖“适合新手”等结论</p><p><b>设计重点：</b>难度翻译、清晰风险、准备建议</p></div>
+    <div class="card persona"><div class="avatar">B</div><h3>轻度自主型</h3><p>会看里程和爬升，但选择多个候选时仍需要比较交通、时间和体验差异</p><p><b>设计重点：</b>筛选、比较、个性化适配</p></div>
+    <div class="card persona"><div class="avatar">C</div><h3>同行组织型</h3><p>需要替同行人判断是否能完成，关注撤退点、补给、天气和信息时效</p><p><b>设计重点：</b>同行条件、风险确认、计划共享</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="flow">
+  <div class="section-kicker">09 · CORE SCENARIO</div>
+  <h2>核心场景：周末临时约一次轻徒步</h2>
+  <p class="lead">用户周五晚上决定周末去徒步，同行者经验不同，只有半天时间，希望风景好、交通方便，但又担心路线太累或临时路况有问题</p>
+  <div class="goal-band"><b>用户真正要完成的不是“找到路线”</b><br>而是在时间、体力、同行人和风险限制下，确定一条大家都能完成、值得去、当天仍然可行的路线</div>
+</section>
+
+<section class="section" data-group="flow">
+  <div class="section-kicker">10 · CURRENT JOURNEY</div>
+  <h2>现有体验地图</h2>
+  <p class="lead">从一次完整任务出发，标记每一步的用户目标、关注信息与体验断点</p>
+  <div class="journey">
+    <div class="journey-step"><b>产生想法</b><small>想周末出去走走</small><div class="pain">不知道从什么条件开始找</div></div>
+    <div class="journey-step"><b>搜索路线</b><small>输入地点或路线名</small><div class="pain">需求模糊时搜索结果不稳定</div></div>
+    <div class="journey-step"><b>浏览候选</b><small>看图片、里程和热度</small><div class="pain">卡片相似，无法快速排除</div></div>
+    <div class="journey-step"><b>查看详情</b><small>理解难度、交通、路况</small><div class="pain">信息分散，数字难转化为体感</div></div>
+    <div class="journey-step"><b>外部查证</b><small>翻评论、社交平台和天气</small><div class="pain">信息时效与真实性不确定</div></div>
+    <div class="journey-step"><b>确定出行</b><small>发给同行人并准备</small><div class="pain">缺少统一计划与风险确认</div></div>
+  </div>
+</section>
+
+<section class="section" data-group="flow">
+  <div class="section-kicker">11 · ATTENTION PRIORITY</div>
+  <h2>用户最关注什么</h2>
+  <p class="lead">把“好不好看、热不热门”等表层偏好放回决策顺序，先解决阻止用户行动的问题</p>
+  <div class="card">
+    <div class="priority"><div class="level p0">P0</div><div><b>能不能安全完成</b><p>当前路况、天气影响、危险路段、补给和撤退条件是否清楚</p></div><div class="impact">直接决定是否出发</div></div>
+    <div class="priority"><div class="level p0">P0</div><div><b>路线是否适合我和同行人</b><p>难度不能只给等级，要结合经验、体力、同行人和预计用时解释</p></div><div class="impact">直接决定是否选择</div></div>
+    <div class="priority"><div class="level p1">P1</div><div><b>时间与交通是否可控</b><p>从家出发到回程的总时间、停车/公共交通、最晚折返点</p></div><div class="impact">影响计划可执行性</div></div>
+    <div class="priority"><div class="level p1">P1</div><div><b>信息是否真实、最新</b><p>路况更新时间、来源和近期同行者反馈需要被明确展示</p></div><div class="impact">影响信任</div></div>
+    <div class="priority"><div class="level">P2</div><div><b>风景和体验是否值得</b><p>观景点、季节、拥挤程度和拍照体验用于候选之间的最后比较</p></div><div class="impact">影响偏好选择</div></div>
+  </div>
+</section>
+
+<section class="section" data-group="flow">
+  <div class="section-kicker">12 · PROBLEM DEFINITION</div>
+  <h2>定义核心问题</h2>
+  <p class="lead">现有产品把路线作为一组固定属性展示，但用户的判断取决于“这条路线与我今天的条件是否匹配”</p>
+  <div class="goal-band"><b>核心问题：</b>用户缺少从路线信息到个人适配判断的决策支持<br><br>因此，设计重点不是继续增加路线字段，而是根据用户条件组织信息、解释难度、前置风险，并支持候选比较</div>
+  <div class="grid3">
+    <div class="card"><h3>信息层问题</h3><p>静态参数多，关键决策信息缺少优先级，动态信息埋得太深</p></div>
+    <div class="card"><h3>判断层问题</h3><p>系统告诉用户路线是什么，却没有解释为什么适合或不适合</p></div>
+    <div class="card"><h3>流程层问题</h3><p>搜索、详情、评论和外部查证割裂，无法在产品内完成决策闭环</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="flow">
+  <div class="section-kicker">13 · DESIGN STRATEGY</div>
+  <h2>设计策略与新流程</h2>
+  <div class="grid4">
+    <div class="card"><h3>先理解条件</h3><p>让用户用场景语言表达时间、经验、同行人和偏好</p></div>
+    <div class="card"><h3>再解释适配</h3><p>把路线参数翻译为个人可理解的难度和时间体感</p></div>
+    <div class="card"><h3>前置关键风险</h3><p>在结果和详情的决策位置展示近期路况与风险</p></div>
+    <div class="card"><h3>支持比较确认</h3><p>帮助用户横向比较候选，并把路线转化为可执行计划</p></div>
+  </div>
+  <div class="new-flow"><div>表达出行条件</div><div>获得适配候选</div><div>按关键条件筛选</div><div>比较路线差异</div><div>理解适配与风险</div><div>确认出行计划</div><div>共享与准备</div></div>
+</section>
+
+<div id="designPages"></div>
+
+<section class="section" data-group="summary">
+  <div class="section-kicker">21 · PRODUCT RULES</div>
+  <h2>关键产品规则</h2>
+  <div class="summary-table">
+    <div class="head">规则</div><div class="head">处理逻辑</div>
+    <div class="head">适合度</div><div>基于路线难度、用户经验、同行人、可用时间和近期路况计算；只用于解释匹配关系，不等同于路线质量评分</div>
+    <div class="head">难度翻译</div><div>保留里程、爬升等原始数据，同时增加“连续上坡时长、相当于多少层楼、预计休息次数”等体感说明</div>
+    <div class="head">动态风险</div><div>必须显示更新时间和信息来源；超过有效期的信息降级展示，不直接给出“安全”结论</div>
+    <div class="head">同行条件</div><div>以团队中经验最低、体力限制最高的成员作为风险判断基线，避免平均值掩盖个体风险</div>
+    <div class="head">比较功能</div><div>最多同时比较 3 条路线，默认展示决定性维度：总时间、难度、交通、路况、补给与核心体验</div>
+    <div class="head">异常兜底</div><div>当路况异常、天气风险升高或信息不足时，优先建议改期或推荐更低风险替代路线，不强行推动出行</div>
+  </div>
+</section>
+
+<section class="section" data-group="summary">
+  <div class="section-kicker">22 · VALIDATION</div>
+  <h2>可用性测试与验证指标</h2>
+  <p class="lead">虚拟项目不能用伪造的上线数据证明结果，因此通过任务测试验证用户是否更快、更确定地完成路线选择</p>
+  <div class="grid4">
+    <div class="test-card"><b>任务完成率</b><p>用户能否在限定时间内选出一条适合两名新手、半日完成的路线</p></div>
+    <div class="test-card"><b>决策时间</b><p>从输入条件到确认路线所需时间，是否少于现有流程</p></div>
+    <div class="test-card"><b>信息理解</b><p>用户能否说清路线为什么适合、主要风险是什么</p></div>
+    <div class="test-card"><b>比较正确性</b><p>用户能否根据同行人和时间条件排除不适合的候选</p></div>
+    <div class="test-card"><b>风险发现率</b><p>用户是否在确认前看见近期路况、天气影响和撤退建议</p></div>
+    <div class="test-card"><b>主观确定感</b><p>完成任务后，对“我知道为什么选它”的评分是否提高</p></div>
+    <div class="test-card"><b>外部跳出</b><p>是否减少为了查路况、交通和难度而跳转其他平台的次数</p></div>
+    <div class="test-card"><b>迭代方向</b><p>重点观察适合度是否被误解、风险提示是否过重、筛选条件是否过多</p></div>
+  </div>
+</section>
+
+<section class="section" data-group="summary">
+  <div class="section-kicker">23 · FINAL SUMMARY</div>
+  <h2>项目最终价值</h2>
+  <div class="grid2">
+    <div class="card"><h3>改版前</h3><ul><li>产品展示路线，用户自行理解参数</li><li>结果页负责浏览，无法帮助排除和比较</li><li>动态风险隐藏在评论或外部平台</li><li>确认路线后仍需自行整理计划</li></ul></div>
+    <div class="card blue"><h3>改版后</h3><ul><li>产品先理解用户当天的出行条件</li><li>系统解释路线为什么适合或不适合</li><li>关键风险在决定前被看见并说明时效</li><li>选择结果直接沉淀为可共享的出行计划</li></ul></div>
+  </div>
+  <div class="goal-band"><b>这个项目体现的不是画了多少户外页面</b><br>而是从一个具体场景出发，找到用户真正需要做出的判断，再把用户条件、路线信息、风险规则和页面流程串成一条完整的 UX 设计链路</div>
+</section>
+
+<div class="footer">观山 APP｜徒步路线决策体验优化 · 页面深度讲解版 · 单文件 HTML · 可直接打开、打印或继续编辑</div>
+</main>
+
+<dialog class="dialog" id="dialog"><button class="close" aria-label="关闭">×</button><div id="dialogContent"></div></dialog>
+
+<script>
+const pages=[{"no":"14","title":"场景入口｜让不同明确程度的需求都有合适起点","goal":"这一页不是增加一个“智能推荐入口”，而是解决用户不知道路线名时无法开始、又不希望明确搜索被打断的问题","screen":"home","pageTask":"承接用户刚产生徒步想法、但需求明确程度不同的状态，并把模糊想法转成后续可判断的出行条件","scene":"周五晚上，用户临时约朋友周末徒步。他只知道“半天、两名新手、想看山景”，不知道当地有哪些路线，也不知道应该先搜地点、路线名还是难度等级","sceneVariants":["知道具体路线名：希望直接搜索，不想回答额外问题","只有模糊想法：需要系统帮助把想法整理成条件","曾经浏览过路线：希望继续上次比较或计划","替多人做决定：需要把同行人差异一起带入判断"],"userQuestions":["我应该从哪里开始找？","我需要提供哪些条件，系统才能真正理解我？","同行人水平不同，应该按谁来判断？"],"problem":"原首页通常把搜索框、热门路线和内容推荐并列展示。它能让用户“看到路线”，却没有区分明确搜索和模糊探索。用户不知道路线名时只能浏览大量内容，输入自然语言又可能得到不稳定结果","designLogic":"入口设计先判断用户的需求明确程度：明确需求走直接搜索，模糊需求走场景化引导。条件收集只询问会显著影响路线选择的高优先级信息，并通过渐进式方式避免一开始形成长表单","changes":[{"title":"保留直接搜索，同时增加场景化任务入口","target":"避免为了体现智能化而强迫所有用户经过同一套问答","problem":"知道路线名的用户追求效率；不知道路线名的用户又无法用关键词准确表达，两类任务混在一个搜索框里会互相干扰","design":"顶部保留“路线名 / 地点”搜索，在搜索下方增加“按这次出行条件找路线”的独立入口，两条路径并行而不是互相替代","details":["搜索支持具体路线、地区与景点名称，优先满足明确意图","场景入口使用“今天适合走哪条路”这种任务语言，而不是抽象的“AI 推荐”","最近浏览和未完成计划放在入口附近，承接重复任务"],"states":["输入明确路线名时直接进入结果，不弹出条件问答","自然语言过于模糊时，系统只追问缺失的关键条件"]},{"title":"只收集会改变结果的关键条件","target":"降低表达门槛，同时保证推荐不是泛泛而谈","problem":"一次询问过多专业参数会让新手不知道怎么选；询问太少又无法判断路线是否适合当前人群","design":"首轮只收集可用时间、同行经验、交通方式和核心限制；风景偏好、拍照等软性需求放在第二层补充","details":["用“半日内”“第一次徒步”等生活语言替代海拔、爬升比等专业参数","每个问题解释它会影响什么，例如“同行经验会影响难度与撤退点判断”","允许跳过非关键条件，但在结果页说明推荐依据不足"],"states":["用户跳过关键条件时，结果默认按低风险策略展示","选择条件互相冲突时立即提示，而不是提交后才显示无结果"]},{"title":"多人同行按风险最高成员建立判断基线","target":"避免组织者只按自己的能力选路线，导致同行者无法完成","problem":"同一条路线对有经验者和第一次徒步者的体感完全不同，使用平均水平会掩盖团队中的短板","design":"同行人条件不只记录人数，还记录最低经验、儿童或长辈同行、时间限制等会影响完成能力的因素","details":["默认按团队中经验最低、限制最多的成员判断难度","组织者可以查看“按我自己判断”和“按团队判断”的差异","结果中明确指出是哪一个同行条件降低了适合度"],"states":["成员信息不完整时不输出过度确定的适合结论","敏感身体状况不做诊断，只提醒用户自行评估并提供退出点信息"]}],"edgeCases":["用户没有明确目的地：先按距离和交通范围推荐，而不是要求输入城市内具体地点","用户只想随便看看：允许跳过条件进入探索模式，但不包装为个性化结果","用户第二次进入：保留上次条件，并明确提示可一键清空"],"validation":["能否在 30 秒内选择正确入口并开始任务","明确搜索用户是否觉得多了一步","模糊需求用户能否说清系统为什么询问这些条件"],"values":{"user":"无论是否知道路线名，都能快速开始，不必先学习专业徒步参数","product":"把无目的浏览转化为带条件的有效路线决策，同时保留高效率搜索"}},{"no":"15","title":"路线结果｜先帮助排除，再引导深入查看","goal":"结果页的任务不是展示更多路线，而是让用户迅速识别哪些路线不适合本次出行，并留下真正值得继续判断的候选","screen":"results","pageTask":"把“路线列表”变成第一层决策工具，在不进入详情页的情况下完成初步排除、理解主要差异并建立候选集","scene":"用户已经提交“半日内、两名新手、公共交通”的条件，系统返回多条路线。此时他最需要的不是继续看图片，而是快速确认哪些路线在时间、难度或风险上已经不成立","sceneVariants":["时间限制严格：首先排除往返总时间超出的路线","同行人经验低：首先关注最难路段与退出条件","天气刚变化：首先确认近期路况是否仍然有效","偏好不明确：先排除硬性不适配，再比较风景体验"],"userQuestions":["哪几条路线根本不适合这次？","“适合”是根据什么判断的？","我还需要点进详情页确认什么？"],"problem":"传统结果卡片以封面、热度、里程和统一难度为主，路线之间看起来非常相似。用户只能逐个进入详情，再自己记忆和比较；危险信息与不适配原因通常被隐藏，导致列表只能浏览、不能决策","designLogic":"结果页优先处理硬性约束，再展示偏好差异。卡片不是给一个看似精确的总分，而是给出可解释的适配等级、成立原因和关键限制，让用户知道为什么保留或排除这条路线","changes":[{"title":"卡片首要信息从路线属性改为本次适配判断","target":"让用户第一眼先知道“适不适合这次”，而不是先看路线有多热门","problem":"8.6km、爬升 420m 对不同用户没有相同意义，单纯展示数字无法直接支持排除","design":"卡片顶部展示“很适合 / 有条件适合 / 不建议本次”，下方列出 2—3 条与当前条件直接相关的理由","details":["适配结论必须能展开查看依据，不使用无法解释的黑盒评分","优先展示时间是否满足、同行经验是否匹配、近期风险是否正常","路线质量与本次适配分开，避免用户误以为“不适合本次”等于路线不好"],"states":["条件不足时显示“需要补充信息”，而不是给出高确定性结论","存在高风险时直接降级为“不建议本次”，不被风景偏好抵消"]},{"title":"把“总时间”拆成用户真正可安排的完整时间","target":"避免只显示徒步时长，让用户到了详情页才发现交通与返程超出预算","problem":"用户说的“半天”通常包含从家出发、换乘、徒步、休息和返程，而产品常只显示轨迹预计时长","design":"卡片展示门到门预计总时间，并标记交通、徒步和缓冲构成；时间冲突直接说明发生在哪个环节","details":["默认加入新手休息与找路缓冲，不给出过度精确的分钟承诺","公共交通路线显示末班车或最晚返程节点","自驾路线显示停车距离与拥堵风险，不仅显示“可自驾”"],"states":["用户未授权位置时，以选择的出发区域估算并标注误差","交通信息缺失时降级展示，不将未知情况当作满足条件"]},{"title":"在列表阶段前置动态路况与信息时效","target":"减少用户为了确认“今天还能不能走”而反复翻评论和跳转平台","problem":"静态难度无法反映封路、泥泞、施工、极端天气等当天风险，且用户不知道信息是昨天还是半年前的","design":"卡片直接展示影响出行的动态状态、更新时间与来源，只有无明显异常时才弱化展示","details":["只展示会改变决策的风险，不把所有提醒都堆在卡片上","“近期路况正常”也显示更新时间，避免正常状态被误解为永久有效","点击状态可查看影响路段、来源与可信度"],"states":["信息超过有效期时显示“暂无近期确认”，不展示“正常”","多来源冲突时显示存在分歧，引导进入详情确认"]},{"title":"支持轻量收藏与比较，但不打断浏览节奏","target":"帮助用户建立 2—3 条候选，而不是依赖记忆反复打开","problem":"用户在路线之间犹豫时，需要记住多个页面中的时间、交通和风险，容易重复查看","design":"卡片提供“加入比较”与“暂存候选”，达到两条后提示进入比较，不强制立即跳转","details":["加入比较后保持当前滚动位置","同一场景最多比较 3 条，避免重新形成信息过载","已排除路线可查看排除原因，方便用户理解系统逻辑"],"states":["条件变化后提醒候选结论已更新","路线状态突变时在候选集里即时标记"]}],"edgeCases":["没有完全匹配的路线：展示最接近候选并明确需要放宽哪项条件","路线很多：优先按硬性适配排序，而不是单纯按热度","路线很少：不通过重复内容制造“丰富感”，明确展示覆盖范围"],"validation":["用户能否不进入详情就排除明显不适合路线","用户是否能准确复述一条路线为什么适合或不适合","从结果到形成 2—3 条候选所需时间是否下降"],"values":{"user":"更快排除错误选项，减少无效详情浏览和记忆负担","product":"提升有效详情进入与比较使用，而不是只追求列表点击量"}},{"no":"16","title":"条件筛选｜把专业参数转换为可做决定的生活语言","goal":"筛选不是把所有路线字段做成控件，而是帮助用户逐步收窄范围，并理解每个条件会带来什么取舍","screen":"filter","pageTask":"当首轮结果仍然过多或不够合适时，帮助用户通过可理解的条件继续收敛，同时避免专业参数、条件冲突和无结果带来的挫败","scene":"用户看到 8 条候选，发现有些交通不方便，有些连续上坡太长。他知道自己“不想太累、希望当天往返”，但并不知道对应应该设置多少公里或多少爬升","sceneVariants":["新手只知道体感要求，不懂专业阈值","经验用户希望精确设置里程、爬升和海拔","多个条件叠加后可能没有结果","用户筛选后进入详情，再返回继续调整"],"userQuestions":["我说“不想太累”应该选什么？","为什么加了这个条件后只剩两条？","没有结果时到底应该放宽哪一项？"],"problem":"传统筛选常按数据库字段组织：里程、爬升、海拔、难度等级并列。新手无法把这些参数转化为体感，容易随意选择；多个条件冲突时只出现“暂无结果”，用户不知道如何修正","designLogic":"默认筛选使用时间、同行经验、交通与不希望遇到的情况等生活语言；专业参数放入高级筛选。系统需要实时反馈结果数量和条件影响，让筛选成为可理解的取舍过程","changes":[{"title":"按用户决策问题分组，而不是按路线字段分组","target":"让用户从“我能安排什么、我不能接受什么”出发设置条件","problem":"数据库字段对产品清晰，但对用户不一定有意义；用户真正想表达的是时间、体力与风险边界","design":"将筛选分为“能安排多久、同行经验、交通方式、不希望遇到、想要的体验”，专业参数单独折叠","details":["硬性限制置顶，风景偏好等软性条件靠后","每个选项附简短体感说明，如“长时间陡坡＝连续上坡超过约 40 分钟”","保留高级筛选满足熟练用户，不牺牲精确控制"],"states":["用户开启高级条件后保留已选生活条件，并提示可能重叠","同一含义的条件自动合并，避免重复限制"]},{"title":"实时显示每个条件对结果的影响","target":"让用户知道自己正在做什么取舍，而不是提交后才看到结果骤减","problem":"筛选过程缺少反馈时，用户容易连续勾选，最后得到零结果，却不知道哪一项造成冲突","design":"选项旁显示预计结果变化；选择后即时更新底部按钮数量，并高亮造成大幅减少的条件","details":["结果数量变化采用近似值时标明“约”","软性偏好默认不排除路线，只参与排序","硬性条件会排除路线，需要用视觉和文案区分"],"states":["数据计算中保留上次数量并显示加载状态，避免跳动","条件导致无结果时立即阻止继续叠加，并给出恢复建议"]},{"title":"无结果时解释冲突，并提供最小放宽方案","target":"把“无结果”变成一次可修正的决策，而不是死胡同","problem":"用户并不知道是半日限制、公共交通还是新手同行共同造成无匹配","design":"系统指出冲突组合，并给出只放宽一项即可恢复的方案，例如“将半日内改为 6 小时，可增加 4 条路线”","details":["优先建议放宽软条件，不主动突破安全与同行能力限制","展示放宽后的直接影响，让用户自行选择","支持一键撤销最近条件，降低反复操作成本"],"states":["即使放宽仍无结果时说明区域覆盖不足","安全条件不提供“强制忽略”，只允许用户重新评估并查看风险说明"]},{"title":"返回页面时保留筛选上下文与浏览位置","target":"支持用户在“筛选—看详情—返回调整”之间反复迭代","problem":"路线选择不是一次完成，若返回后条件和滚动位置丢失，用户需要重新设置并再次寻找候选","design":"自动保存当前条件、结果排序和滚动位置，并在顶部显示已生效条件摘要","details":["条件变更后只刷新受影响的结果，减少页面跳动","支持保存为“我的周末轻徒步”预设","清空操作二次确认，避免误触丢失复杂条件"],"states":["路线动态状态变化时只更新对应卡片，不重置筛选","跨设备恢复时明确提示同步时间"]}],"edgeCases":["专业用户直接输入参数：允许切换高级模式，不强迫使用体感标签","多个同行人需求冲突：提示按最低能力判断，并允许分别查看差异","用户对术语不理解：点击选项可看图示和典型路线示例"],"validation":["新手是否能在不理解爬升概念的情况下设置合适条件","无结果时能否找到正确的放宽方式","详情返回后是否能继续原有筛选任务"],"values":{"user":"不需要先学专业术语，也能完成准确筛选并理解条件取舍","product":"减少无结果退出和重复设置，提高筛选后的有效选择率"}},{"no":"17","title":"候选比较｜围绕取舍而不是堆一张参数表","goal":"比较页需要帮助用户完成“为什么选 A 不选 B”的判断，并把不同同行人的关注点放在同一套依据里","screen":"compare","pageTask":"当用户在两三条路线之间犹豫时，突出决定性差异、解释取舍，并支持组织者与同行人达成一致","scene":"用户保留了云栖环线和青石谷。云栖交通方便、风险低；青石谷风景更好但更耗时且近期泥泞。用户需要判断本次更应该选哪一条，并向同行人解释","sceneVariants":["两条路线大部分参数相似，只在关键风险上不同","不同成员关注点不同：有人怕累，有人更看重风景","路线状态可能在比较期间发生变化","组织者需要把结论分享给没有安装 App 的同行人"],"userQuestions":["两条路线真正影响选择的差异是什么？","为了更好的风景，我需要付出什么成本？","我怎么向同行人解释这个决定？"],"problem":"传统比较页只是把所有字段横向铺开，相同信息占据大量空间，真正决定选择的差异被淹没。系统也不会区分硬性约束与偏好，用户仍需要自己总结结论","designLogic":"比较先显示不满足条件的硬性差异，再显示偏好层面的取舍。相同字段自动弱化，差异字段和影响对象被突出，同时给出可解释的推荐结论而不是替用户强行决定","changes":[{"title":"默认只展示会改变决定的差异维度","target":"减少表格阅读量，让用户快速抓住关键取舍","problem":"把所有路线字段都展示出来，会让总时间、路况等关键差异与无关参数拥有同等权重","design":"比较页先显示硬性条件、风险和显著差异；相同或接近的信息折叠到“其他信息”","details":["差异维度按当前场景动态排序，新手同行时难度与退出点优先","每一行不仅显示数值，还说明对本次出行的影响","允许用户手动添加关心的维度，避免系统替用户定义全部标准"],"states":["数据缺失不与其他路线直接比较，明确标记“暂无可靠信息”","路线超过 3 条时要求先减少候选，避免横向阅读失效"]},{"title":"区分硬性不满足与偏好取舍","target":"避免风景优势掩盖时间、安全等不可接受条件","problem":"用户可能被“更好看”吸引，却忽略末班车、连续陡坡或同行人无法完成等硬限制","design":"把维度分为“必须满足”和“可以取舍”，硬性冲突使用明确提示，偏好差异则呈现得到与失去","details":["硬性条件来自用户已确认的时间、交通和同行能力","偏好只影响推荐倾向，不覆盖高风险结论","用户可以修改某条件是否为硬性要求，系统即时更新结论"],"states":["用户主动放宽硬条件时要求确认其影响","风险状态变化后，原推荐结论自动失效并提示重新比较"]},{"title":"给出可解释的推荐，但保留用户最终选择权","target":"减少用户自己总结整张表的认知负担，又避免黑盒替代决策","problem":"只展示数据把判断责任全部留给用户；只给“推荐 A”又无法建立信任","design":"底部用一句话总结“本次更推荐哪条、为什么、另一条适合什么情况”，并可展开查看规则","details":["推荐理由限制在 2—3 个最关键因素","明确展示推荐基于当前条件，不宣称普遍更好","支持切换“更稳妥 / 更轻松 / 风景优先”等取舍视角"],"states":["两条路线各有明显优势时展示“取决于你的优先级”，不制造唯一答案","信息不足时不输出推荐，只说明还缺什么"]},{"title":"把比较结论转成可共享的团队决策卡片","target":"减少组织者截图、复制和在群里重复解释","problem":"同行人往往不参与完整搜索过程，只看到一个路线链接，无法理解为什么选它","design":"生成精简分享卡，包含候选差异、推荐理由、关键风险和需要同行人确认的事项","details":["未安装 App 也能通过网页查看核心结论","分享内容不包含精确个人能力等隐私条件","同行人可以对出发时间或路线做简单确认，不重新走全部流程"],"states":["路线状态更新后，旧分享卡显示“信息已变化”","多人意见冲突时只记录意见，不自动按多数覆盖安全条件"]}],"edgeCases":["两条路线适配度相同：改为呈现不同体验与风险，不强行排序","某条路线信息不完整：说明无法公平比较，并推荐先补充信息","分享后条件变更：旧链接保留版本记录并提示已更新"],"validation":["用户能否在 1 分钟内说清为什么选其中一条","用户是否理解硬性不满足与偏好取舍的区别","同行人仅看分享卡是否能复述关键风险"],"values":{"user":"不用反复记忆多个详情页，也能做出可解释、可沟通的选择","product":"促进有效比较和计划确认，减少候选在收藏夹中长期搁置"}},{"no":"18","title":"路线详情｜从路线百科转为个人出行判断页","goal":"详情页先回答“这条路线对我这次是否成立”，再逐层提供路线资料、难度解释、风险来源与完整轨迹","screen":"detail","pageTask":"帮助用户确认适配原因、理解最难路段和近期风险，并判断自己是否愿意承担剩余不确定性","scene":"用户从结果页进入云栖环线。列表告诉他整体适合，但在最终确认前，他仍需要知道哪里最累、雨后风险在哪、途中是否能退出，以及这些信息是否足够新","sceneVariants":["用户只想快速确认列表结论是否可信","新手无法从总里程和爬升理解实际体感","经验用户需要查看完整海拔图、轨迹和路段信息","近期评论与官方状态可能不一致"],"userQuestions":["为什么系统认为适合我？","最难的路段在哪里，我能不能中途退出？","这些路况信息是什么时候、由谁更新的？"],"problem":"传统详情按照内容完整性组织：图片、简介、参数、攻略、评论依次排列。用户需要自己在多个模块中拼出结论，平均难度还可能掩盖局部陡坡、暴晒或无补给等关键问题","designLogic":"首屏先呈现个性化判断和需要注意的条件，随后用分段、体感和时间节点解释难度，再通过来源与更新时间建立风险信息可信度。完整资料仍保留，但不抢占决策信息层级","changes":[{"title":"首屏同时展示适配原因与不适合条件","target":"避免只强调推荐优势，让用户在确认前看到需要承担的限制","problem":"单纯的“适合你”会制造过度安全感，用户不知道结论边界，也看不到自己可能不满足的条件","design":"首屏用“为什么适合本次”和“需要注意”并列呈现，说明结论基于哪些用户条件以及仍然存在什么风险","details":["适配原因直接对应已填写条件，不使用泛化文案","不适合人群或特殊条件明确展示，例如雨后不建议第一次徒步者","用户修改条件后，首屏结论即时重算并标记变化原因"],"states":["条件不足时不展示“很适合”，改为“基础信息匹配，仍需确认”","存在高风险时把风险置于推荐之前"]},{"title":"用最难路段与体感解释替代单一平均难度","target":"让用户判断自己能否完成，而不是只看到一个抽象等级","problem":"同样 8km 的路线可能一条平缓、一条前半程连续陡升；平均难度会掩盖决定用户体验的局部路段","design":"展示最长连续上坡、陡坡出现位置、预计休息次数和可撤退点，并保留原始里程、爬升与海拔图供深入查看","details":["体感说明必须绑定具体数据，不使用“轻松”“不累”等绝对描述","路线按路段分解，标记最难 20% 路段而不是只给总值","为不同经验用户提供对照，例如“对第一次徒步者可能较吃力”"],"states":["轨迹数据质量不足时不生成精细体感结论","用户开启无障碍或特殊需求条件时，突出路面和台阶信息"]},{"title":"把动态风险做成有来源、有时效的判断依据","target":"让用户知道信息是否仍然值得信任，并能追溯风险发生在哪里","problem":"评论中的“路况很好”可能来自几个月前，官方公告又可能只写封闭路段，用户难以判断两者如何影响整条路线","design":"风险模块展示状态、影响路段、更新时间、来源类型和可信度；近期无信息时明确说明未知，而不是默认正常","details":["官方公告、运营记录与用户上报分层展示","相同风险被多人近期确认时提高可信度，但不包装为绝对事实","用户可查看原始记录与地图位置，避免只看一句结论"],"states":["来源冲突时展示差异并建议保守选择","超过有效期的信息自动降级，不继续显示绿色正常状态"]},{"title":"在关键节点展示退出、补给和通信条件","target":"支持用户为意外情况做准备，而不是只规划理想路线","problem":"用户可能走到一半才发现没有补给、信号差或错过撤退点，尤其组织多人时风险更高","design":"地图和时间轴中标记补给点、退出点、信号弱区与最晚折返点，并说明从该点退出后的交通方式","details":["退出点必须说明是否全天开放、是否需要额外步行","补给点区分固定设施与季节性摊位","最晚折返点根据出发时间、日落和团队速度动态计算"],"states":["撤退点临时不可用时同步影响计划与风险结论","离线状态下保留已下载的重要节点信息"]}],"edgeCases":["用户只看首屏就准备确认：确认前再次展示关键风险和更新时间","完整轨迹无法获取：不假装路线信息完整，提示谨慎使用","用户对推荐结论有异议：允许查看规则并手动调整个人条件"],"validation":["用户是否能准确指出最难路段和主要风险","是否能说清适配结论基于哪些条件","是否能找到最近退出点和信息更新时间"],"values":{"user":"在最终选择前真正理解路线，而不是被图片和统一难度标签影响","product":"建立路线信息可信度，减少因预期不符产生的取消与负面反馈"}},{"no":"19","title":"出行计划｜把“选定路线”推进到可执行的团队安排","goal":"收藏不是任务终点。用户需要把路线转换成从出门到回程的时间线、准备清单、协作确认和异常预案","screen":"plan","pageTask":"把已经选定的路线与用户出发时间、交通方式、同行成员和风险节点结合，生成可编辑、可共享、可检查的实际计划","scene":"用户确认周六去云栖环线，需要通知同行人几点集合、要带多少水、最晚什么时候折返，以及如果有人走不动应该从哪里退出","sceneVariants":["组织者需要统一多人集合与确认","不同成员可能从不同地点出发","天气或交通变化会影响时间线","部分成员没有安装产品，只通过群聊参与"],"userQuestions":["几点出门才能在天黑前回来？","同行人需要提前确认什么？","路线变化后，我之前发出去的计划还有效吗？"],"problem":"现有产品通常以收藏、下载轨迹作为结束。用户还要自行去地图查交通、在备忘录写时间、在群聊重复说明装备和风险，产品中的路线信息没有转化为行动安排","designLogic":"计划以“门到门”的完整时间线为骨架，把交通、徒步、休息、最晚折返和返程串在一起；装备与确认项根据路线和天气动态生成，并支持多人共享与更新同步","changes":[{"title":"生成门到门时间线，而不是只显示徒步时长","target":"让用户判断整次出行是否真的能在预算内完成","problem":"只规划轨迹时间会遗漏集合、换乘、找入口、休息和返程，导致用户现场不断压缩时间","design":"根据出发区域、交通方式、团队速度和日落时间生成完整时间线，并保留合理缓冲","details":["时间节点使用范围值，避免虚假的精确承诺","明确标记最晚出发、最晚折返与末班车节点","用户拖动出发时间后，所有后续节点同步更新"],"states":["交通数据缺失时提示用户手动确认，不输出确定到达时间","计划可能超时则在保存前提示，并给出提前出发或更换路线方案"]},{"title":"装备清单根据路线、天气和同行人动态生成","target":"避免通用清单太长、真正关键物品反而被忽略","problem":"固定模板无法区分炎热暴晒、雨后湿滑、无补给或新手同行等差异，用户容易觉得清单没有价值","design":"清单分为必须、建议和个人补充，关键项标明为什么需要以及由谁负责携带","details":["水量根据时长、天气和补给点给出区间，不给医疗化建议","登山杖、防滑鞋等与具体风险路段关联","团队公共物品支持指定负责人，减少重复携带或无人携带"],"states":["天气变化后提示哪些装备项发生了变化","用户删除关键项时保留风险提示但允许自主决定"]},{"title":"加入团队确认，而不是只分享一个路线链接","target":"确保同行人真正看到集合时间、风险和个人准备事项","problem":"组织者发出链接后无法知道其他人是否阅读，也不知道成员是否对难度和时间有异议","design":"分享后让成员确认“能否按时集合、是否了解难度、是否有需要组织者知道的限制”，状态回流到计划页","details":["未安装 App 的成员可通过轻量网页确认","只收集与本次计划相关的信息，避免索取不必要隐私","组织者看到未确认成员，但不公开成员的个人限制给其他人"],"states":["成员退出后自动重算交通与团队条件","多人修改冲突时保留版本记录，由组织者最终确认"]},{"title":"预先设置折返与替代方案","target":"让异常处理在出发前被讨论，而不是现场临时争论","problem":"用户通常只规划理想路线，没有明确走慢、天气变差或出口关闭时怎么处理","design":"计划中固定展示最晚折返点、可撤退出口和替代交通；组织者可预先选择低风险备选路线","details":["折返时间按团队最慢速度和天黑时间计算","替代方案尽量保留原交通和体验偏好，降低执行成本","现场进入弱网前支持下载离线计划与轨迹"],"states":["撤退点状态变化时主动更新计划并通知成员","离线时使用最近一次已确认数据并显示更新时间"]}],"edgeCases":["同行人迟到：显示对返程与折返点的影响，而不是只修改集合时间","临时增加成员：重新判断最低经验和装备分配","用户只想自己走：简化协作模块，保留时间线与风险预案"],"validation":["用户能否完整说出出发、折返和返程节点","团队成员是否能仅通过分享页完成确认","天气变化后用户是否知道计划哪些部分需要调整"],"values":{"user":"不再靠多个工具拼凑计划，团队对时间、准备和风险形成一致理解","product":"把路线浏览和收藏推进为真实出行计划，提高计划活跃与复访价值"}},{"no":"20","title":"动态风险与替代方案｜风险提示必须给出下一步","goal":"安全体验不是多放一个红色警告，而是让用户理解风险如何影响当前计划，并能在改期、换线或取消之间做出决定","screen":"status","pageTask":"当天气、封路、施工或信息时效发生变化时，重新评估原计划，解释影响范围，并提供低成本、可执行的替代路径","scene":"出发前一天凌晨下雨，原路线碎石下坡可能湿滑，原定撤退出口又在施工。用户看到风险后，需要判断是带装备继续、换一条路线、改期还是直接取消","sceneVariants":["风险可通过调整装备或时间降低","风险直接影响新手同行，不适合继续","原路线不可行但用户仍想保留山景体验","来源信息不完整，系统无法下确定结论"],"userQuestions":["这个风险对我这次到底意味着什么？","我还能怎么调整，而不是只能取消？","替代路线为什么更合适？"],"problem":"很多产品只显示天气图标或一条警告。用户知道“有风险”，却不知道风险发生在哪段、对当前同行人影响多大、需要采取什么行动，最终仍然自行搜索或凭感觉决定","designLogic":"风险信息必须包含事件、影响对象、严重程度、时效与来源，并直接连接到下一步动作。替代方案不是随机推荐另一条路线，而是尽量保留原计划的交通、时间和体验目标","changes":[{"title":"解释风险对当前计划和人群的具体影响","target":"把通用警告转成用户能理解的决策后果","problem":"“雨天湿滑”对铺装绿道和碎石陡坡影响不同，对经验用户和两名新手也不同","design":"风险卡片说明影响路段、受影响条件和可能后果，例如“碎石下坡湿滑，两名新手且一个撤退点关闭，本次不建议按原计划出发”","details":["风险描述基于当前路线和同行条件，不复制通用天气文案","区分事实、推断与建议，避免把模型判断包装为事实","允许用户查看地图上的具体影响位置与原始来源"],"states":["信息不足时显示“无法确认”，并给出保守操作建议","来源冲突时并列展示，不给出虚假唯一结论"]},{"title":"使用分级动作，而不是统一弹窗阻断","target":"根据风险可控程度给出不同下一步，避免过度打扰或提示疲劳","problem":"所有风险都用红色强提醒，会让用户逐渐忽略；所有风险都允许继续，又无法承担安全责任","design":"分为“调整后可行、建议改线、建议取消”三类，并明确达到该等级的依据和可执行动作","details":["装备、出发时间可降低的风险进入“调整后可行”","涉及封闭、极端天气或关键撤退点失效时进入高等级","高风险状态默认停止一键确认，但用户仍可查看信息和自行决定"],"states":["用户选择继续时要求再次确认已阅读关键风险","风险解除后保留历史记录，避免用户不知道为何状态变化"]},{"title":"替代方案优先保留原有出行目标","target":"降低换线成本，让用户更愿意接受安全调整","problem":"随机推荐热门路线可能交通完全不同、时长不符或失去原本想看的景色，用户会觉得“替代方案不可用”","design":"替代路线按原出发区域、总时间、交通方式和核心体验匹配，并明确它解决了什么风险、牺牲了什么","details":["优先提供同交通、同时间范围的低风险路线","说明替代后保留与改变的内容，如“保留山景，减少碎石下坡”","没有合适替代时诚实建议改期，不强行凑推荐"],"states":["替代路线也存在信息时效问题时同步提示","替代方案被选中后自动迁移集合时间和成员信息，但重新生成装备与风险"]},{"title":"出发前自动复查，并同步所有计划成员","target":"避免组织者看到了变化，但同行人仍拿着旧计划出发","problem":"路线状态可能在计划创建后变化，旧截图和旧链接仍在群里传播","design":"在出发前关键时间点重新检查天气、路况与交通，发生影响性变化时推送给组织者和已确认成员","details":["只推送会改变计划的信息，避免频繁打扰","通知中直接提供查看影响、调整计划和确认新方案的入口","旧分享页显示“计划已更新”，防止继续按照旧版本执行"],"states":["用户关闭通知时，在打开计划页时强制展示未读变化","离线成员重新联网后先同步最新计划版本"]}],"edgeCases":["风险来自单个用户上报：显示低可信度并等待更多证据，不直接封闭路线","用户坚持原路线：系统保留自主决定权，但不使用“安全可行”背书","没有替代路线：提供改期与取消建议，并保留原计划方便后续恢复"],"validation":["用户看到风险后是否知道发生了什么、影响谁、下一步怎么做","用户能否理解替代路线为什么更稳妥","计划更新后团队成员是否都能识别最新版本"],"values":{"user":"风险出现时不再陷入“看见警告但不知道怎么办”，可以快速调整计划","product":"通过可信、可执行的风险处理建立长期信任，而不是用警告制造焦虑"}}];
+
+function phone(screen){
+ const start='<div class="phone"><div class="phone-bar"><span>9:41</span><span>● ● ━</span></div><div class="phone-content">';
+ const end='</div><div class="phone-home"></div></div>';
+ if(screen==='home') return start+`<div class="phone-nav"><b>观山</b><div class="p-icon">◎</div></div><div class="p-body"><h3 class="p-greeting">今天，适合走哪条路？</h3><p class="p-sub">告诉我这次出行条件，先帮你排除不合适的路线</p><div class="search">⌕ 搜索路线名 / 地点</div><div class="chips"><span class="chip active">半日内</span><span class="chip active">2 名新手</span><span class="chip">公共交通</span><span class="chip">想看山景</span></div><div class="scene-box"><strong>周末轻徒步</strong><p>预计 4—5 小时 · 低风险优先 · 帮你考虑同行人的体力差异</p></div><div class="mini-title"><b>根据当前条件推荐</b><span>查看全部</span></div><div class="route-card"><div class="route-cover"><span class="cover-tag">示例路线</span></div><div class="route-head"><b>云栖环线</b><span class="fit">很适合 91%</span></div><div class="route-meta"><span>总计约 4h</span><span>连续上坡 35min</span><span>地铁可达</span></div></div><div class="route-card"><div class="route-head"><b>青石谷轻徒步</b><span class="fit warn">基本适合</span></div><div class="route-meta"><span>总计约 5.5h</span><span>返程较晚</span></div><div class="risk">同行人是新手：建议将出发时间提前 1 小时</div></div></div><div class="bottom-tab"><div class="tab active">⌂<br>发现</div><div class="tab">⌕<br>路线</div><div class="tab">♡<br>计划</div><div class="tab">○<br>我的</div></div>`+end;
+ if(screen==='results') return start+`<div class="phone-nav"><div class="p-icon">‹</div><b>适合你的路线</b><div class="p-icon">≡</div></div><div class="p-body"><div class="chips"><span class="chip active">半日内</span><span class="chip active">新手同行</span><span class="chip">交通方便</span><span class="chip">+ 筛选</span></div><div class="mini-title"><b>8 条候选路线</b><span>按适合度排序</span></div><div class="route-card"><div class="route-cover"><span class="cover-tag">近期路况正常</span></div><div class="route-head"><b>云栖环线</b><span class="fit">很适合 91%</span></div><div class="route-meta"><span>4h20m</span><span>新手友好</span><span>地铁+步行</span></div><div class="scene-box" style="margin:9px 0 0"><strong>为什么适合</strong><p>总时间在预算内；连续上坡较短；全程有 2 个可提前退出点</p></div></div><div class="route-card"><div class="route-head"><b>北岭日落线</b><span class="fit warn">不建议本次</span></div><div class="route-meta"><span>6h10m</span><span>末班车风险</span></div><div class="risk">按 13:00 出发，预计无法在天黑前完成</div></div><div class="route-card"><div class="route-head"><b>青石谷</b><span class="fit">适合 78%</span></div><div class="route-meta"><span>5h</span><span>补给较少</span><span>近期泥泞</span></div></div></div>`+end;
+ if(screen==='filter') return start+`<div class="phone-nav"><div class="p-icon">×</div><b>筛选路线</b><span style="font-size:10px;color:#1677ff">重置</span></div><div class="p-body"><div class="filter-section"><b>这次能安排多久</b><div class="option-row"><span class="option">2—3h</span><span class="option sel">半日内</span><span class="option">一整天</span></div></div><div class="filter-section"><b>同行经验</b><div class="option-row"><span class="option sel">第一次徒步</span><span class="option">偶尔徒步</span><span class="option">有经验</span></div></div><div class="filter-section"><b>交通方式</b><div class="option-row"><span class="option sel">公共交通</span><span class="option">自驾</span><span class="option">不限</span></div></div><div class="filter-section"><b>不希望遇到</b><div class="option-row"><span class="option sel">长时间陡坡</span><span class="option">暴晒路段</span><span class="option">涉水</span><span class="option">无补给</span></div></div><div class="filter-section"><b>想要的体验</b><div class="option-row"><span class="option sel">山景</span><span class="option">溪谷</span><span class="option">日落</span><span class="option">拍照</span></div></div><div class="mini-title"><b>高级条件</b><span>里程 / 爬升 / 海拔 ›</span></div></div><div class="sticky-btn">查看 8 条路线</div>`+end;
+ if(screen==='compare') return start+`<div class="phone-nav"><div class="p-icon">‹</div><b>路线比较</b><span style="font-size:10px;color:#1677ff">分享</span></div><div class="p-body"><div class="compare-list"><div class="compare-row"><b>候选</b><b>云栖环线</b><b>青石谷</b></div><div class="compare-row"><span>适合度</span><span class="compare-good">91% 很适合</span><span>78% 适合</span></div><div class="compare-row"><span>总时间</span><span class="compare-good">约 4h20m</span><span>约 5h</span></div><div class="compare-row"><span>难度体感</span><span>连续上坡 35min</span><span>连续上坡 55min</span></div><div class="compare-row"><span>交通</span><span class="compare-good">地铁可达</span><span>公交转接 1 次</span></div><div class="compare-row"><span>近期路况</span><span class="compare-good">正常 · 2天前</span><span class="compare-warn">部分泥泞 · 昨日</span></div><div class="compare-row"><span>补给</span><span>2 处补给</span><span class="compare-warn">前半程无补给</span></div><div class="compare-row"><span>主要体验</span><span>山景 / 林荫</span><span>溪谷 / 拍照</span></div></div><div class="scene-box" style="margin-top:14px"><strong>本次更推荐：云栖环线</strong><p>更符合半日、新手同行和公共交通条件；青石谷风景更丰富，但近期泥泞且补给较少</p></div></div><div class="sticky-btn">选择云栖环线</div>`+end;
+ if(screen==='detail') return start+`<div class="hero-route"><div class="back-btn">‹</div></div><div class="detail-card"><div class="detail-title"><div><b>云栖环线</b><p class="p-sub" style="margin-top:4px">城市近郊 · 林荫山景 · 示例路线</p></div><div class="score">91%</div></div><div class="facts"><div class="fact"><b>4h20m</b><span>总时间</span></div><div class="fact"><b>8.6km</b><span>距离</span></div><div class="fact"><b>35min</b><span>最长上坡</span></div><div class="fact"><b>2 处</b><span>退出点</span></div></div><div class="decision-box"><b>为什么适合这次出行</b><p>两名新手可完成；路线时间在半日预算内；中途有撤退点；公共交通可达</p></div><div class="alert-box"><b>需要注意</b><br>最后 1.2km 下坡碎石较多，雨后建议使用登山杖 · 更新于昨日</div></div><div class="p-body"><div class="mini-title"><b>难度怎么理解</b><span>查看完整数据</span></div><div class="route-card"><div class="route-meta"><span>相当于连续爬楼约 38 层</span><span>预计休息 2 次</span></div></div><div class="mini-title"><b>近期路况</b><span>来源与记录 ›</span></div><div class="status-card"><div class="status-head"><b>整体可通行</b><span class="status-dot">2 天前更新</span></div></div></div>`+end;
+ if(screen==='plan') return start+`<div class="phone-nav"><div class="p-icon">‹</div><b>周六 · 云栖环线</b><div class="p-icon">↗</div></div><div class="p-body"><div class="scene-box"><strong>计划已按两名新手生成</strong><p>预计 08:10 出发 · 17:20 前返回 · 已预留 50 分钟缓冲</p></div><div class="timeline"><div class="time-item"><div class="time-dot">08:10</div><div class="time-copy"><b>地铁集合</b><span>建议不要晚于 08:20</span></div></div><div class="time-item"><div class="time-dot">09:30</div><div class="time-copy"><b>开始徒步</b><span>入口处补水并再次确认路况</span></div></div><div class="time-item"><div class="time-dot">12:10</div><div class="time-copy"><b>主观景点 / 午休</b><span>建议停留 30 分钟</span></div></div><div class="time-item"><div class="time-dot">14:20</div><div class="time-copy"><b>最晚折返点</b><span>晚于此时间建议从 2 号出口撤退</span></div></div><div class="time-item"><div class="time-dot">16:40</div><div class="time-copy"><b>预计下山</b><span>步行至地铁约 18 分钟</span></div></div></div><div class="mini-title"><b>准备清单</b><span>5 项</span></div><div class="checklist"><div class="check"><i></i>每人至少 1.5L 水</div><div class="check"><i></i>防滑鞋 / 登山杖</div><div class="check"><i></i>充电宝与离线轨迹</div></div></div>`+end;
+ if(screen==='status') return start+`<div class="phone-nav"><div class="p-icon">‹</div><b>出发前检查</b><div class="p-icon">⋯</div></div><div class="p-body"><div class="status-card"><div class="status-head"><b>天气影响</b><span class="status-dot red">风险升高</span></div><p class="p-sub" style="margin-top:8px">预计凌晨有雨，碎石下坡与林间木栈道可能湿滑</p></div><div class="status-card"><div class="status-head"><b>路线状态</b><span style="font-size:8px;color:#758698">1 小时前</span></div><p class="p-sub" style="margin-top:8px">入口开放；2 号出口施工，建议不作为撤退点</p></div><div class="alert-box" style="font-size:9px"><b>建议：本次改走低风险路线</b><br>当前条件与两名新手同行不匹配，不建议按原计划出发</div><div class="mini-title"><b>替代方案</b><span>查看全部</span></div><div class="route-card"><div class="route-head"><b>湖畔绿道线</b><span class="fit">更稳妥</span></div><div class="route-meta"><span>3h20m</span><span>铺装路面为主</span><span>交通不变</span></div><div class="alt">保留山景与林荫体验，但避开湿滑碎石和施工路段</div></div><div class="route-card"><div class="route-head"><b>改期至周日</b><span class="fit">可保留原路线</span></div><div class="route-meta"><span>预计路面恢复时间更充足</span></div></div></div><div class="sticky-btn">调整出行计划</div>`+end;
+ return start+end;
+}
+
+const root=document.getElementById('designPages');
+pages.forEach(p=>{
+ const row=document.createElement('section');row.className='page-row';row.dataset.group='design';
+ const changeHtml=p.changes.map((c,i)=>`<article class="change-card"><div class="change-number">${String(i+1).padStart(2,'0')}</div><div class="change-main"><h3>${c.title}</h3><p class="change-target">这项改动要解决：${c.target}</p><div class="change-grid"><div><b>用户原本遇到的问题</b><p>${c.problem}</p></div><div><b>具体怎么改</b><p>${c.design}</p></div></div><div class="detail-columns"><div><b>设计细节</b><ul>${c.details.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><b>状态与规则</b><ul>${c.states.map(x=>`<li>${x}</li>`).join('')}</ul></div></div></div></article>`).join('');
+ row.innerHTML=`<div class="mock"><div class="page-no">${p.no}</div><button class="zoom">${phone(p.screen)}</button></div><div class="page-explain"><span class="tag">DESIGN PAGE ${p.no}</span><h2 class="page-title">${p.title}</h2><p class="page-goal">${p.goal}</p><div class="decision-question"><b>这一个页面真正承担的任务</b><p>${p.pageTask}</p><div class="question-chips">${p.userQuestions.map(x=>`<span>${x}</span>`).join('')}</div></div><div class="scenario-panel"><h3>用户在什么情况下使用这一页</h3><p>${p.scene}</p><div class="scenario-list">${p.sceneVariants.map(x=>`<div>${x}</div>`).join('')}</div></div><div class="problem-logic"><div><b>为什么原来的体验无法支持用户</b><p>${p.problem}</p></div><div><b>因此这一页的设计判断是什么</b><p>${p.designLogic}</p></div></div><h3 class="detail-heading">具体改动与设计细节</h3>${changeHtml}<div class="bottom-insight"><div><b>还要考虑的异常场景</b><ul>${p.edgeCases.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><b>这一页怎么验证</b><ul>${p.validation.map(x=>`<li>${x}</li>`).join('')}</ul></div></div><div class="value-grid"><div class="value"><b>用户价值</b><span>${p.values.user}</span></div><div class="value"><b>产品价值</b><span>${p.values.product}</span></div></div></div>`;
+ root.appendChild(row);
+});
+
+document.querySelectorAll('.nav button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+ const f=btn.dataset.filter;
+ document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('hidden',f!=='all'&&el.dataset.group!==f));
+}));
+
+const dialog=document.getElementById('dialog'),dialogContent=document.getElementById('dialogContent');
+document.addEventListener('click',e=>{const z=e.target.closest('.zoom');if(!z)return;dialogContent.innerHTML=z.innerHTML;dialog.showModal()});
+dialog.querySelector('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+</script>
+</body>
+</html>
