@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>两步路 APP｜关键问题与产品方案 V8</title><style>
+:root{--bg:#F4F5F7;--card:#FFFFFF;--ink:#1F2633;--muted:#697386;--line:#E1E5EB;--green:#66728A;--soft:#EEF1F6;--dark:#252F42;--amber:#FFF4E4;--red:#FFF0F0;--redtext:#7B3E45;--blue:#EDF3FA}
+*{box-sizing:border-box}html,body{margin:0;background:#dfe5e1;color:var(--ink);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}.deck{padding:28px 0 80px}.slide{width:1920px;height:1080px;margin:0 auto 36px;background:var(--bg);position:relative;overflow:hidden;padding:58px 72px 50px;box-shadow:0 18px 54px rgba(28,48,36,.12)}.slide:before{content:"";position:absolute;left:0;top:0;width:14px;height:100%;background:var(--green)}.kicker{font-size:16px;letter-spacing:.16em;color:var(--green);font-weight:900;margin-bottom:9px}h1{font-size:46px;line-height:1.14;margin:0 0 6px}.subtitle{font-size:20px;color:var(--muted);margin-bottom:18px}.page{position:absolute;right:46px;bottom:22px;color:#98a49c;font-size:14px}.hero{height:830px;display:grid;grid-template-columns:1.35fr .65fr;gap:52px;align-items:center}.big-quote{font-size:45px;line-height:1.38;font-weight:900}.chips{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}.chips span{background:var(--soft);padding:10px 16px;border-radius:999px;font-size:18px;font-weight:850}.hero-box{background:var(--dark);color:white;border-radius:30px;height:340px;padding:38px;display:flex;flex-direction:column;justify-content:center}.hero-box small{font-size:20px;opacity:.7}.hero-box strong{font-size:92px;line-height:1;margin:14px 0}.hero-box span{font-size:20px;opacity:.85}.problem-story{background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px 40px}.story-label{font-size:18px;color:var(--green);font-weight:900;margin-bottom:14px}.story-text{font-size:26px;line-height:1.62;font-weight:750}.story-text.secondary{margin-top:16px;color:#4d5a52}.problem-goal{margin-top:22px;background:var(--dark);color:#fff;border-radius:18px;padding:20px 24px;font-size:25px;line-height:1.55;font-weight:850}.problem-chain{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:18px}.problem-chain span{background:var(--soft);padding:13px 20px;border-radius:999px;font-size:19px;font-weight:850}.problem-chain b{color:#9aa69f}.audience-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:26px}.audience-bars,.focus-box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}.bar-row{margin-bottom:18px}.bar-row>div{display:flex;justify-content:space-between;font-size:20px}.bar-row i{display:block;height:12px;background:#e8ede9;border-radius:999px;margin:8px 0;overflow:hidden;position:relative}.bar-row i:after{content:"";display:block;height:100%;width:var(--w);background:var(--green);border-radius:999px}.bar-row p{margin:0;color:var(--muted);font-size:16px;line-height:1.45}.focus-box h3{font-size:25px;margin:0 0 16px}.focus-item{background:var(--soft);border-radius:16px;padding:14px 16px;margin-bottom:12px}.focus-item b{font-size:19px}.focus-item p{font-size:16px;line-height:1.45;margin:5px 0 0}.master-flow,.persona-flow,.final-flow{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:18px}.master-flow span,.persona-flow span,.final-flow span{padding:10px 15px;background:var(--dark);color:#fff;border-radius:999px;font-size:16px;font-weight:800}.master-flow b,.persona-flow b,.final-flow b{color:#9ca9a1}.persona-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}.persona-main,.persona-quote{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px}.persona-quote{background:var(--dark);color:#fff;display:flex;flex-direction:column;justify-content:center}.persona-tag{font-size:16px;color:var(--green);font-weight:900;margin-bottom:10px}.persona-quote .persona-tag{color:#b8dfc5}.persona-main h2{font-size:31px;margin:0 0 5px}.persona-role{font-size:18px;color:var(--muted);margin:0 0 18px}.persona-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.persona-columns>div{background:var(--soft);border-radius:16px;padding:15px}.persona-columns b{font-size:17px}.persona-columns ul{padding-left:20px;margin:9px 0 0}.persona-columns li{font-size:15px;line-height:1.45;margin:6px 0}.persona-quote p{font-size:25px;line-height:1.6;font-weight:800;margin:0}.stage-outline{display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:9px 15px;margin-bottom:12px}.stage-step{min-width:126px;text-align:center;padding:7px 10px;border-radius:12px}.stage-step b{font-size:12px;color:var(--green);display:block}.stage-step span{font-size:14px;font-weight:850}.stage-step.active{background:var(--dark);color:#fff}.stage-step.active b{color:#b8dfc5}.stage-arrow{color:#a8b2ac;margin:0 5px}.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.scenario-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px 15px;min-height:410px}.scenario-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}.scenario-head span{background:var(--dark);color:#fff;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900}.scenario-head b{font-size:18px}.scenario-card label{font-size:12px;font-weight:900;color:var(--green)}.scenario-card p{font-size:14px;line-height:1.4;margin:4px 0 0}.scenario-bg,.scenario-block{padding-top:7px;border-top:1px solid var(--line);margin-top:7px}.scenario-thought,.scenario-pain,.scenario-result{border-radius:10px;padding:8px 10px;margin-top:7px}.scenario-thought{background:var(--amber)}.scenario-thought p{color:#624e2c;font-weight:700}.scenario-pain{background:var(--red)}.scenario-pain p{color:var(--redtext);font-weight:750}.scenario-result{background:var(--blue)}.scenario-result p{color:#315365;font-weight:750}.pain-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:20px}.pain-summary>div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}.pain-summary b{font-size:19px}.pain-summary p{font-size:16px;line-height:1.5;color:var(--muted)}.solutions-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.solution-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;position:relative}.solution-no{font-size:15px;color:var(--green);font-weight:900}.solution-card h3{font-size:22px;margin:8px 0}.solution-card>p{font-size:16px;line-height:1.5;color:var(--muted)}.solution-flow{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:14px;font-weight:850;margin:12px 0}.solution-card ul{padding-left:19px;margin:0}.solution-card li{font-size:14px;line-height:1.4;margin:5px 0}.common-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.common-grid>div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;min-height:235px}.common-grid span{font-size:15px;color:var(--green);font-weight:900}.common-grid b{font-size:21px;display:block;margin:10px 0}.common-grid p{font-size:16px;color:var(--muted);line-height:1.5}.architecture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.architecture-grid .solution-card{min-height:300px}.new-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center}.new-flow div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;min-height:190px}.new-flow div:nth-of-type(n+4){margin-top:20px}.new-flow span{font-size:14px;color:var(--green);font-weight:900}.new-flow b{display:block;font-size:21px;margin:9px 0}.new-flow p{font-size:16px;color:var(--muted);line-height:1.45}.new-flow em{font-style:normal;font-size:27px;color:#99a69e}.priority-stack{display:flex;flex-direction:column;gap:16px}.priority{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 26px;display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center}.priority strong{font-size:25px}.priority b{font-size:23px}.priority p{font-size:17px;color:var(--muted);margin:6px 0 0}.p1{border-left:11px solid #367c4f}.p2{border-left:11px solid #69a86f}.p3{border-left:11px solid #c1bd62}.p4{border-left:11px solid #d4a460}.final-card{height:690px;background:var(--dark);color:#fff;border-radius:30px;padding:42px;display:flex;flex-direction:column;justify-content:center}.final-card small{font-size:20px;opacity:.7}.final-card h2{font-size:40px;line-height:1.45;margin:20px 0}.final-card .final-flow span{background:rgba(255,255,255,.12)}.controls{position:fixed;right:20px;bottom:20px;display:flex;gap:10px;z-index:999}.controls button{border:0;background:var(--dark);color:white;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer}@media print{body{background:#fff}.deck{padding:0}.slide{margin:0;box-shadow:none;page-break-after:always}.controls{display:none}}
+
+/* v5 additions */
+.persona-v5{display:grid;grid-template-columns:390px 1fr;gap:24px;height:760px}
+.persona-photo-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.persona-photo{height:390px;border-radius:22px;position:relative;overflow:hidden;background:#d6e2da}
+.persona-photo:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 55% 30%,rgba(255,255,255,.45),transparent 24%),linear-gradient(160deg,#cde2d3,#f2e6d1 48%,#b5cfbc);}
+.persona-photo:after{content:"";position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);width:240px;height:260px;border-radius:110px 110px 0 0;background:linear-gradient(180deg,#243c2f,#5d846b);box-shadow:0 -95px 0 -40px #d0a074,0 -132px 0 -70px #2f2c25;}
+.persona-photo.family:before{background:radial-gradient(circle at 72% 22%,rgba(255,255,255,.45),transparent 24%),linear-gradient(160deg,#d5eadc,#efe2c8 50%,#92b98e)}
+.persona-photo.couple:before{background:radial-gradient(circle at 62% 24%,rgba(255,255,255,.5),transparent 23%),linear-gradient(160deg,#d9eef1,#f0dfd5 48%,#8fb5ad)}
+.persona-photo.advanced:before{background:radial-gradient(circle at 60% 26%,rgba(255,255,255,.4),transparent 24%),linear-gradient(160deg,#c8d5c8,#d9e7ed 48%,#6f8b70)}
+.photo-caption{font-size:16px;color:var(--muted);line-height:1.55;background:var(--soft);padding:14px;border-radius:16px;font-weight:750}
+.persona-detail{display:grid;grid-template-rows:auto 1fr auto;gap:16px}
+.persona-top{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px 28px}
+.persona-top h2{font-size:32px;margin:0 0 6px}.persona-top p{font-size:18px;color:var(--muted);margin:0;line-height:1.45}
+.persona-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.persona-info-grid>div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}
+.persona-info-grid b{font-size:18px;color:var(--green);display:block;margin-bottom:10px}.persona-info-grid ul{margin:0;padding-left:20px}.persona-info-grid li{font-size:15px;line-height:1.45;margin:6px 0}
+.persona-voice{background:var(--dark);color:#fff;border-radius:22px;padding:22px 26px;font-size:22px;line-height:1.52;font-weight:800}
+.target-v5{display:grid;grid-template-columns:1.05fr .95fr;gap:28px}
+.target-pool,.target-focus{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+.target-pool h3,.target-focus h3{font-size:27px;margin:0 0 20px}.pool-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.pool-item{background:var(--soft);border-radius:16px;padding:15px}.pool-item b{font-size:18px}.pool-item p{font-size:14px;color:#516056;line-height:1.45;margin:8px 0 0}.focus-item{display:grid;grid-template-columns:86px 1fr;gap:14px;border-bottom:1px solid var(--line);padding:14px 0}.focus-item:last-child{border-bottom:0}.focus-percent{font-size:32px;font-weight:900;color:var(--green)}.focus-item b{font-size:20px}.focus-item p{font-size:15px;color:var(--muted);line-height:1.45;margin:6px 0 0}.scope-box{margin-top:18px;background:var(--dark);color:#fff;border-radius:18px;padding:18px;font-size:19px;line-height:1.5;font-weight:800}
+.couple-need-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.couple-need{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;min-height:220px}.couple-need span{background:var(--dark);color:#fff;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900}.couple-need b{display:block;margin:12px 0 8px;font-size:22px}.couple-need p{font-size:17px;line-height:1.52;margin:0;color:var(--muted)}.couple-need .pain{margin-top:10px;color:#743c31;background:var(--red);padding:10px;border-radius:12px;font-weight:800}
+.page-solution-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.page-solution{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;min-height:310px}.page-solution h3{font-size:25px;margin:0 0 12px;color:var(--dark)}.page-solution .where{font-size:15px;font-weight:900;color:var(--green);margin-bottom:10px}.page-solution ul{margin:0;padding-left:21px}.page-solution li{font-size:16px;line-height:1.46;margin:7px 0}.why{margin-top:12px;background:var(--soft);border-radius:14px;padding:11px 13px;font-size:15px;line-height:1.45;font-weight:750;color:#42554a}.page-flow-v5{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;margin-bottom:16px}.page-flow-v5 span{font-size:15px;font-weight:900;padding:8px 11px;border-radius:999px;background:var(--soft)}.page-flow-v5 span.active{background:var(--dark);color:#fff}.page-flow-v5 b{color:#9fa9a3}
+
+
+/* v6 visual system — indigo / warm neutral */
+:root{--bg:#F6F7FB;--card:#FFFFFF;--ink:#1D2430;--muted:#6B7484;--line:#E2E6EE;--green:#5B65D8;--soft:#EEF0FF;--dark:#242A44;--amber:#FFF5E7;--red:#FFF0F3;--redtext:#944153;--blue:#EEF7FF}
+html,body{background:#E9ECF3;color:var(--ink)}
+.slide{background:radial-gradient(circle at 92% 8%,rgba(91,101,216,.08),transparent 26%),var(--bg);padding:62px 76px 52px;box-shadow:0 24px 70px rgba(36,42,68,.13);border:1px solid rgba(255,255,255,.75)}
+.slide:before{left:0;top:0;width:100%;height:8px;background:linear-gradient(90deg,#5B65D8,#8E68D7,#F08A78)}
+.kicker{color:#5B65D8}.story-label,.persona-tag,.scenario-card label,.solution-no,.common-grid span,.persona-info-grid b,.page-solution .where{color:#5B65D8}
+.story-text{font-weight:690}.problem-story,.target-pool,.target-focus,.persona-main,.persona-top,.persona-info-grid>div,.scenario-card,.pain-summary>div,.solution-card,.common-grid>div,.priority,.page-solution,.persona-photo-card,.audience-bars,.focus-box{box-shadow:0 10px 26px rgba(36,42,68,.05)}
+.problem-chain span,.chips span,.focus-item,.persona-columns>div,.solution-flow,.why,.page-flow-v5 span{background:var(--soft)}
+.p1{border-left-color:#5B65D8}.p2{border-left-color:#8E68D7}.p3{border-left-color:#F08A78}.p4{border-left-color:#D5A451}
+
+/* target users */
+.target-v6{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;height:770px}.audience-spectrum-v6,.focus-users-v6{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px 30px;box-shadow:0 12px 30px rgba(36,42,68,.06)}
+.section-eyebrow{font-size:15px;letter-spacing:.08em;color:#5B65D8;font-weight:900;margin-bottom:8px}.target-v6 h3{font-size:27px;margin:0 0 12px}.assumption-note{font-size:15px;line-height:1.48;color:var(--muted);background:#F8F2FF;border-radius:14px;padding:12px 14px;margin:0 0 18px}.spectrum-row{margin:15px 0}.spectrum-row>div{display:flex;align-items:baseline;gap:12px}.spectrum-row b{font-size:27px;color:#5B65D8}.spectrum-row span{font-size:18px;font-weight:850}.spectrum-row i{display:block;height:11px;background:#EFF1F6;border-radius:999px;margin:7px 0;overflow:hidden}.spectrum-row i:after{content:"";display:block;height:100%;width:var(--w);background:linear-gradient(90deg,#5B65D8,#9A73E0);border-radius:999px}.spectrum-row p{font-size:15px;color:var(--muted);margin:0;line-height:1.4}
+.focus-user-v6{display:grid;grid-template-columns:82px 1fr;gap:15px;padding:13px 0;border-bottom:1px solid var(--line)}.focus-user-v6:last-of-type{border-bottom:0}.mini-photo{height:82px;border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#DCE1FF,#F8DED6);position:relative}.mini-photo img{width:100%;height:100%;object-fit:cover;display:block}.focus-user-v6 b{font-size:19px}.focus-user-v6 p{font-size:14px;color:var(--muted);line-height:1.42;margin:4px 0}.focus-user-v6 span{font-size:13px;font-weight:850;color:#5B65D8}.scope-box-v6{margin-top:14px;background:#242A44;color:#fff;border-radius:16px;padding:15px 17px;font-size:15px;line-height:1.45;font-weight:750}
+
+/* personas */
+.persona-v6{display:grid;grid-template-columns:390px 1fr;gap:26px;height:760px}.persona-photo-card-v6{background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:0 15px 40px rgba(36,42,68,.07)}.persona-photo-v6{height:455px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(145deg,#DCE1FF,#F8DED6)}.persona-photo-v6 img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:2}.photo-badge{position:absolute;left:14px;top:14px;z-index:3;background:rgba(36,42,68,.88);color:#fff;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:850}.persona-name-v6{display:flex;align-items:baseline;justify-content:space-between;margin-top:18px}.persona-name-v6 b{font-size:26px}.persona-name-v6 span{font-size:15px;color:#5B65D8;font-weight:850}.persona-basic-v6{margin-top:12px;background:var(--soft);border-radius:15px;padding:13px 14px;font-size:15px;line-height:1.45;color:#4D5570}.persona-content-v6{display:grid;grid-template-rows:1fr auto;gap:18px}.persona-info-grid-v6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.persona-info-grid-v6>div{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 12px 30px rgba(36,42,68,.05)}.persona-info-grid-v6 span{font-size:14px;color:#5B65D8;font-weight:900}.persona-info-grid-v6 b{display:block;font-size:22px;margin:8px 0 13px}.persona-info-grid-v6 ul{padding-left:20px;margin:0}.persona-info-grid-v6 li{font-size:16px;line-height:1.5;margin:9px 0}.persona-voice-v6{background:linear-gradient(135deg,#242A44,#4D477C);color:#fff;border-radius:24px;padding:24px 28px}.persona-voice-v6 small{font-size:14px;opacity:.7}.persona-voice-v6 p{font-size:24px;line-height:1.5;font-weight:850;margin:9px 0 0}
+
+/* couple needs */
+.couple-need-grid-v6{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.couple-need-v6{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;min-height:300px;box-shadow:0 12px 30px rgba(36,42,68,.05)}.couple-need-v6 span{background:#242A44;color:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900}.couple-need-v6 b{display:block;margin:14px 0 8px;font-size:23px}.couple-need-v6 p{font-size:17px;line-height:1.55;color:var(--muted);margin:0}.couple-need-v6 .pain{margin-top:13px;background:#FFF0F3;color:#8B3D4E;border-radius:13px;padding:11px 12px;font-size:15px;line-height:1.45;font-weight:800}
+
+/* page solution overview */
+.page-map-v6{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:15px;align-items:center}.page-map-v6>div{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;min-height:235px;box-shadow:0 12px 30px rgba(36,42,68,.05)}.page-map-v6>div:nth-of-type(n+4){margin-top:18px}.page-map-v6>i{font-style:normal;font-size:28px;color:#A0A7B5}.page-map-v6 span{color:#5B65D8;font-size:14px;font-weight:900}.page-map-v6 b{display:block;font-size:22px;margin:10px 0}.page-map-v6 p{font-size:16px;line-height:1.48;color:var(--muted)}.page-map-v6 em{display:block;font-style:normal;background:var(--soft);border-radius:12px;padding:9px 10px;color:#4C5573;font-size:14px;font-weight:800}
+
+/* concrete page changes */
+.page-change-grid-v6{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.page-change-v6{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px 16px;display:grid;grid-template-columns:42px 1fr;gap:12px;min-height:216px;box-shadow:0 8px 24px rgba(36,42,68,.04)}.change-no{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#5B65D8,#946BDD);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}.page-change-v6 h3{font-size:19px;margin:1px 0 4px}.page-change-v6 .where{font-size:12px;color:#5B65D8;font-weight:900;margin-bottom:6px}.page-change-v6 ul{padding-left:19px;margin:0}.page-change-v6 li{font-size:14px;line-height:1.34;margin:4px 0}.page-change-v6 .why{font-size:13px;line-height:1.38;margin-top:7px;padding:8px 10px;background:var(--soft);border-radius:10px;color:#4D5570}.page-bottom-v6{margin-top:12px;background:#242A44;color:#fff;border-radius:15px;padding:12px 16px;font-size:16px;line-height:1.42}.page-flow-v5{margin-bottom:12px}.page-flow-v5 span.active{background:linear-gradient(135deg,#5B65D8,#8865D8)}
+
+@media print{.persona-photo-v6 img,.mini-photo img{display:block!important}}
+/* offline portrait fallback */
+.persona-photo-v6:before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,#C9D2FF 0%,#E9DDF5 48%,#F6D9CE 100%);z-index:0}
+.persona-photo-v6:after{content:"";position:absolute;left:50%;bottom:-32px;transform:translateX(-50%);width:250px;height:300px;border-radius:130px 130px 18px 18px;background:linear-gradient(180deg,#343B66,#6466A7);box-shadow:0 -112px 0 -66px #D7A37D,0 -151px 0 -86px #35313B;z-index:1}
+.persona-photo-v6.family:after{width:270px;background:linear-gradient(180deg,#39466B,#7585B4);box-shadow:-78px -56px 0 -45px #C88F6D,78px -40px 0 -50px #DDA47E,0 -112px 0 -66px #D7A37D,0 -151px 0 -86px #35313B}
+.persona-photo-v6.couple:after{width:200px;left:38%;background:linear-gradient(180deg,#39466B,#6776AE);box-shadow:125px 16px 0 -8px #5D4777,125px -96px 0 -65px #E0AD86,125px -135px 0 -85px #4B3B44,0 -112px 0 -66px #D7A37D,0 -151px 0 -86px #35313B}
+.persona-photo-v6.advanced:after{background:linear-gradient(180deg,#2E3554,#4A5688);box-shadow:0 -112px 0 -66px #C98E69,0 -151px 0 -86px #252733,85px -18px 0 -58px #2C3458}
+.mini-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#DCE1FF,#F8DED6)}
+.mini-photo:after{content:"";position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:56px;height:66px;border-radius:30px 30px 8px 8px;background:#5964A3;box-shadow:0 -31px 0 -18px #D5A07B,0 -42px 0 -25px #34323B;z-index:1}
+.mini-photo img{position:relative;z-index:2}
+
+.page{z-index:20;background:rgba(246,247,251,.78);padding:3px 6px;border-radius:7px}
+
+.persona-real{display:grid;grid-template-columns:520px 1fr;gap:34px;height:790px;align-items:stretch}.persona-real-left{display:flex;flex-direction:column;gap:18px}.real-photo-wrap{height:385px;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 48px rgba(35,45,38,.14);background:#ddd}.real-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}.persona-name-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px}.persona-name{font-size:33px;font-weight:950;margin-bottom:6px}.persona-role{font-size:19px;color:var(--muted);font-weight:800;margin-bottom:14px}.persona-name-card p{font-size:20px;line-height:1.55;margin:0 0 18px;color:#2f3b33}.persona-stats{display:flex;gap:10px;flex-wrap:wrap}.persona-stats span{font-size:15px;font-weight:850;background:var(--green-soft);color:var(--dark);padding:8px 12px;border-radius:999px}.persona-real-main{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.persona-real-section{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px;min-height:150px}.prs-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.prs-head span{display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--dark);color:#fff;align-items:center;justify-content:center;font-size:14px;font-weight:900}.prs-head b{font-size:21px}.persona-real-section ul{margin:0;padding-left:20px}.persona-real-section li{font-size:17px;line-height:1.46;margin:7px 0;color:#344039}.persona-real-quote{grid-column:1/-1;background:var(--dark);color:#fff;border-radius:22px;padding:22px 26px;font-size:25px;line-height:1.42;font-weight:900}.real-photo-wrap.family img{object-position:center 45%}.real-photo-wrap.couple img{object-position:center 50%}.real-photo-wrap.advanced img{object-position:center 48%}
+
+/* v8: decision-failure focused analysis */
+.stage-verdict{margin:-2px 0 12px;background:#252F42;color:#fff;border-radius:14px;padding:10px 15px;font-size:14px;line-height:1.42;font-weight:800}
+.stage-verdict b{color:#D6DCE8;margin-right:8px}
+.scenario-need{background:#F0F2F7;border-radius:10px;padding:8px 10px;margin-top:7px}
+.scenario-need p{color:#38455D!important;font-weight:760!important}
+.scenario-card{min-height:440px}
+.scenario-head .critical-tag{margin-left:auto;background:#FBE9E9;color:#8B4148;border:1px solid #F1C9CC;padding:4px 8px;font-size:11px}
+.persona-exit{background:#FFF0F0!important;border-color:#F3D5D8!important}
+.persona-exit .prs-head span{background:#8B4A52!important}
+.persona-exit li{color:#62383D!important;font-weight:650}
+.problem-chain span{background:#EEF1F6}
+.audience-bars,.focus-box,.persona-real-section,.scenario-card,.solution-card,.common-grid>div,.architecture-grid>div,.new-flow div,.priority{box-shadow:0 8px 20px rgba(35,47,66,.045)}
+.slide:before{background:#66728A}
+
+/* v8 readable scenario layout: two critical situations per slide */
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.scenario-card{min-height:650px;padding:16px 18px}
+.scenario-card p{font-size:15px;line-height:1.43}
+.scenario-card label{font-size:12px}
+.scenario-head b{font-size:19px}
+.stage-outline{margin-bottom:10px}
+</style></head><body><div class="deck"><section class="slide" id="s1">
+<div class="kicker">CORE PROBLEM</div>
+<h1>我们要解决什么问题</h1>
+<div class="subtitle">从一次真实的选路线经历出发，看看用户为什么总在出发前犹豫</div>
+<div class="problem-story">
+<div class="story-label">作为一个平时会去徒步的人，我经常遇到这种情况</div>
+<div class="story-text">APP 里的路线和帖子其实很多，但真到周末要决定去哪儿，我还是得一条条翻。尤其是带第一次体验的朋友、孩子、老人，或者只是想找一条轻松、适合拍照的约会路线时，我最想知道的是：我们到底走不走得下来、怎么去最方便、多久能回来、一路上值不值得看。</div>
+<div class="story-text secondary">现在这些信息散在帖子、轨迹、评论和其他平台里。很多人查了很久还是不敢选；也有人已经到了现场，才发现路线比想象中难、返程太麻烦、同伴坚持不了，最后只能中途结束。</div>
+<div class="problem-goal">所以我想重新设计这段体验，让用户在出发前就能判断“这条路线适不适合我们”，途中发生变化时，也能马上知道接下来该怎么走。</div>
+</div>
+<div class="problem-chain"><span>想出去走走</span><b>→</b><span>路线太多不会选</span><b>→</b><span>查了很久仍不确定</span><b>→</b><span>放弃出发 / 到场后后悔</span></div>
+<div class="page">01 / 56</div></section><section class="slide" id="s2">
+<div class="kicker">TARGET USERS &amp; JOURNEY</div>
+<h1>2. 主要目标用户</h1>
+<div class="subtitle">先看徒步产品里常见的用户构成，再明确本次重点分析的3类典型人群</div>
+<div class="target-v6">
+<section class="audience-spectrum-v6">
+<div class="section-eyebrow">整体用户构成 · 前期设计假设</div>
+<h3>徒步用户不只有“新手”和“老手”</h3>
+<p class="assumption-note">以下占比用于帮助前期划分场景，不是两步路官方数据；实际比例需要通过问卷、访谈和平台数据进一步验证。</p>
+<div class="spectrum-row"><div><b>35%</b><span>低频 / 初次体验</span></div><i style="--w:35%"></i><p>周末偶尔出行，需要把专业参数翻译成容易理解的判断</p></div>
+<div class="spectrum-row"><div><b>40%</b><span>日常休闲 / 结伴出行</span></div><i style="--w:40%"></i><p>有一定经验，但每次会受到同伴、目的、时间和交通影响</p></div>
+<div class="spectrum-row"><div><b>20%</b><span>进阶徒步爱好者</span></div><i style="--w:20%"></i><p>高频使用，关注路线独特性、真实难度、时效路况与效率</p></div>
+<div class="spectrum-row"><div><b>5%</b><span>领队 / 活动组织者</span></div><i style="--w:5%"></i><p>需要同时评估多人能力、风险、集合、装备与应急预案</p></div>
+</section>
+<section class="focus-users-v6">
+<div class="section-eyebrow">本次重点分析</div>
+<h3>选3类“判断方式差异最大”的用户</h3>
+<div class="focus-user-v6">
+<div class="mini-photo"><img onerror="this.remove()" src="data:image/jpeg;base64,"/></div>
+<div><b>亲子家庭</b><p>需要按照孩子、老人和推车等最低能力成员来选路线</p><span>代表多人同行与高安全要求</span></div>
+</div>
+<div class="focus-user-v6">
+<div class="mini-photo"><img onerror="this.remove()" src="data:image/jpeg;base64,"/></div>
+<div><b>新手情侣 / 结伴用户</b><p>既担心对方坚持不了，也在意路线是否轻松、好拍、值得安排</p><span>代表低频体验与关系体验</span></div>
+</div>
+<div class="focus-user-v6">
+<div class="mini-photo"><img onerror="this.remove()" src="data:image/jpeg;base64,"/></div>
+<div><b>进阶徒步爱好者</b><p>能看懂基础参数，但需要更专业、更可信、更实时的判断</p><span>代表高频深度使用</span></div>
+</div>
+<div class="scope-box-v6">这3类用户可以覆盖：低频新手、多人同行、体验型出行和高频专业使用。其他用户可以在后续验证中作为扩展。</div>
+</section>
+</div>
+<div class="page">02 / 56</div></section><section class="slide" id="s3">
+<div class="kicker">USER 01 · FAMILY</div>
+<h1>4.1 亲子家庭｜用户画像</h1>
+<div class="subtitle">带孩子、老人或婴儿车出行，目标不是挑战，而是安全、省心、大家都能玩得开心</div>
+<div class="persona-real">
+<aside class="persona-real-left">
+<div class="real-photo-wrap family"><img alt="4.1 亲子家庭｜用户画像" src="data:image/jpeg;base64,"/></div>
+<div class="persona-name-card">
+<div class="persona-name">周先生 · 36岁</div>
+<div class="persona-role">家庭出行的主要决策者</div>
+<p>他不是想找一条“最美路线”，而是想找一条全家不会翻车的路线。</p>
+<div class="persona-stats"><span>北京周边</span><span>自驾为主</span><span>孩子6岁</span><span>偶尔带父母</span></div>
+</div>
+</aside>
+<main class="persona-real-main">
+<div class="persona-real-section">
+<div class="prs-head"><span>01</span><b>用户是谁</b></div>
+<ul><li>轻度户外经验，不算专业玩家，但愿意带家人接触自然</li><li>通常由他负责选地点、看路线、规划交通；妈妈更关注物资、安全和孩子状态</li><li>同行成员能力差异大：孩子容易累，老人膝盖可能不适，推车和露营装备也会增加负担</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>02</span><b>主要场景</b></div>
+<ul><li>周末想带孩子去近郊玩水、露营、野餐，最好当天往返</li><li>希望有山有水、有树荫、有栈道，孩子能玩，老人也不会太累</li><li>一家人开车出发，所以停车距离、车位情况、起点接驳都直接影响是否愿意去</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>03</span><b>主要任务</b></div>
+<ul><li>快速找到真正适合家庭的路线，而不是只看“亲子推荐”标签</li><li>确认婴儿车/露营车能不能走，厕所、补给、停车和休息点是否够用</li><li>提前知道哪里危险、哪里能退出，孩子或老人出状况时能立刻改路线</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>04</span><b>这次徒步的期待</b></div>
+<ul><li>孩子觉得好玩，能玩水、看自然、拍几张照片，而不是走一会儿就闹</li><li>全家过程轻松，不要因为找车位、推车、厕所、暴晒而崩溃</li><li>结束后能顺利回家，家长觉得“下次还可以再安排”</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>05</span><b>使用 APP 前的诉求 / 关注点</b></div>
+<ul><li>离家近不近，开车多久，停车场周末会不会满，停车后到起点还要走多久</li><li>水域是否安全，是否有围栏，溪水深不深，孩子能不能靠近</li><li>路线是否平缓，是否有台阶、碎石、窄路，婴儿车是否真的全程可走</li><li>厕所、补给、休息点间隔多久，孩子突然要上厕所或累了怎么办</li></ul>
+</div>
+<div class="persona-real-section persona-exit"><div class="prs-head"><span>06</span><b>最容易放弃 / 后悔的触发</b></div><ul><li>停车、推车、厕所、儿童安全或退出方式中，只要有一项无法确认，就不敢带全家冒险</li><li>需要跨平台查很多信息仍没有答案时，会改去乐园、商场或成熟景区</li><li>到了现场才发现孩子走不动、老人不适或推车无法通行，会立刻后悔并提前结束</li></ul></div><div class="persona-real-quote">“我不是怕走路，我是怕带着一家人到了现场才发现：车停不进去、孩子走不动、推车过不去，最后所有人都不开心。”</div>
+</main>
+</div>
+<div class="page">03 / 56</div>
+</section><section class="slide" id="s4"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.1.1 亲子家庭｜挑选路线阶段（1/4）</h1><div class="subtitle">先确认所有家庭成员的最低条件能否同时成立，否则用户不会进入下一步</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>只要无法同时确认孩子、老人、推车、交通和安全底线，家长就不会继续做选择，而会转向更确定的替代活动。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>家庭条件互相牵制，用户始终找不到一条敢选的路线</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>父亲要带6岁孩子、膝盖不好的老人和露营车出行，希望当天往返、能玩水、有树荫、好停车。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>反复搜索“亲子、玩水、推车、近郊、半日”，再逐条打开路线排除不符合的条件。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这条能玩水但要爬台阶，那条能推车但太晒；每条都只满足一两个条件，到底哪条能让我们一家人真的去？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>家庭选线存在多个不能妥协的底线，但结果只按单个标签匹配，用户无法确认所有成员的最低条件能否同时成立。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>先以孩子、老人等最低能力成员为基准，识别硬性条件与可妥协条件，只推荐少量真正能执行的路线。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>越选越不确定，家长不愿承担现场翻车的风险，最后改去乐园、商场或成熟景区。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>“亲子友好”无法回答适合几岁的孩子</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户看到一条标注“亲子推荐、难度简单”的路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看标签，希望判断三岁孩子、六岁孩子、老人和婴儿车是否都能完成。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“亲子到底是多大的孩子？别人家八岁孩子能走，不代表我家三岁也能走。这个简单是对成年人简单吧？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>统一标签没有说明年龄、同行能力和装备条件，用户无法把标签转化成自己家庭的判断。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到具体年龄、是否需要背抱、推车通过比例和家长陪护强度，而不是一个笼统标签。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家长不敢冒险选择，或错误理解后到现场才发现孩子根本走不动。</p></div>
+</article></div><div class="page">04 / 56</div></section><section class="slide" id="s5"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.1.1 亲子家庭｜挑选路线阶段（2/4）</h1><div class="subtitle">先确认所有家庭成员的最低条件能否同时成立，否则用户不会进入下一步</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>只要无法同时确认孩子、老人、推车、交通和安全底线，家长就不会继续做选择，而会转向更确定的替代活动。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>地图看着很近，实际最后一公里非常折腾</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想找离家近、当天往返的路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看地图距离和导航时间，准备判断全家开车过去是否方便。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“地图直线距离不远，但停车场离起点还有多远？如果要抱孩子、搬推车再走一公里，光进场就累了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只展示地点距离，没有计算停车、步行接驳、搬运装备和带孩子移动的真实成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把门到起点的驾驶、停车、接驳、步行和搬运成本一起算清楚。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到达后才发现停车离入口很远，出发前就已经疲惫，对整个行程产生后悔。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>玩水很吸引孩子，但家长无法判断安全</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>夏天天气热，家庭希望找能玩水的溯溪路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看水域照片、路线说明和其他家庭反馈。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“水看起来挺浅，但会不会突然变深？是流动溪水还是水库？下过雨水位会不会涨？孩子能靠近吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>图片展示了好玩的结果，却没有水深、流速、护栏、雨后风险和儿童可接近范围。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到不同路段水深、流速、护栏、雨后风险和儿童可活动范围，并明确不建议进入的条件。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家长因为安全信息不明而放弃；或现场才发现风险过高，只能临时改变计划。</p></div>
+</article></div><div class="page">05 / 56</div></section><section class="slide" id="s6"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.1.1 亲子家庭｜挑选路线阶段（3/4）</h1><div class="subtitle">路线即使有亮点，只要交通、体力、时间或安全无法闭环，就会被放弃</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>真正让家长放弃的不是路线少，而是任何一个硬条件都可能在现场让整次家庭出行失效。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>封面有树林，不代表整段路线都阴凉</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想避开高温，优先找树荫多的路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>通过封面图和路线简介判断暴晒路段。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“照片都是在树下拍的，但会不会只有入口有树？中间两小时都在晒太阳，孩子肯定受不了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>高光照片不能说明树荫覆盖比例、暴晒时段和不同路段体感。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>知道暴晒路段占比、发生时段和持续时间，判断孩子是否能承受。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到了现场才发现长时间暴晒，孩子情绪崩溃，全家提前结束并对推荐失去信任。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>家庭成员需求互相冲突，不知道该舍弃什么</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>同行有老人、孩子和婴儿车，父亲想玩水，母亲更关心厕所与安全。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>同时筛选亲子、老人、推车、玩水、停车、半日往返等条件。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“能玩水的可能路不好走，推车方便的又没什么可玩。我们到底该先保安全、还是保孩子有趣？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只能按单个标签筛选，无法处理多人同行中互相冲突的优先级。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>系统按“安全和最低能力优先”处理冲突，并清楚解释为了满足某个条件会失去什么体验。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户反复修改筛选条件，越选越乱，最后改去商场、乐园等更确定的替代活动。</p></div>
+</article></div><div class="page">06 / 56</div></section><section class="slide" id="s7"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.1.1 亲子家庭｜挑选路线阶段（4/4）</h1><div class="subtitle">路线即使有亮点，只要交通、体力、时间或安全无法闭环，就会被放弃</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>真正让家长放弃的不是路线少，而是任何一个硬条件都可能在现场让整次家庭出行失效。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>路线是环线还是原路返回，直接影响全家体力</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户看到“全程3小时”，准备安排午餐和返程。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断路线是否环线、单程、折返，以及回程是否还要走同样难度。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“3小时是走到终点，还是走回停车场？如果去程三小时、回程又三小时，我们肯定不行。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>耗时口径和路线形态不清，用户无法计算完整体力与时间成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>明确完整闭环、去回程难度、停车点关系和家庭实际总耗时。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家庭按错误理解出发，走到终点才发现还要原路返回，造成体力透支和天黑风险。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>系统按成年人的速度推荐，低估了家庭耗时</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>产品显示大量用户平均三小时完成。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看他人轨迹和热力图，想估算自己家庭需要多久。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这个人三小时走完，但他是不是一个人快走？我们要等孩子、推车、上厕所，可能要五六小时吧。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>平均耗时没有结合同行人员、停留频率和历史能力重新估算。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>基于儿童、老人、推车、停留和厕所频率重新估算，并预留缓冲时间。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户误判出发时间，途中发现无法按时返回，只能赶路、放弃休息或临时下撤。</p></div>
+</article></div><div class="page">07 / 56</div></section><section class="slide" id="s8"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.1.2 亲子家庭｜查看详情阶段（1/4）</h1><div class="subtitle">家长需要提前知道全家会在哪一段走不动、推不动、来不及或不安全</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>详情如果不能提前暴露最难路段、设施间隔和相似家庭的真实耗时，家长要么不敢选，要么到场后后悔。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>他人的三小时，对我家完全没有参考意义</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户进入详情，查看完成轨迹和评论。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>点开一位用户的轨迹，想判断自己的家庭耗时。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“他说轻松、三小时走完，但他每周都爬山，还是一个人走。我带孩子老人，他的记录根本不能直接参考。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>评价没有展示作者经验、同行人员、停留时间和装备背景，用户无法判断参考价值。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>优先展示同行结构、能力和停留习惯相似的家庭记录，并说明样本为什么可参考。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户需要逐个点进主页猜测，信息成本过高，最终仍然不敢确认路线。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>只要一段楼梯，就可能让整条路线失效</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想确认婴儿车是否能够全程通行。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>放大轨迹、查看照片和帖子，寻找台阶、碎石、窄路。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“前面都能推没用，只要中间有一段上百级楼梯，我们就过不去。到时候难道把车和孩子一起抬？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>路线没有分段标注路面、台阶长度和不可通行节点，统一“可推车”标签容易误导。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把不可推车、必须抱行、窄路和台阶精确标在具体路段，并提供绕行或短线。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家庭走到中段被迫折返，前面的时间和体力全部浪费，体验极差。</p></div>
+</article></div><div class="page">08 / 56</div></section><section class="slide" id="s9"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.1.2 亲子家庭｜查看详情阶段（2/4）</h1><div class="subtitle">家长需要提前知道全家会在哪一段走不动、推不动、来不及或不安全</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>详情如果不能提前暴露最难路段、设施间隔和相似家庭的真实耗时，家长要么不敢选，要么到场后后悔。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>有厕所不代表孩子能撑到厕所</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看设施地图。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>确认厕所数量、位置、开放状态与距离。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“页面说有厕所，可下一个还要走四十分钟。孩子突然要上厕所怎么办？这个厕所现在开不开？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>设施信息只表达“有无”，没有距离、预计到达时间、开放状态和排队情况。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>显示从当前位置或关键节点到厕所的时间、开放状态和替代选择。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家长不敢选长路线；或途中发生紧急需求，只能在不合适的位置处理。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>最危险的地方，往往不在宣传照片里</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看路线安全性。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>寻找临水、无护栏、陡坡、落石和狭窄路段。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“照片都拍得很好看，但孩子会跑。到底哪一段临水、哪一段没围栏？我得提前知道什么时候要一直牵着他。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>页面没有把风险具体到路段和持续距离，家长无法提前安排看护强度。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>提前看到危险路段出现位置、持续长度、陪护方式和雨后变化。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>现场突然进入危险路段，家长高度紧张，孩子被限制后哭闹，整段体验变成压力。</p></div>
+</article></div><div class="page">09 / 56</div></section><section class="slide" id="s10"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.1.2 亲子家庭｜查看详情阶段（3/4）</h1><div class="subtitle">真正有价值的详情，是让家长在出发前就发现可能后悔的地方</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>安全、天气和体验价值都需要落到具体路段；信息越好看但越不完整，现场落差就越大。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>照片只展示最好看的地方，隐藏了大量普通和困难路段</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看沿途照片，判断是否值得带孩子去。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>浏览封面、打卡图和用户上传照片。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“水边确实好看，但要走多久才能到？前面是不是两小时都没东西看？孩子走不到那里就闹了怎么办？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>照片没有绑定路线节点，也没有说明高光体验出现时间和到达成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按路线顺序看到真实过程、普通路段占比和到达高光节点的成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户高估路线趣味性，孩子在普通路段失去耐心，全家还没到核心景点就放弃。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>天气晴朗，也可能因为前一晚下雨而不适合孩子</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>出发前一天查看天气与路况。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断溪水、泥泞、湿滑和蚊虫是否变化。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“今天不下雨，但昨晚下过大雨，水会不会变急？土路是不是全是泥？推车还能走吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>天气预报与具体路线地形、近期反馈没有关联，固定难度无法反映当天状态。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把近期降雨、水位、泥泞和路面反馈转化成“今天是否适合家庭”的结论。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家庭到了现场才发现湿滑或水位上涨，只能冒险继续或临时取消。</p></div>
+</article></div><div class="page">10 / 56</div></section><section class="slide" id="s11"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.1.2 亲子家庭｜查看详情阶段（4/4）</h1><div class="subtitle">真正有价值的详情，是让家长在出发前就发现可能后悔的地方</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>安全、天气和体验价值都需要落到具体路段；信息越好看但越不完整，现场落差就越大。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>出现意外时，不知道工作人员和出口在哪里</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>家长评估路线安全与应急能力。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看信号、救援点、工作人员、最近出口。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“孩子扭脚或者老人不舒服，我该打给谁？从这里出去要多久？救援能不能进来？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>应急资源没有与路线节点关联，用户只看到笼统安全提示，无法评估事故后的处理成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>提前看到最近出口、工作人员、医疗点、通讯情况和每个节点的撤离成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户因为缺乏安全感放弃路线；或实际发生问题时慌乱、延误处理。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>评价很多，却找不到与自己相似的家庭</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户在评论和帖子中寻找“带孩子走过”的经验。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>筛选孩子年龄、是否推车、是否带老人、实际耗时。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“有人说适合亲子，可他家孩子十岁了；有人说推车能走，但只走了前半段。我到底该信谁？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>真实经验没有结构化标注用户背景和完成范围，用户无法快速找到可比案例。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按孩子年龄、老人、推车、季节和完成范围筛选真实案例。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户读了大量帖子仍然没有答案，选择成本过高，最终放弃。</p></div>
+</article></div><div class="page">11 / 56</div></section><section class="slide" id="s12"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.1.3 亲子家庭｜行前确认与途中阶段（1/4）</h1><div class="subtitle">用户要确认现场变化发生后，全家仍然有安全、可执行的下一步</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>停车、装备、孩子体力和老人状态中任何一个环节失效，都会让全家还没完成任务就被迫中止。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>有停车场，但周末到了根本停不进去</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>家庭确认路线后准备出发。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看停车位置、费用、实时车位和到起点距离。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“开一个多小时过去，如果没有车位，全家带着一车东西只能掉头。附近还能停哪里？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>停车信息静态且不完整，没有周末拥堵、满位概率和备用停车方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>出发前知道满位概率、备用停车、临时管制和从备用点到起点的真实成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到场后找车位耗费一小时，孩子烦躁，全家还没开始徒步就想回家。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>准备清单太泛，带少了担心，带多了更累</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>母亲根据天气和路线准备物资。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>决定是否携带防蚊、防晒、换洗、雨具、食物和推车。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这些东西到底哪些必须带？如果全带上，我们一路推着很重；不带又怕孩子临时需要。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>装备建议没有结合路线设施、天气、孩子年龄和行程时长生成优先级。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>只给与这条路线、天气和家庭成员直接相关的必带项，并说明缺少后的后果。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家庭过度准备导致负担增加，或遗漏关键物品后被迫提前结束。</p></div>
+</article></div><div class="page">12 / 56</div></section><section class="slide" id="s13"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.1.3 亲子家庭｜行前确认与途中阶段（2/4）</h1><div class="subtitle">用户要确认现场变化发生后，全家仍然有安全、可执行的下一步</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>停车、装备、孩子体力和老人状态中任何一个环节失效，都会让全家还没完成任务就被迫中止。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>孩子突然走不动，原路线瞬间失效</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>实际行走一小时后孩子开始疲惫、哭闹。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看最近休息点、短路线、出口和返程方式。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“继续走到终点还要两小时，原路回去也要一小时。有没有更近的出口？能不能直接去停车场？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品缺少基于当前位置的家庭短线、最近出口和动态下撤方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>根据当前位置立即给出短线、最近出口、接驳和放弃哪些体验。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家长只能抱孩子或强行赶路，整次出行变成体力与情绪消耗。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>老人身体不适时，家长必须在几分钟内做决定</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>老人出现膝盖疼、头晕或心慌。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断继续、休息、返回还是联系工作人员。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“他现在还能走，但继续会不会更严重？最近能坐下的地方在哪？救援点要多久？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品没有提供附近设施、坡度变化、退出成本与紧急联系的组合判断。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>快速判断继续、休息或下撤的风险，看到最近安全点和联系方案。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家庭犹豫拖延，风险加重；或因为担心过度，整个行程被迫中止。</p></div>
+</article></div><div class="page">13 / 56</div></section><section class="slide" id="s14"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.1.3 亲子家庭｜行前确认与途中阶段（3/4）</h1><div class="subtitle">厕所、封路、天黑和走散都可能直接终止行程，必须提前准备退出路径</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>途中最关键的不是继续导航，而是在几分钟内找到厕所、出口、短线或安全返回方案。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>孩子突然要上厕所，地图上的“有厕所”毫无帮助</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>正在路线中段，孩子临时有紧急需求。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>快速寻找最近厕所、预计到达时间和是否开放。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“最近的厕所到底往前还是往回？要走多久？现在是继续还是折返更快？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>设施信息没有根据当前位置给出可执行判断，也没有离线可用的最近路径。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>一键获得最近可用厕所、预计到达时间、路线难度和备用处理点。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>家长焦虑、孩子崩溃，被迫在不合适地点处理，体验与安全感大幅下降。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>临时封路或人流过大，让原计划完全失效</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>周末热门路线出现封路、施工或拥堵。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看是否有绕行、替代景点和等待时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“前面过不去，我们带着老人孩子也不能一直等。换一条路会不会更难？现在回去又不甘心。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>实时路况没有转化成适合家庭的替代路线和成本说明。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>直接提供适合家庭的替代路线，并说明新增耗时、难度和返程影响。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户现场无从选择，长时间等待后情绪恶化，最终对产品和目的地产生负面印象。</p></div>
+</article></div><div class="page">14 / 56</div></section><section class="slide" id="s15"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.1.3 亲子家庭｜行前确认与途中阶段（4/4）</h1><div class="subtitle">厕所、封路、天黑和走散都可能直接终止行程，必须提前准备退出路径</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>途中最关键的不是继续导航，而是在几分钟内找到厕所、出口、短线或安全返回方案。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>走得比预计慢，天黑和闭园风险逐渐逼近</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>家庭停留、玩水和休息时间超过计划。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看剩余路程、闭园时间和返程风险。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“按现在速度，走到停车场是不是已经天黑？出口会不会关？要不要现在就结束？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>预计时间没有根据实时速度和停留动态更新，也缺少最晚退出节点。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>动态更新最晚决策点，提前告诉用户何时必须缩短或退出。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户直到很晚才发现无法按时返回，只能赶路、摸黑或求助。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>家人走散或没有信号时，所有人都会慌</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>孩子跑快、老人走慢，队伍出现距离。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>确认家人位置、离线地图和集合点。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“前面没信号，老人没跟上，孩子又跑到前面了。大家到底在哪？要不要返回找人？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品缺少家庭同行位置、掉队提醒、离线集合点和紧急联系机制。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>离线共享关键位置、预设集合点、掉队提醒和紧急联系。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>全家陷入恐慌，路线安全感崩溃，严重时可能出现真实安全事故。</p></div>
+</article></div><div class="page">15 / 56</div></section><section class="slide" id="s16"><div class="kicker">FAMILY SOLUTION</div><h1>4.1.4 亲子家庭｜问题收敛与方案方向</h1><div class="subtitle">将零散设施信息整合成一套“家庭路线适配与执行系统”</div><div class="pain-summary"><div><b>最核心的任务</b><p>确认这条路线能不能让全家不折腾地完成</p></div><div><b>最容易退出的节点</b><p>看不懂亲子标签、无法确认路面与耗时、停车和途中退出不确定</p></div><div><b>最严重的后果</b><p>到场后才发现推车不能走、孩子走不动、时间不够或无法安全返回</p></div></div><div class="solutions-3"><div class="solution-card"><div class="solution-no">01</div><h3>家庭场景化选线</h3><p>先设置孩子年龄、老人状态、是否推车、交通与时间，再缩小到可执行路线</p><div class="solution-flow">同行设置 → 推荐少量路线 → 解释适合原因</div><ul><li>优先满足最低能力成员</li><li>处理玩水、推车、停车等冲突条件</li><li>不适合时直接给替代路线</li></ul></div><div class="solution-card"><div class="solution-no">02</div><h3>分段适配判断</h3><p>按路面、坡度、水域、设施和真实耗时，判断每一段对家庭是否可接受</p><div class="solution-flow">路线分段 → 风险解释 → 家庭耗时 → 可退出节点</div><ul><li>照片与节点绑定</li><li>参考相似家庭数据</li><li>同时展示亮点和代价</li></ul></div><div class="solution-card"><div class="solution-no">03</div><h3>家庭动态伴走</h3><p>途中根据孩子、老人状态和实时进度，提供最近设施、短线与下撤</p><div class="solution-flow">实时位置 → 状态变化 → 短线 / 退出 → 安全返回</div><ul><li>风险提醒优先</li><li>支持离线</li><li>直接给可执行下一步</li></ul></div></div><div class="page">16 / 56</div></section><section class="slide" id="s17">
+<div class="kicker">USER 02 · COUPLE</div>
+<h1>4.2 新手情侣 / 结伴用户｜用户画像</h1>
+<div class="subtitle">低频徒步、体验目标明确，但最担心对方坚持不了、路线不够轻松、拍照体验不值</div>
+<div class="persona-real">
+<aside class="persona-real-left">
+<div class="real-photo-wrap couple"><img alt="4.2 新手情侣 / 结伴用户｜用户画像" src="data:image/jpeg;base64,"/></div>
+<div class="persona-name-card">
+<div class="persona-name">林然 &amp; 小夏 · 27岁</div>
+<div class="persona-role">周末约会型低频徒步用户</div>
+<p>他们想要的是一次舒服、有照片、有记忆点的约会，不是一次体能考试。</p>
+<div class="persona-stats"><span>低频徒步</span><span>想拍照</span><span>可接受住一晚</span><span>对难度敏感</span></div>
+</div>
+</aside>
+<main class="persona-real-main">
+<div class="persona-real-section">
+<div class="prs-head"><span>01</span><b>用户是谁</b></div>
+<ul><li>两个人都不是专业徒步者，可能一个人稍微能走，另一个第一次体验</li><li>选择路线时会互相迁就：不能太累、不能太晒、不能让对方觉得无聊</li><li>比起“挑战成功”，他们更在意过程是否轻松、是否适合聊天、拍照和制造共同回忆</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>02</span><b>主要场景</b></div>
+<ul><li>周末想去城市稍远一点的地方走走，顺便住一晚、看日落或第二天日出</li><li>路线最好有栈道、湖边、树林、观景点，过程别太硬核</li><li>如果路程太远或需要住宿，他们愿意接受，但需要提前知道整套安排是否顺</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>03</span><b>主要任务</b></div>
+<ul><li>找到一条新手能完成、同时又足够好看的路线</li><li>判断对方能不能坚持：走多久、累不累、最难一段在哪里、有没有休息点</li><li>确认拍照点、日落/日出时间、住宿距离和返程方式，避免到了现场扫兴</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>04</span><b>这次徒步的期待</b></div>
+<ul><li>两个人走得轻松，有地方拍照，有值得停留的风景点</li><li>路线节奏适合约会：不用一直赶路，也不会因为太累而互相抱怨</li><li>结束后感觉“这个安排不错”，而不是“早知道不来了”</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>05</span><b>使用 APP 前的诉求 / 关注点</b></div>
+<ul><li>这条路线对第一次徒步的人友不友好，对方会不会走到一半坚持不了</li><li>沿途是不是好看，照片是不是只拍了最好看的一个点，普通路段会不会很长</li><li>日落、日出、花海或打卡点到底在哪，几点到最合适</li><li>能不能坐下休息，附近有没有咖啡/餐饮/住宿，路线过难时能不能换轻松版本</li></ul>
+</div>
+<div class="persona-real-section persona-exit"><div class="prs-head"><span>06</span><b>最容易放弃 / 后悔的触发</b></div><ul><li>无法判断体力更弱的一方能否坚持时，两个人很难真正定下路线</li><li>拍照、轻松、交通、住宿和预算不能同时成立时，会不断推迟或取消行程</li><li>现场发现路线太累、风景不值、错过日落或返程狼狈时，路线问题容易升级成互相埋怨</li></ul></div><div class="persona-real-quote">“我想安排得特别一点，但不能把对方累崩。最好轻松、好拍、能聊天，万一走不动也有退路。”</div>
+</main>
+</div>
+<div class="page">17 / 56</div>
+</section><section class="slide" id="s18">
+<div class="kicker">USER 02 · NEEDS</div>
+<h1>4.2.0 新手情侣 / 结伴｜最影响决策的4类需求</h1>
+<div class="subtitle">这类用户选择的不只是一条路线，也是在判断这段共同体验会不会让双方都舒服</div>
+<div class="couple-need-grid-v6">
+<div class="couple-need-v6"><span>01 · 体力匹配</span><b>对方到底能不能坚持</b><p>两个人体力和经验不同，用户会按照较弱的一方做决定。他需要知道最累路段、途中能否退出，以及普通新手的真实完成情况。</p><div class="pain">一旦对方中途走不动，路线再好看也会变成抱怨和负担。</div></div>
+<div class="couple-need-v6"><span>02 · 轻松程度</span><b>过程不能一直赶路和爬坡</b><p>用户会在意休息点、厕所、餐饮、遮阴和停留节奏，希望边走边聊，而不是全程喘着气赶时间。</p><div class="pain">路线太累会直接破坏约会氛围，甚至让对方以后拒绝再去。</div></div>
+<div class="couple-need-v6"><span>03 · 拍照体验</span><b>哪里好拍、什么时候最好看</b><p>不仅需要“有景色”，还需要真实机位、示例照片、最佳光线和建议停留时间，确认花几个小时走过去是否值得。</p><div class="pain">走过最佳点或错过日落后，很难回头，用户会觉得整趟行程白安排。</div></div>
+<div class="couple-need-v6"><span>04 · 完整安排</span><b>路线能不能组成一套顺畅计划</b><p>交通、住宿、吃饭、日出日落和返程需要放在一起判断；天气变化或体力不足时，还要有替代路线。</p><div class="pain">信息散在多个平台时，用户越查越累，最后可能直接换成更省心的约会方式。</div></div>
+</div>
+<div class="page">18 / 56</div></section><section class="slide" id="s19"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.2.1 新手情侣 / 结伴｜挑选路线阶段（1/4）</h1><div class="subtitle">路线必须同时照顾更弱一方的体力和双方最期待的体验</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>只要无法确认体力更弱的一方能否坚持，以及这次约会是否值得投入，两个人就很难真正把行程定下来。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>两个人想要的是一次舒服的约会，却不知道哪条路线能同时满足</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>一方想拍照、看日落、住一晚，另一方第一次徒步，担心太累、太远、返程麻烦。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>把“轻松、拍照、日落、住宿、新手”分开搜索，在不同路线和攻略之间来回拼方案。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“风景好的好像都要爬很久，轻松的又怕没什么可拍；我选太难了他会不会全程不开心？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>用户需要同时处理两个人的能力差异和多项目标，但产品无法形成一套双方都能接受的完整方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把两个人的体力、拍照、轻松程度、时间和预算一起组合，给出双方都能接受的方案。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>两个人迟迟定不下来，越讨论越觉得麻烦，最终推迟行程或直接换成更确定的城市约会。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>评分很高，仍然担心其实是一条野路</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户浏览高评分、热门和摄影出片路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看路线来源、安全提示和维护情况。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“照片这么好看，会不会因为路线很野才人少？我俩第一次去，别走到一半没路了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>热门与评分不能说明合法性、维护状态、信号和新手适配。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>明确官方/成熟/非正式路线、维护状态、信号和新手风险，不让评分代替安全判断。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户不敢选；或被高评分误导，现场才发现风险远超预期。</p></div>
+</article></div><div class="page">19 / 56</div></section><section class="slide" id="s20"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.2.1 新手情侣 / 结伴｜挑选路线阶段（2/4）</h1><div class="subtitle">路线必须同时照顾更弱一方的体力和双方最期待的体验</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>只要无法确认体力更弱的一方能否坚持，以及这次约会是否值得投入，两个人就很难真正把行程定下来。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>地点好看，但交通成本可能让周末失去意义</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户看到远郊路线，考虑当天往返还是住宿。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查询驾车、公共交通、最后接驳和总时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“开车两小时还可以，但我们没车。公共交通四小时的话，周末大半时间都在路上，还值得去吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只展示路线位置，没有比较不同交通方式下的完整时间与体验收益。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>在选线时就看到门到门时间、住宿必要性、返程难度和总成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户选中路线后才发现交通不可执行，前面的筛选全部作废。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>两个人的目标不一致，谁都不想妥协</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>一人更想拍照看日出，另一人只想轻松放松。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>比较风景、难度、耗时与休息条件。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这条风景好但太累，那条轻松但没什么可拍。到底选谁喜欢的？选错了另一个人肯定会不开心。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品按单人需求推荐，无法处理两人偏好与能力的冲突。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>分别收集双方底线与期待，以能力较弱一方为基准给出共同方案和取舍解释。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>两个人反复争论、拖延决定，行程从期待变成压力。</p></div>
+</article></div><div class="page">20 / 56</div></section><section class="slide" id="s21"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.2.1 新手情侣 / 结伴｜挑选路线阶段（3/4）</h1><div class="subtitle">用户真正筛选的是一次约会是否轻松、值得、可控，而不只是路线好不好看</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>风景、轻松、预算、交通和双方能力必须同时成立；任何一项失控，都可能让期待变成争执。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>封面很出片，不代表大部分时间都值得走</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户被日落、花海或山顶照片吸引。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看沿途照片和路线轨迹。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这张图确实好看，但要走多久才能到？如果前面三小时都在爬坡，我们可能还没拍到就累崩了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>高光内容没有说明到达成本、普通路段占比和体验出现时间。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到拍照点出现时间、到达成本、普通路段比例和整段体验节奏。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户现场发现大部分过程枯燥或艰难，产生被宣传误导的后悔。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>总预算不清，选路线后才发现成本过高</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>两个人愿意住一晚，但有预算限制。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>计算交通、住宿、门票、餐饮和装备。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“路线免费，但打车、酒店、门票加起来要两千多。早知道这么贵，我们可能选另一条。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只帮助选路线，没有在选择阶段展示整次行程的成本区间。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>在决定路线前展示交通、住宿、门票、餐饮和返程的预算区间。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户选好后因预算超出被迫推翻计划，产生时间浪费和挫败。</p></div>
+</article></div><div class="page">21 / 56</div></section><section class="slide" id="s22"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.2.1 新手情侣 / 结伴｜挑选路线阶段（4/4）</h1><div class="subtitle">用户真正筛选的是一次约会是否轻松、值得、可控，而不只是路线好不好看</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>风景、轻松、预算、交通和双方能力必须同时成立；任何一项失控，都可能让期待变成争执。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>季节性景观可能根本不存在</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想看花海、云海或日出。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看当前实景、季节、天气和近期反馈。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“帖子是去年春天拍的，现在还有花吗？云海是不是只是偶尔出现？去了看不到会不会很失望？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>内容缺少时间有效性和出现概率，历史高光被当成当前可获得体验。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到近期实景、最佳时间窗、出现概率和景观失效后的替代体验。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户专程前往却看不到核心景观，觉得整次行程不值。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>路线看似适合新手，但两个人中更弱的那位被忽略</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>两人都说自己能走，但体力差异明显。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>比较个人日常运动、步速和休息需求。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“我平时会跑步，但他基本不运动。页面说新手友好，对他真的友好吗？别到时候我一直催他。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>适配判断没有以同行中能力更弱的人为基准。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>以更弱一方的体力、恐高和经验判断难度，并明确最可能坚持不住的位置。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>一人走不动、另一人焦躁，路线问题转化成关系冲突。</p></div>
+</article></div><div class="page">22 / 56</div></section><section class="slide" id="s23"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.2.2 新手情侣 / 结伴｜查看详情阶段（1/4）</h1><div class="subtitle">双方需要提前看到体力差距、夜间风险和住宿衔接会不会让计划失控</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>用户需要提前看到谁最可能坚持不住、核心体验要付出什么代价，以及住宿和日出是否真的衔接。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>统一难度无法预测两个人真实的体力差距</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户进入详情查看距离、爬升和评论。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断两个人分别会在什么路段开始累。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“我觉得能走，但对象可能不行。最累的地方是连续爬坡还是最后一段？如果他走不动，我能怎么办？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>统一难度没有按两个人能力分别解释，也没有展示最难路段和退出机会。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>分别解释两个人在每个难点的体感、预计等待和可退出机会。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>两个人误判难度，途中节奏不一致，情绪与关系体验迅速恶化。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>别人的耗时没有参考价值，反而让用户错误乐观</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看他人的轨迹与热力图。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>寻找与自己体力相似的新手记录。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这个人两小时走完，看主页才发现他每周爬山。我们照他的时间安排，肯定赶不上日落。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>轨迹没有直接展示作者能力、停留和同行背景，平均值被高手数据拉低。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>只参考能力、同行方式和停留目标相似的记录，并给两人的真实耗时区间。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户按错误时间出发，错过核心体验或被迫摸黑赶路。</p></div>
+</article></div><div class="page">23 / 56</div></section><section class="slide" id="s24"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.2.2 新手情侣 / 结伴｜查看详情阶段（2/4）</h1><div class="subtitle">双方需要提前看到体力差距、夜间风险和住宿衔接会不会让计划失控</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>用户需要提前看到谁最可能坚持不住、核心体验要付出什么代价，以及住宿和日出是否真的衔接。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>想看日出，却不知道黑夜里的那段路是否安全</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看日出时间与观景点。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>倒推从酒店出发的时间和夜间路段。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“日出六点，那四点多就要走。前面有灯吗？会不会是林子和岔路？我俩敢不敢走？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>日出点、夜间路况、照明、信号和安全没有组合展示。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到夜间路面、照明、信号、同行风险、最佳出发时间和替代观景点。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户订了酒店后才发现不敢夜爬，核心目标落空。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>住宿看着很近，实际与路线起点完全不顺路</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户从详情跳去订酒店。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>比较酒店到起点、停车场和日出入口的实际时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“地图上只有三公里，但山路开车要四十分钟，第二天要提前一个小时起床，太折腾了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>住宿信息按附近展示，没有结合路线入口、出发时间和交通方式计算真实衔接成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按路线入口和次日时间计算住宿真实衔接，不只按直线距离推荐。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户入住后发现位置不合适，第二天计划被迫取消或极度疲惫。</p></div>
+</article></div><div class="page">24 / 56</div></section><section class="slide" id="s25"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.2.2 新手情侣 / 结伴｜查看详情阶段（3/4）</h1><div class="subtitle">拍照价值、人流和多种走法决定这次共同体验会不会舒服</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>拍照点、人流和不同走法决定约会是否舒服；只展示路线参数，无法阻止现场失望。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>同一个地点只有一条默认路线，难度不合适就只能放弃</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户喜欢目的地，但完整路线太长。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>尝试寻找轻松版、核心景观版、日出版或短线。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“我们只是想看最值得看的地方，没必要把整座山走完。有没有半天版或者少爬一点的路线？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品以固定轨迹为单位，没有围绕不同目的生成多种走法。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>提供轻松版、拍照版、日出版和完整版本，并说明各自保留与放弃的体验。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户因为一条路线不适合而放弃整个地点，错失本可成立的轻量方案。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>最佳拍照点没有时间与停留成本</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看拍照节点和他人照片。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>规划到达时间、机位和等待时长。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这里适合日落，但要提前多久到？周末会不会排队？如果等四十分钟，后面还能按时下山吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>体验节点只标位置，没有结合光线、人流和后续行程计算停留代价。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>结合光线、人流、排队和后续返程，给出可执行的拍照时段与停留上限。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户错过光线、排队过久或为了拍照导致返程风险。</p></div>
+</article></div><div class="page">25 / 56</div></section><section class="slide" id="s26"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.2.2 新手情侣 / 结伴｜查看详情阶段（4/4）</h1><div class="subtitle">拍照价值、人流和多种走法决定这次共同体验会不会舒服</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>拍照点、人流和不同走法决定约会是否舒服；只展示路线参数，无法阻止现场失望。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>人流量会直接改变约会体验，但详情里看不到</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户希望环境安静、适合聊天和拍照。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看周末实时人流、团客和拥堵节点。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“照片里很安静，周末会不会全是团和排队？如果一路都挤，住一晚也不值。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>历史照片和评分不能说明当前人流、拥堵时段和体验变化。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到当前与典型时段人流，并获得更安静的时间或替代点。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到场后发现拥挤嘈杂，核心约会体验完全落空。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>评论说轻松，但不知道评论者是不是和我一样的新手</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户筛选评价判断可信度。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看评论者运动经验、同行人和实际完成情况。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“他说不累，可主页全是越野跑；另一个说很难，但他穿洞洞鞋去的。我到底参考谁？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>评价缺少可比背景，用户必须自己判断作者可信度。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>优先展示新手情侣、相似体力和相似目标的完整记录。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户读得越多越矛盾，最终无法做决定或做出错误判断。</p></div>
+</article></div><div class="page">26 / 56</div></section><section class="slide" id="s27"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.2.3 新手情侣 / 结伴｜行前确认与途中阶段（1/4）</h1><div class="subtitle">天气、迟到和步速变化后，仍要保住双方最在意的体验与安全返程</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>天气、时间或步速一旦变化，如果没有共同可接受的 Plan B，路线问题就会快速升级成关系压力。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>天气变化让日出计划失效，却没有替代体验</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>出发前一天预报多云或下雨。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断是否取消、改时间或换路线。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“看不到日出的话还值得住一晚吗？附近有没有雨天也能玩的路线，还是整个计划都作废？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只提示天气风险，没有基于原目标生成替代体验与调整方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>在天气不成立时自动切换到云海、森林、城市观景或轻松半日方案，保住周末价值。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户临时取消酒店损失费用，或硬着头皮前往后失望。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>预约、闭园和酒店入住时间互相冲突</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>两人确认门票、路线、酒店和餐厅。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>安排到达、徒步、入住和第二天行程。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“景区五点关，酒店六点前要入住，路线要四小时，我们到底几点出发才不赶？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>不同服务时间没有进入同一时间轴，用户必须手工计算。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把所有关键时间放进同一时间轴，提前暴露冲突并自动调整。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>行程安排过紧，途中一直赶时间，约会从放松变成任务。</p></div>
+</article></div><div class="page">27 / 56</div></section><section class="slide" id="s28"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.2.3 新手情侣 / 结伴｜行前确认与途中阶段（2/4）</h1><div class="subtitle">天气、迟到和步速变化后，仍要保住双方最在意的体验与安全返程</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>天气、时间或步速一旦变化，如果没有共同可接受的 Plan B，路线问题就会快速升级成关系压力。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>到达时间晚了，原路线已经不适合继续</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>交通堵塞或起床晚，用户比计划晚到一小时。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>重新判断完整路线是否还能走。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“现在走原路线肯定天黑，但都来了，难道直接回酒店？有没有缩短版还能看核心景色？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品不会根据当前时间重新生成可完成方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>根据当前时间重新生成仍能安全完成、仍有体验价值的短方案。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户硬走导致摸黑，或直接放弃，产生强烈浪费感。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>两个人步速差异让一方持续等待、另一方持续被催</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>途中一人走得快、一人频繁休息。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>协调速度、休息和到达核心节点的时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“我一直等会错过日落，他一直被催又很不爽。我们到底该继续赶还是放弃日落？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只按单一速度规划，没有处理同行差异和共同目标优先级。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按共同节奏规划休息和拍照节点，避免把较弱一方变成拖累。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>体力问题升级成情绪冲突，整次约会体验恶化。</p></div>
+</article></div><div class="page">28 / 56</div></section><section class="slide" id="s29"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.2.3 新手情侣 / 结伴｜行前确认与途中阶段（3/4）</h1><div class="subtitle">路线问题一旦影响对方情绪，就会从产品问题变成关系问题</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>偏航、难度、停留和返程中的任何一次小偏差，都可能让最期待的拍照、日落或轻松体验全部落空。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>刚偏航时没有提醒，发现时已经不想折返</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>岔路处导航不明显，用户走错两三百米。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>确认偏航程度、回到原路线或直接绕行。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“刚才为什么不提醒？现在折返要二十分钟，日落肯定赶不上。有没有直接接回去的路？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>偏航提醒滞后，也没有比较折返与安全绕行的时间成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>刚偏离关键岔口就提醒，并比较折返、接回和退出三种成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户焦躁、互相埋怨，甚至误走风险更高的非正式路径。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>路线比预期难，一人想继续，一人想放弃</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>进入连续爬坡后，较弱一方体力明显下降。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看最难路段、剩余距离和最近退出点。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“已经走一半了，现在回去也远。继续会不会更难？如果我说不走，他会不会觉得扫兴？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品没有提供接下来难度变化和双方可接受的退出方案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>展示前方难度变化和共同可接受的短线，让双方不必在压力下争执。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>两个人在压力下争执，一方勉强继续并形成负面记忆。</p></div>
+</article></div><div class="page">29 / 56</div></section><section class="slide" id="s30"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.2.3 新手情侣 / 结伴｜行前确认与途中阶段（4/4）</h1><div class="subtitle">路线问题一旦影响对方情绪，就会从产品问题变成关系问题</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>偏航、难度、停留和返程中的任何一次小偏差，都可能让最期待的拍照、日落或轻松体验全部落空。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>停留太久后错过日落，核心目标彻底落空</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户在普通景点拍照、吃饭时间超过计划。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看到日落点的剩余时间与建议节奏。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“早知道前面别停这么久，现在赶也赶不上。这个行程怎么没有早点提醒？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品没有根据实时进度提醒核心目标风险，也没有调整后续停留。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>持续监控核心体验的时间窗，提前建议跳过次要节点或调整路线。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户花了两天时间却错过最期待的体验，产生强烈后悔。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>结束后没有合适交通，浪漫行程以狼狈返程收尾</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>路线终点偏远，晚间公交结束、打车困难。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查找回酒店或车站的返程方案。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“都走完了才发现打不到车，难道还要再走一个小时？酒店又不能退。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>返程没有在路线选择与实时行程中持续校验。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>在出发前和途中持续校验末班车、打车可达性、接驳与备用返程。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>两个人疲惫滞留、额外花费高价打车，整次体验最后被负面结尾覆盖。</p></div>
+</article></div><div class="page">30 / 56</div></section><section class="slide" id="s31"><div class="kicker">COUPLE SOLUTION</div><h1>4.2.4 新手情侣 / 结伴｜问题收敛与方案方向</h1><div class="subtitle">将路线、住宿、时间与两人节奏整合成一套“周末体验方案”</div><div class="pain-summary"><div><b>最核心的任务</b><p>让两个人都能获得期待的体验，并且不因体力、时间或路线失控</p></div><div><b>最容易退出的节点</b><p>组合需求搜不到、真实过程看不见、住宿与日出无法衔接</p></div><div><b>最严重的后果</b><p>到场后才发现太难、错过日出、无法返程，路线问题升级成关系冲突</p></div></div><div class="solutions-3"><div class="solution-card"><div class="solution-no">01</div><h3>组合场景规划</h3><p>把约会、轻量、日出、住宿与预算组合成完整方案</p><div class="solution-flow">双方偏好 → 生成方案 → 成本与时间解释 → 确认</div><ul><li>以较弱一方为基准</li><li>同时展示体验与代价</li><li>提供雨天和时间变化备选</li></ul></div><div class="solution-card"><div class="solution-no">02</div><h3>多版本体验路线</h3><p>同一地点提供轻松版、核心景观版、日出版与完整路线</p><div class="solution-flow">目标选择 → 路线版本 → 分段体验 → 适配判断</div><ul><li>高光照片绑定节点</li><li>展示普通与困难路段</li><li>计算最佳时间与停留</li></ul></div><div class="solution-card"><div class="solution-no">03</div><h3>双人动态行程</h3><p>根据双方步速、实时进度和核心目标动态调整</p><div class="solution-flow">实时速度 → 目标风险 → 缩短 / 跳过 → 安全返程</div><ul><li>偏航即时提醒</li><li>日出与返程优先级</li><li>避免一方被持续催促</li></ul></div></div><div class="page">31 / 56</div></section><section class="slide" id="s32">
+<div class="kicker">USER 03 · ADVANCED HIKER</div>
+<h1>4.3 进阶徒步爱好者｜用户画像</h1>
+<div class="subtitle">高频、专业、能看懂基础参数，但需要更可信、更实时、更可比较的路线决策信息</div>
+<div class="persona-real">
+<aside class="persona-real-left">
+<div class="real-photo-wrap advanced"><img alt="4.3 进阶徒步爱好者｜用户画像" src="data:image/jpeg;base64,"/></div>
+<div class="persona-name-card">
+<div class="persona-name">陈屿 · 34岁</div>
+<div class="persona-role">进阶徒步爱好者 / 偶尔带新手朋友</div>
+<p>他能走，不代表同行者能走；他需要的是更精准的路线判断，而不是更多泛泛推荐。</p>
+<div class="persona-stats"><span>每月徒步2-3次</span><span>看重轨迹质量</span><span>讨厌无效推荐</span><span>常带朋友体验</span></div>
+</div>
+</aside>
+<main class="persona-real-main">
+<div class="persona-real-section">
+<div class="prs-head"><span>01</span><b>用户是谁</b></div>
+<ul><li>已经走过多条路线，能看懂距离、爬升、海拔、轨迹和热力图</li><li>不是只追热门，更在意路线有没有特点、难度是否真实、路况是否可靠</li><li>有时会带第一次体验的朋友，所以需要在“自己不无聊”和“朋友不崩溃”之间找平衡</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>02</span><b>主要场景</b></div>
+<ul><li>周末想找一条没走过的近郊路线，最好人少、有一点挑战，但交通别太折腾</li><li>带新手朋友时，会主动降低难度，优先找当天往返、公共交通或拼车方便的路线</li><li>如果线路远到需要住宿，他会重新评估成本，甚至考虑跟团或换更近路线</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>03</span><b>主要任务</b></div>
+<ul><li>快速按城市/区域、交通方式、难度梯度找到候选路线</li><li>查看轨迹作者是谁、他的能力水平和过往路线，判断热力图是否有参考价值</li><li>对比自己走过的路线，判断这条线到底难在哪里，同行新手能不能完成</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>04</span><b>这次徒步的期待</b></div>
+<ul><li>路线对自己有新鲜感，不是重复的游客线路或跟团线路</li><li>强度要可控：新手朋友能体验到徒步乐趣，但不会被劝退</li><li>路况信息真实，能避开封路、人挤人、无意义绕路和错误轨迹</li></ul>
+</div>
+<div class="persona-real-section">
+<div class="prs-head"><span>05</span><b>使用 APP 前的诉求 / 关注点</b></div>
+<ul><li>有没有按城市/近郊搜索，能不能快速找到上海/北京周边当天往返路线</li><li>路线怎么去，没车是否方便；如果开车都要两小时，是否要住宿或换路线</li><li>别人走了多久是否可信，这个人是老手还是新手，他的轨迹能不能拿来参考</li><li>有没有多条难度版本、下撤点、补给点、实时路况；不想被大量跟团推荐干扰</li></ul>
+</div>
+<div class="persona-real-section persona-exit"><div class="prs-head"><span>06</span><b>最容易放弃 / 后悔的触发</b></div><ul><li>路线推荐同质化、专业风险说不清时，会直接转向户外社群、熟人或专业轨迹工具</li><li>近期路况、技术路段、队友能力和下撤条件不可信时，不会贸然确认行程</li><li>错误轨迹、过期资源点或错过折返窗口，可能让普通判断失误升级成真实安全事件</li></ul></div><div class="persona-real-quote">“我自己能走，但朋友第一次去没必要太难。最好近郊、交通方便、有点意思，走不下来也有地方撤。”</div>
+</main>
+</div>
+<div class="page">32 / 56</div>
+</section><section class="slide" id="s33"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.3.1 进阶徒步爱好者｜挑选路线阶段（1/4）</h1><div class="subtitle">路线必须有明确挑战价值、可信风险和合适窗口，才值得投入时间与风险</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>无法判断路线的独特价值、专业风险和当前窗口时，进阶用户会直接离开平台，转向熟人和专业社群。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>搜索高难路线，结果仍然被热门初级路线占满</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户已经完成过多条常规路线，想找更有挑战的新路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>搜索“上海周边高难徒步、累计爬升1000米以上”，希望直接看到符合能力的路线。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这些都是我走过的，或者只是距离长但没有难点。我想找真正有技术含量、景观有差异的，不想再翻几十页。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>搜索和推荐仍以热门、评分和距离为主，没有按技术难度、地貌、挑战类型和个人历史过滤。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按个人历史、技术目标、地貌与未体验类型筛出真正值得投入的路线。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>高频用户持续重复浏览，最终转去专业群、户外论坛或熟人推荐，产品失去核心活跃用户。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>“难度五星”无法说明到底难在哪里</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户看到两条同为五星的路线，一条长距离缓坡，一条短距离暴露攀爬。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>比较路线，判断哪条更符合自己想练耐力还是技术的目标。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“五星到底是累、险、陡，还是需要手脚并用？如果只给一个总分，我根本没法选。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>单一难度等级把体能、技术、暴露、路况和导航难度混在一起，无法支持进阶决策。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把体能、技术、暴露、导航和天气敏感性拆开，让用户判断自己缺的到底是哪一种能力。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户可能误把技术风险当成体力挑战，到了现场才发现装备与能力不匹配。</p></div>
+</article></div><div class="page">33 / 56</div></section><section class="slide" id="s34"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.3.1 进阶徒步爱好者｜挑选路线阶段（2/4）</h1><div class="subtitle">路线必须有明确挑战价值、可信风险和合适窗口，才值得投入时间与风险</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>无法判断路线的独特价值、专业风险和当前窗口时，进阶用户会直接离开平台，转向熟人和专业社群。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>想找“没走过的体验”，却只能看到相似风景封面</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户已经走过很多山林路线，希望找峡谷、海岸、雪线、花海或特殊地貌。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>浏览推荐列表，寻找和历史路线明显不同的体验。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“怎么每一条都是山顶云海和树林？它真正特别在哪里，值得我专门开车三小时吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>卡片只展示高光照片和通用标签，没有说明路线独特体验、最佳季节和与相似路线的差异。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>说明路线独特价值、同类差异、最佳窗口和投入成本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户无法判断出行价值，宁愿重复熟悉路线，也不愿承担时间和交通成本。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>想避开人群，但“人少路线”没有时间背景</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户计划节假日出发，希望找人少、安静但安全的路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看人流量、近期轨迹和出发时间分布。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这个人少是工作日人少，还是周末也人少？太少又会不会路迹不清、出事没人发现？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>人流标签缺少日期、时段、季节和安全背景，用户无法判断“安静”和“无人”的边界。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>结合时段、季节、近期通过人数和救援条件解释“安静”是否安全。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户要么进入拥挤路线影响体验，要么误入过于偏僻的区域，增加独行风险。</p></div>
+</article></div><div class="page">34 / 56</div></section><section class="slide" id="s35"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.3.1 进阶徒步爱好者｜挑选路线阶段（3/4）</h1><div class="subtitle">队伍能力、交通闭环和季节窗口决定一条高难路线是否真的可执行</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>路线对个人有挑战不等于整队可执行；交通、队伍能力和季节窗口共同决定是否值得出发。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>季节性景观信息已经过期</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想看杜鹃、红叶、冰瀑或云海，路线价值高度依赖时间窗口。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看近期帖子和照片，判断本周是否值得专门前往。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“照片是去年拍的，现在到底开没开？我开四小时过去，要是花谢了或者山上全是雾就白跑了。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>景观内容没有按时间、海拔和近期实况组织，旧照片持续影响当前判断。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>提供近期实景、海拔物候、窗口预测和内容时效性。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到场后发现景观已过期，对路线内容和平台推荐失去信任。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>想走穿越线，却不知道起终点交通是否闭环</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想挑战点到点穿越线，没有自驾接驳或需要两车配合。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>筛选可公共交通到达、终点可返程或可拼车接驳的路线。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“路线本身不错，但终点在另一个山沟里。走完打不到车怎么办？难道还要原路走回来？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>推荐只判断路线难度，没有把起终点接驳、末班交通和同行组织成本算入可执行性。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>一次确认起终点接驳、末班交通、车辆回收和备用返程。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户收藏后才发现无法执行，临时改线或放弃整次出行。</p></div>
+</article></div><div class="page">35 / 56</div></section><section class="slide" id="s36"><div class="kicker">STAGE 01 · ROUTE SELECTION</div><h1>4.3.1 进阶徒步爱好者｜挑选路线阶段（4/4）</h1><div class="subtitle">队伍能力、交通闭环和季节窗口决定一条高难路线是否真的可执行</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>路线对个人有挑战不等于整队可执行；交通、队伍能力和季节窗口共同决定是否值得出发。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>我能走，不代表同行队友都能完成</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>进阶用户准备组织3—5人走一条穿越线，队友的爬升经验、负重能力和技术短板并不一致。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>逐个询问队友走过什么路线，再拿路线参数手工判断谁可能在哪一段掉队。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这条线对我没问题，但其中一个人没走过连续下降，另一个怕暴露路段；要是中途有人撑不住，整队都得停。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>路线适配只围绕单个用户或统一难度，没有以队伍中最低能力和关键技术短板校验整队可执行性。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>建立队伍能力基线，以最弱成员和关键技术短板检查整队可执行性。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>组织者无法承担带队风险，只能降低目标、临时换线或放弃在平台完成规划。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>固定路线长度无法适配训练目标</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户想为长线徒步训练，希望控制爬升、里程和时间。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>尝试把同区域多个路段组合成20公里、1000米爬升的训练路线。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这里有好几段轨迹，能不能帮我组合一下？我不想照搬别人整条路线，也不想自己一点点画。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品只提供现成路线，缺少按训练目标组合、裁剪和检查闭环的能力。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按爬升、距离、连续坡、负重和目标强度生成可校验的训练路线。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户转去专业轨迹工具手动画线，平台无法承接进阶规划需求。</p></div>
+</article></div><div class="page">36 / 56</div></section><section class="slide" id="s37"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.3.2 进阶徒步爱好者｜查看详情阶段（1/4）</h1><div class="subtitle">进阶用户需要把技术风险、个人能力和近期变化放在一起判断</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>任何过期轨迹、模糊技术风险或不可比耗时，都可能让一次普通判断失误升级成高风险决策。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>别人的4小时记录，对我到底有没有参考价值</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户查看一条20公里路线的历史完成记录，有人4小时完成、有人8小时。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>通过热力图、轨迹和完成时间估算自己的实际用时。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这个4小时的人是不是越野跑高手？有没有背包、停没停、天气怎么样？如果是大神数据，对我没有意义。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>完成记录缺少用户经验、负重、活动类型、停留和天气背景，数字无法直接比较。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按能力、负重、天气、队伍和停留方式筛出可比样本。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户低估耗时，错过返程或在天黑后仍处于高风险路段。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>想和自己走过的路线对比，却只能自己脑补</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户走过武功山、三尖、徽杭古道，希望判断新路线相对难度。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>将新路线的爬升、坡度、路面和技术段与历史完成路线对照。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“比武功山哪一段更陡？下降是不是更伤膝？如果只是更长，我可以；如果暴露和攀爬更多，我得换装备。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>产品展示绝对数据，却没有利用用户历史建立个人能力基准和相对难度解释。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>用个人历史路线做分段对标，说明新路线增加的体能和技术压力。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户无法准确准备，可能高估自己或因为不确定放弃一条本可完成的路线。</p></div>
+</article></div><div class="page">37 / 56</div></section><section class="slide" id="s38"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.3.2 进阶徒步爱好者｜查看详情阶段（2/4）</h1><div class="subtitle">进阶用户需要把技术风险、个人能力和近期变化放在一起判断</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>任何过期轨迹、模糊技术风险或不可比耗时，都可能让一次普通判断失误升级成高风险决策。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>轨迹是一条线，看不出真正危险的技术路段</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>路线包含攀爬、碎石坡、暴露山脊、过河或需要绳索的路段。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>放大地图、查看照片和评论，判断技术要求与装备。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“哪一段需要手脚并用？雨后能不能走？有没有容易滑坠的位置？地图上看起来完全一样。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>轨迹没有把技术动作、暴露程度、路面和天气敏感性绑定到具体路段。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把攀爬、暴露、落石、涉水和导航难点绑定到具体距离与现场照片。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户到现场才发现无法安全通过，只能冒险继续或在危险位置折返。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>路线更新了，但旧轨迹仍然被大量使用</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>近期发生封路、塌方、施工、植被覆盖或村口管控。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看最近轨迹和评论，确认当前是否仍可通行。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“这条轨迹是三年前的，最近还有人走通吗？评论里有人说封了，但也没人说具体封哪一段。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>路线缺少版本管理、近期通过状态和变化节点，旧内容与新情况混在一起。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到路线版本、最近通过状态、变化节点和旧轨迹失效范围。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户按旧轨迹进入封闭或危险区域，增加迷路、冲突和救援风险。</p></div>
+</article></div><div class="page">38 / 56</div></section><section class="slide" id="s39"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.3.2 进阶徒步爱好者｜查看详情阶段（3/4）</h1><div class="subtitle">资源点、连续坡和下撤方案不可信，会直接影响安全完成率</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>总量参数无法支撑专业决策；资源可靠性、连续坡和完整下撤方案才决定能否安全完成。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>累计爬升相同，但连续坡和碎坡体感完全不同</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>两条路线都是1000米爬升，一条集中在前半程，一条反复上下。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看海拔曲线，判断配速、补给和膝盖压力。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“反复爬升最消耗，最后还有大下降的话膝盖会炸。总爬升一样，安排完全不一样。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>数据只显示总量，没有解释连续爬升长度、坡度分布、下降强度和后程风险。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>看到坡度分布、连续爬升、下降冲击和后程体力风险。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户配速和补给安排失误，后半程体力透支，增加受伤概率。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>水源、营地和信号点没有可信状态</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户计划长距离或两日路线，需要补水、露营和通讯保障。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>确认水源是否季节性、营地是否开放、哪些区域无信号。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“地图写有水源，但最近有人取到水吗？枯水期怎么办？营地现在还能扎吗？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>关键资源只以静态点位存在，没有近期状态、季节规则和可靠性等级。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>提供近期状态、季节可靠性、来源可信度和失效后的备选资源。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户缺水、无法扎营或失联，原本的体验问题升级为安全事件。</p></div>
+</article></div><div class="page">39 / 56</div></section><section class="slide" id="s40"><div class="kicker">STAGE 02 · ROUTE DETAILS</div><h1>4.3.2 进阶徒步爱好者｜查看详情阶段（4/4）</h1><div class="subtitle">资源点、连续坡和下撤方案不可信，会直接影响安全完成率</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>总量参数无法支撑专业决策；资源可靠性、连续坡和完整下撤方案才决定能否安全完成。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>逃生点写着“可下撤”，但不知道怎么撤</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>路线途中有多个岔路和村道，理论上可以中途下撤。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看下撤距离、路况、交通和所需时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“从这里下撤后是公路还是荒村？能打车吗？晚上还有车吗？只标一个出口对我没用。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>下撤点没有形成完整退出方案，缺少路线、耗时、交通和夜间可用性。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把下撤路线、难度、耗时、交通、夜间可用性和救援可达性组成完整方案。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户体力不足时仍被迫坚持主线，错过安全退出窗口。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>路线评价很多，但缺少和我同水平的人</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户阅读评论，希望判断真实体感和风险。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>筛选与自己经验、年龄、负重、季节相似的完成者。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“有人说轻松，有人说崩溃，到底谁和我差不多？如果看不到他的背景，这些评价都是噪音。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>内容没有基于用户相似度和场景条件组织，评价之间互相矛盾。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>优先展示能力相似、装备相似、同季节完成者的记录。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户无法建立信任，只能继续跨平台搜索，决策时间越来越长。</p></div>
+</article></div><div class="page">40 / 56</div></section><section class="slide" id="s41"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.3.3 进阶徒步爱好者｜行前确认与途中阶段（1/4）</h1><div class="subtitle">天气、装备、失联和接驳必须形成闭环，不能只完成轨迹规划</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>进阶用户需要在出发前确认天气窗口、装备理由、失联预案和整套接驳是否闭环。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 1</span><b>城市天气正常，山上却可能大风、雷暴或结冰</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户准备高海拔或暴露山脊路线，出发地天气看起来不错。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看山区分时天气、风速、体感、雷暴和能见度。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“市区晴天不代表山顶没事。风到多少不能上山？下午会不会起雾？我最晚几点必须过山脊？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>通用天气没有结合路线海拔、暴露路段和关键时间窗转化成行动建议。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把路线海拔、暴露点和时间窗转化成是否出发、何时通过和何时取消的行动建议。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户在错误窗口进入山脊，遭遇失温、雷暴或能见度骤降，被迫危险撤退。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 2</span><b>知道要带装备，但不知道这条路线为什么需要</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>路线被标注需要登山杖、头灯、冰爪或头盔。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>检查装备清单，判断哪些是必须、哪些是备用。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“冰爪是全程需要，还是只有北坡一小段？如果没有头盔，是换路线还是绕过去？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>装备建议没有绑定具体风险路段和替代方案，用户难以权衡携带成本。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>每件关键装备绑定风险路段、使用场景和不携带后果。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户少带关键装备无法通过，或过度负重影响体力和完成率。</p></div>
+</article></div><div class="page">41 / 56</div></section><section class="slide" id="s42"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.3.3 进阶徒步爱好者｜行前确认与途中阶段（2/4）</h1><div class="subtitle">天气、装备、失联和接驳必须形成闭环，不能只完成轨迹规划</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>进阶用户需要在出发前确认天气窗口、装备理由、失联预案和整套接驳是否闭环。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 3</span><b>独行没问题，但路线出了状况没人知道</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>进阶用户习惯独行，选择偏远、人少的路线。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>分享行程、设置返回时间、下载离线地图和应急信息。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“我不是怕一个人走，我怕出事以后没人知道我在哪。信号断了，轨迹和求救还能不能用？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>行前安全机制分散，缺少基于路线风险的自动检查与失联预案。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>自动生成报备、超时检查、失联触发和紧急联系人方案。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>异常停留或超时无人发现，延误救援窗口。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 4</span><b>两日路线计划完整，却忽略起终点和补给时间</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>用户安排周末穿越，需要住宿、接驳和补水。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>核对交通、住宿入住、补给营业和最晚到达时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“如果第一天慢一小时，营地还能到吗？第二天终点末班车几点？水源没水时哪里能补？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>路线计划没有把行走进度与外部服务时间联动，缺少整套可执行校验。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>把行走、补给、营地、接驳和外部服务统一校验，提前发现连锁冲突。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>任何一个环节延误都会连锁影响住宿、返程和安全，用户中途被迫改计划。</p></div>
+</article></div><div class="page">42 / 56</div></section><section class="slide" id="s43"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.3.3 进阶徒步爱好者｜行前确认与途中阶段（3/4）</h1><div class="subtitle">关键不是有没有路线，而是风险变化后能否及时停止、绕行或下撤</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>途中真正重要的是何时必须回头、替代路线是否更安全、队友出状况后如何下撤，而不是继续跟随一条轨迹。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 5</span><b>走得比计划慢，却不知道什么时候必须回头</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>实际步速低于预期，天气和天黑时间正在逼近。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>查看剩余路程、关键风险点和最晚折返时间。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“还能冲顶吗？再走半小时会不会错过下撤口？我不想因为差一点登顶把自己困在山上。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>导航只显示预计到达，没有基于风险路段、天气和返程动态计算强制决策点。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>基于天气、天黑、技术路段和下撤能力动态给出不可错过的折返点。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户因沉没成本继续前进，错过安全折返窗口。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 6</span><b>岔路太多，轨迹贴合但仍可能走错山脊</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>山区多条小路距离很近，GPS漂移或旧轨迹会造成误判。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>在关键岔口核对方向、海拔和地形。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“两条路只差十几米，手机看着都贴线。走错一个山脊，可能一小时后才发现。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>普通偏航阈值对复杂山地过大，缺少岔口级提醒和地形语义。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>在关键岔口提供地形语义、方向确认和更小阈值的离线提醒。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户深入错误支线，返回成本高，体力和时间被大量消耗。</p></div>
+</article></div><div class="page">43 / 56</div></section><section class="slide" id="s44"><div class="kicker">STAGE 03 · BEFORE &amp; DURING</div><h1>4.3.3 进阶徒步爱好者｜行前确认与途中阶段（4/4）</h1><div class="subtitle">关键不是有没有路线，而是风险变化后能否及时停止、绕行或下撤</div><div class="stage-outline"><div class="stage-step"><b>01</b><span>产生想法</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>02</b><span>挑选路线</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>03</b><span>查看详情</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>04</b><span>行前确认</span></div><div class="stage-arrow">→</div><div class="stage-step active"><b>05</b><span>途中使用</span></div><div class="stage-arrow">→</div><div class="stage-step"><b>06</b><span>完成反馈</span></div></div><div class="stage-verdict"><b>本阶段的关键失败：</b>途中真正重要的是何时必须回头、替代路线是否更安全、队友出状况后如何下撤，而不是继续跟随一条轨迹。</div><div class="scenario-grid"><article class="scenario-card">
+<div class="scenario-head"><span>情况 7</span><b>前方突发封路，替代路线可能更危险</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>途中遇到塌方、施工、河水上涨或临时管控。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>判断原路返回、绕行还是下撤。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“绕路看着只多两公里，但它是不是更陡、更偏？我现在的装备和剩余体力能不能走？”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>系统只按距离给替代路线，没有按技术风险、体力和时间重新评估。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>替代路线必须重新评估技术难度、剩余体力、时间和救援条件。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>用户为了避免折返进入陌生高风险路段，事故概率上升。</p></div>
+</article><article class="scenario-card">
+<div class="scenario-head"><span>情况 8</span><b>队友受伤或体力崩溃，原计划立刻失效</b><span class="critical-tag">关键失败点</span></div>
+<div class="scenario-bg"><label># 情况 / 背景</label><p>同行者扭伤、膝痛、抽筋或出现失温迹象。</p></div>
+<div class="scenario-block"><label># 用户在做什么</label><p>寻找最近安全停留、下撤、交通和救援方式。</p></div>
+<div class="scenario-thought"><label># 用户此时的内心想法 / 感受</label><p>“他还能不能走？最近下撤要多久？这里叫救援怎么描述位置？我现在最怕做错决定。”</p></div>
+<div class="scenario-pain"><label># 任务为什么会失败</label><p>途中应急信息没有围绕伤情、地形和可达性整合，用户在压力下难以判断。</p></div>
+<div class="scenario-need"><label># 用户真正需要</label><p>按伤情和地形快速获得停止、处理、下撤和求援的完整行动顺序。</p></div><div class="scenario-result"><label># 放弃 / 离开 / 后悔的触发</label><p>处理延误导致伤情加重，轻微问题升级为救援事件。</p></div>
+</article></div><div class="page">44 / 56</div></section><section class="slide" id="s45"><div class="kicker">ADVANCED HIKER SOLUTION</div><h1>4.3.4 进阶徒步爱好者｜问题收敛与方案方向</h1><div class="subtitle">从基础轨迹工具升级成一套“专业路线探索、个人对标与动态风险决策系统”</div><div class="pain-summary"><div><b>最核心的任务</b><p>找到真正有差异且符合个人能力的路线，并在实时条件变化下安全完成</p></div><div><b>最容易退出的节点</b><p>推荐同质化、难度无法对标、路况过期、风险与退出信息不可信</p></div><div><b>最严重的后果</b><p>错误估计技术难度或天气窗口，进入无法通过、无法下撤或救援困难的区域</p></div></div><div class="solutions-3"><div class="solution-card"><div class="solution-no">01</div><h3>进阶探索模式</h3><p>按技术难度、地貌、季节窗口、人流和个人历史发现真正有差异的路线</p><div class="solution-flow">能力与偏好 → 差异路线 → 挑战价值 → 可执行性</div><ul><li>过滤已走和商业内容</li><li>支持训练目标组合</li><li>展示最佳季节与实时景观</li></ul></div><div class="solution-card"><div class="solution-no">02</div><h3>个人路线对标</h3><p>用用户走过的路线和相似完成者，解释新路线到底难在哪里</p><div class="solution-flow">历史能力 → 分段对比 → 可信样本 → 适配结论</div><ul><li>区分体能与技术风险</li><li>显示记录者背景</li><li>解释连续坡与下降压力</li></ul></div><div class="solution-card"><div class="solution-no">03</div><h3>动态风险与下撤系统</h3><p>将天气、路况、进度、装备和退出点组合成实时决策支持</p><div class="solution-flow">实时状态 → 风险变化 → 折返 / 绕行 / 下撤 → 安全结束</div><ul><li>关键窗口和折返点</li><li>路线版本与近期通过状态</li><li>完整下撤与救援信息</li></ul></div></div><div class="page">45 / 56</div></section><section class="slide" id="s46"><div class="kicker">COMMON PROBLEMS</div><h1>5. 跨用户共性问题</h1><div class="subtitle">不同场景的表面问题很多，但最终都集中在六个决策缺口</div><div class="common-grid">
+<div><span>01</span><b>用户无法把模糊愿望变成一条敢确认的路线</b><p>同行人、目的、时间、交通和底线无法同时被理解，用户只能自己拼接条件，越选越不确定。</p></div>
+<div><span>02</span><b>路线是否适合，必须以最弱成员和真实能力为基准</b><p>统一难度和平均耗时忽略儿童、新手、队友短板与个人历史，容易造成不敢选或错误选择。</p></div>
+<div><span>03</span><b>用户看不到完成核心体验要付出的真实代价</b><p>高光照片掩盖普通路段、连续爬升、夜间风险和到达成本，现场落差直接造成后悔。</p></div>
+<div><span>04</span><b>路线本身成立，不代表整次出行可执行</b><p>交通、停车、住宿、补给、天气和返程无法闭环，用户会在选好后才发现去不了。</p></div>
+<div><span>05</span><b>状态变化后没有新的可执行方案</b><p>迟到、体力下降、封路、偏航或队友受伤后，缺少短线、绕行、折返与下撤。</p></div>
+<div><span>06</span><b>用户缺少可信、可比较、具有时效性的证据</b><p>评论者能力、同行背景、天气和路线版本不清，越看越矛盾，最终转向其他平台或熟人。</p></div>
+</div><div class="page">46 / 56</div></section><section class="slide" id="s47">
+<div class="kicker">PAGE SOLUTION</div>
+<h1>6. 按页面流程收敛方案</h1>
+<div class="subtitle">每一个页面都要帮助用户完成一个明确判断，而不是继续堆更多帖子和参数</div>
+<div class="page-map-v6">
+<div><span>01</span><b>首页 / 场景入口</b><p>先说清楚这次和谁去、想怎么走，把用户带进正确的找路线任务</p><em>解决：不知道从哪里开始找</em></div>
+<i>→</i>
+<div><span>02</span><b>路线列表 / 搜索</b><p>把不适合的路线快速排除，直接解释为什么适合或不适合</p><em>解决：路线很多但看不出差异</em></div>
+<i>→</i>
+<div><span>03</span><b>路线详情</b><p>提前还原真实过程、难点、体验价值与不同人群的适配情况</p><em>解决：到了现场才后悔</em></div>
+<div><span>04</span><b>行程确认</b><p>把交通、住宿、时间、天气、装备和返程变成一套可执行计划</p><em>解决：选好了却去不了</em></div>
+<i>→</i>
+<div><span>05</span><b>途中导航</b><p>偏航、体力或时间变化后，直接给继续、缩短和退出方案</p><em>解决：出问题后不知道怎么办</em></div>
+<i>→</i>
+<div><span>06</span><b>完成反馈</b><p>把真实经历沉淀成下一位相似用户可以直接参考的依据</p><em>解决：帖子多但无法用于判断</em></div>
+</div>
+<div class="page">47 / 56</div></section><section class="slide" id="s48"><div class="kicker">PAGE 01</div><h1>6.1 首页 / 场景入口怎么改</h1><div class="subtitle">先让用户说清楚这次要做什么，再展示真正相关的路线</div><div class="page-flow-v5"><span class="active">首页入口</span><b>→</b><span>路线列表</span><b>→</b><span>路线详情</span><b>→</b><span>行程确认</span><b>→</b><span>途中使用</span><b>→</b><span>反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>把“找路线”设为明确主任务</h3><div class="where">顶部首屏</div><ul><li>路线入口和内容社区分开</li><li>首页主按钮直接进入找路线</li><li>保留“看帖子”作为次级入口</li></ul><div class="why"><b>为什么改：</b>用户进入后不应先花时间研究路线入口藏在哪里。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>增加“和谁去 / 想怎么走”场景入口</h3><div class="where">首屏场景卡片</div><ul><li>亲子家庭、新手结伴、独行、进阶挑战</li><li>轻松放松、拍照、日出、玩水</li><li>支持多选与随时修改</li></ul><div class="why"><b>为什么改：</b>同一条路线是否合适，取决于同行人和这次目的。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>补充最影响执行的快速条件</h3><div class="where">场景入口下方</div><ul><li>当前位置与目标城市</li><li>可用时间、交通方式</li><li>是否接受住宿、装备水平</li></ul><div class="why"><b>为什么改：</b>先过滤根本去不了、来不及或装备不满足的路线。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>保留自然语言描述入口</h3><div class="where">首屏搜索 / AI 输入</div><ul><li>支持输入完整想法</li><li>自动识别同伴、时间和体验目的</li><li>结果中解释识别到的条件</li></ul><div class="why"><b>为什么改：</b>复杂需求很难只靠几个筛选项表达。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>增加“现在出发”快捷模式</h3><div class="where">实时推荐区</div><ul><li>结合当前时间、天气和返程</li><li>只推荐今天能完成的路线</li><li>展示最晚出发时间</li></ul><div class="why"><b>为什么改：</b>临时用户没有耐心做完整计划，需要快速得到可执行结果。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>继续上次规划与收藏对比</h3><div class="where">首页下半区</div><ul><li>恢复未完成的路线比较</li><li>显示待确认的交通 / 住宿</li><li>同步同行人已确认信息</li></ul><div class="why"><b>为什么改：</b>用户选路线往往不是一次完成，需要降低重复查找成本。</div></div></div></div><div class="page-bottom-v6"><b>改完后的行为：</b>用户进入首页后先描述这次出行，而不是先浏览大量帖子；系统拿到关键条件后，再进入少量匹配路线。</div><div class="page">48 / 56</div></section><section class="slide" id="s49"><div class="kicker">PAGE 02</div><h1>6.2 路线列表 / 搜索结果怎么改</h1><div class="subtitle">列表页要帮助用户快速排除不合适的路线，而不是让每张卡片看起来都差不多</div><div class="page-flow-v5"><span>首页入口</span><b>→</b><span class="active">路线列表</span><b>→</b><span>路线详情</span><b>→</b><span>行程确认</span><b>→</b><span>途中使用</span><b>→</b><span>反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>补充按城市 / 区域搜索</h3><div class="where">搜索框与定位</div><ul><li>城市、区县、景区和路线名都可搜索</li><li>显示从当前位置到起点的真实交通时间</li><li>支持“近郊当天往返”</li></ul><div class="why"><b>为什么改：</b>用户常常先决定去哪个城市或多远范围，现有入口不能直接承接。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>按用户场景动态显示筛选项</h3><div class="where">筛选栏</div><ul><li>亲子显示推车、厕所、退出点</li><li>情侣显示轻松、拍照、日落</li><li>进阶显示技术路段、人流、路况</li></ul><div class="why"><b>为什么改：</b>不同用户真正关心的维度不同，统一筛选会产生大量无效信息。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>每张卡片先给适配结论</h3><div class="where">路线卡片首行</div><ul><li>“适合你们的原因”</li><li>“最大的限制”</li><li>不适合时直接说明原因</li></ul><div class="why"><b>为什么改：</b>用户需要先判断值不值得点进去，而不是先记距离和评分。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>把交通成本放进卡片</h3><div class="where">路线卡片信息区</div><ul><li>公共交通 / 自驾到达时间</li><li>终点返程方式</li><li>是否需要住宿</li></ul><div class="why"><b>为什么改：</b>路线距离近不代表容易到达，交通常常直接导致用户放弃。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>增加路线体验摘要</h3><div class="where">路线卡片中部</div><ul><li>轻松 / 连续爬坡 / 风景集中终点</li><li>最值得看的节点</li><li>真实用户完成时间区间</li></ul><div class="why"><b>为什么改：</b>只展示一张好看的封面，会让用户误判整个过程。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>支持多选对比与一键排除</h3><div class="where">卡片操作区</div><ul><li>同时对比2–3条路线</li><li>按当前关注维度自动排序</li><li>保留排除原因与可恢复</li></ul><div class="why"><b>为什么改：</b>用户不需要记住每条路线的信息，系统应直接帮助比较。</div></div></div></div><div class="page-bottom-v6"><b>改完后的行为：</b>用户不再逐条进入详情页，而是在列表阶段先排除交通不便、体力不匹配或体验不符合的路线。</div><div class="page">49 / 56</div></section><section class="slide" id="s50"><div class="kicker">PAGE 03</div><h1>6.3 路线详情 / 适配判断怎么改</h1><div class="subtitle">详情页要把“真实会经历什么、为什么适合、哪里可能后悔”讲清楚</div><div class="page-flow-v5"><span>首页入口</span><b>→</b><span>路线列表</span><b>→</b><span class="active">路线详情</span><b>→</b><span>行程确认</span><b>→</b><span>途中使用</span><b>→</b><span>反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>首屏直接给出“适不适合我们”</h3><div class="where">详情首屏</div><ul><li>结合同行人、经验和目的给结论</li><li>同时展示适合原因与风险</li><li>允许切换不同同行人重新判断</li></ul><div class="why"><b>为什么改：</b>用户打开详情最先要解决的是能不能选，而不是继续看一堆统一参数。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>用分段体验地图还原整条路线</h3><div class="where">轨迹地图</div><ul><li>路面、坡度、树荫和难点分段</li><li>照片必须绑定具体节点</li><li>展示普通路段而不只展示高光</li></ul><div class="why"><b>为什么改：</b>用户需要预判过程，避免到了现场才发现连续爬坡或推车无法通过。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>把专业难度翻译成真实体感</h3><div class="where">难度模块</div><ul><li>与用户走过的路线对比</li><li>展示相似用户完成时间</li><li>说明最累路段和退出成本</li></ul><div class="why"><b>为什么改：</b>“两星、500米爬升”无法直接回答新手或同伴能否坚持。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>增加同伴适配与关系体验</h3><div class="where">同行适配模块</div><ul><li>谁可能最先坚持不住</li><li>情侣是否适合边走边聊和拍照</li><li>家庭是否适合孩子、老人和推车</li></ul><div class="why"><b>为什么改：</b>用户做的是多人决策，不能只判断路线对本人是否合适。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>把体验价值放进路线节点</h3><div class="where">体验节点模块</div><ul><li>拍照机位与示例照片</li><li>最佳光线、日出日落时间</li><li>建议停留与可跳过节点</li></ul><div class="why"><b>为什么改：</b>“有风景”不够，用户要确认花时间走过去到底值不值得。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>筛选可信的相似用户经验</h3><div class="where">评论 / 轨迹区</div><ul><li>按经验、年龄、同行人筛选</li><li>展示评论者历史路线和能力</li><li>区分完整走完与只走部分路线</li></ul><div class="why"><b>为什么改：</b>老手的“轻松”不能直接用来判断新手，评论需要可比背景。</div></div></div><div class="page-change-v6"><div class="change-no">07</div><div><h3>提供同地点多种走法</h3><div class="where">详情底部</div><ul><li>轻松版、标准版、挑战版</li><li>半日版、日出版、亲子短线</li><li>清楚说明删减了什么体验</li></ul><div class="why"><b>为什么改：</b>路线不匹配时，用户不应只能放弃整个地点。</div></div></div><div class="page-change-v6"><div class="change-no">08</div><div><h3>提前汇总交通与住宿条件</h3><div class="where">详情侧栏 / 底部</div><ul><li>起终点交通与返程</li><li>住宿区域和预约提醒</li><li>是否适合当天往返</li></ul><div class="why"><b>为什么改：</b>用户需要在选定前就知道整次行程是否可执行。</div></div></div></div><div class="page">50 / 56</div></section><section class="slide" id="s51"><div class="kicker">PAGE 04</div><h1>6.4 行程确认 / 出发前检查怎么改</h1><div class="subtitle">把路线、同行人和现实条件合成一份真正能执行的行程</div><div class="page-flow-v5"><span>首页入口</span><b>→</b><span>路线列表</span><b>→</b><span>路线详情</span><b>→</b><span class="active">行程确认</span><b>→</b><span>途中使用</span><b>→</b><span>反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>自动生成完整往返时间轴</h3><div class="where">行程总览</div><ul><li>去程、徒步、停留和返程</li><li>日出日落、闭园和末班车</li><li>根据成员步速计算缓冲</li></ul><div class="why"><b>为什么改：</b>只看徒步耗时会严重低估整次出行时间。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>集中确认交通、停车与住宿</h3><div class="where">出行方式模块</div><ul><li>起点怎么到、终点怎么回</li><li>周末停车与备用停车场</li><li>住宿到起点的距离和出发时间</li></ul><div class="why"><b>为什么改：</b>用户不应再跨多个平台拼接最基本的执行条件。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>按路线和同行人生成装备清单</h3><div class="where">装备模块</div><ul><li>必带 / 建议 / 可不带分级</li><li>儿童、老人、雨后和夜间差异</li><li>提示可租赁或现场补给</li></ul><div class="why"><b>为什么改：</b>清单太泛会让用户带太多或漏掉关键物品。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>让同行人共同确认计划</h3><div class="where">成员确认模块</div><ul><li>每个人确认路线和时间</li><li>标记体力与特殊需求</li><li>分享集合点、联系人和分工</li></ul><div class="why"><b>为什么改：</b>一人选好不代表所有人理解并接受这条路线。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>增加天气与路况的最后检查</h3><div class="where">出发检查卡</div><ul><li>降雨、温度、风、晒与能见度</li><li>雨后泥泞、封路和人流</li><li>变化后自动重新判断路线</li></ul><div class="why"><b>为什么改：</b>天气和路况会把一条简单路线变成不适合路线。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>提前生成备用方案</h3><div class="where">Plan B 模块</div><ul><li>时间不足时的短线</li><li>天气变化时的替代地点</li><li>同伴状态不好时的退出方案</li></ul><div class="why"><b>为什么改：</b>用户在现场临时想备用方案，通常已经太晚。</div></div></div></div><div class="page-bottom-v6"><b>改完后的行为：</b>用户出发前可以一次确认“怎么去、几点回、带什么、所有人是否能完成，以及出问题时怎么办”。</div><div class="page">51 / 56</div></section><section class="slide" id="s52"><div class="kicker">PAGE 05</div><h1>6.5 途中导航 / 动态调整怎么改</h1><div class="subtitle">途中不只告诉用户方向，还要持续帮助判断是否应该继续</div><div class="page-flow-v5"><span>首页入口</span><b>→</b><span>路线列表</span><b>→</b><span>路线详情</span><b>→</b><span>行程确认</span><b>→</b><span class="active">途中使用</span><b>→</b><span>反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>偏航刚发生就提醒</h3><div class="where">导航主界面</div><ul><li>小范围偏离即提示</li><li>说明偏离后风险和返回成本</li><li>提供原路回、近路接回两种方案</li></ul><div class="why"><b>为什么改：</b>晚两三百米才提醒，会让用户折返、体力和情绪同时受损。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>动态更新完成时间和风险</h3><div class="where">进度条</div><ul><li>根据真实速度和停留重新计算</li><li>提示天黑、闭园和返程风险</li><li>给出最晚决定节点</li></ul><div class="why"><b>为什么改：</b>用户需要知道现在继续走是否还能安全完成。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>一键查看最近设施与出口</h3><div class="where">地图快捷入口</div><ul><li>厕所、补给、休息、工作人员</li><li>预计到达时间和是否开放</li><li>离线状态下仍可使用</li></ul><div class="why"><b>为什么改：</b>途中急需设施时，“地图上有”远远不够。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>随时切换短线或更轻松走法</h3><div class="where">路线调整</div><ul><li>孩子 / 同伴走不动时缩短</li><li>绕开台阶、陡坡和拥堵</li><li>说明会放弃哪些景点</li></ul><div class="why"><b>为什么改：</b>状态变化后，原路线不再适合，产品必须提供新的可执行选择。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>增加同行位置与掉队提醒</h3><div class="where">同行模式</div><ul><li>成员位置与距离</li><li>无信号集合点</li><li>老人或孩子掉队提醒</li></ul><div class="why"><b>为什么改：</b>多人出行中，走散会迅速放大安全和情绪问题。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>离线与紧急支持</h3><div class="where">安全中心</div><ul><li>离线地图、关键节点缓存</li><li>一键联系紧急联系人 / 工作人员</li><li>显示最近安全退出路径</li></ul><div class="why"><b>为什么改：</b>高风险时用户不能依赖稳定网络，也不能只收到“注意安全”。</div></div></div></div><div class="page-bottom-v6"><b>改完后的行为：</b>当体力、时间、路况或同伴状态变化时，用户可以立即选择继续、缩短、绕行或退出，而不是被迫硬撑。</div><div class="page">52 / 56</div></section><section class="slide" id="s53"><div class="kicker">PAGE 06</div><h1>6.6 完成反馈 / 经验沉淀怎么改</h1><div class="subtitle">把一次真实经历，变成下一位相似用户能直接使用的判断依据</div><div class="page-flow-v5"><span>首页入口</span><b>→</b><span>路线列表</span><b>→</b><span>路线详情</span><b>→</b><span>行程确认</span><b>→</b><span>途中使用</span><b>→</b><span class="active">反馈沉淀</span></div><div class="page-change-grid-v6"><div class="page-change-v6"><div class="change-no">01</div><div><h3>自动生成实际数据对比</h3><div class="where">完成页首屏</div><ul><li>预计 vs 实际耗时</li><li>计划路线 vs 实际轨迹</li><li>停留、偏航和退出节点</li></ul><div class="why"><b>为什么改：</b>减少用户手动填写，也能发现路线描述是否失真。</div></div></div><div class="page-change-v6"><div class="change-no">02</div><div><h3>使用结构化体验反馈</h3><div class="where">快速评价</div><ul><li>同行人、真实难度、路面、设施</li><li>拍照、日出、树荫和拥挤</li><li>是否适合新手、亲子或独行</li></ul><div class="why"><b>为什么改：</b>长篇帖子不容易比较，结构化信息才能直接用于下一次筛选。</div></div></div><div class="page-change-v6"><div class="change-no">03</div><div><h3>照片绑定路线节点</h3><div class="where">照片上传</div><ul><li>自动关联拍摄位置与时间</li><li>区分实景、机位和风险路段</li><li>显示季节与天气</li></ul><div class="why"><b>为什么改：</b>用户想知道的是某一段真实长什么样，而不是一组没有位置的美图。</div></div></div><div class="page-change-v6"><div class="change-no">04</div><div><h3>展示反馈者的参考背景</h3><div class="where">评价卡片</div><ul><li>历史路线、经验等级、实际配速</li><li>同行人和是否完整走完</li><li>用户可筛选相似参考者</li></ul><div class="why"><b>为什么改：</b>评价是否有参考价值，取决于评价者和当前用户是否可比。</div></div></div><div class="page-change-v6"><div class="change-no">05</div><div><h3>快速上报路况与路线错误</h3><div class="where">路况反馈</div><ul><li>封路、施工、积水、错误轨迹</li><li>标注发生时间和影响范围</li><li>高风险信息优先更新</li></ul><div class="why"><b>为什么改：</b>路线时效性直接影响安全，不能只依赖长期静态帖子。</div></div></div><div class="page-change-v6"><div class="change-no">06</div><div><h3>把反馈重新回流到推荐</h3><div class="where">推荐解释</div><ul><li>更新真实耗时区间</li><li>调整亲子 / 新手适配结论</li><li>优先展示近期相似用户经验</li></ul><div class="why"><b>为什么改：</b>反馈只有影响后续判断，才真正形成产品价值。</div></div></div></div><div class="page-bottom-v6"><b>改完后的行为：</b>用户完成后用很少操作留下可信信息，下一位相似用户可以直接看到“像我这样的人真实走下来是什么感受”。</div><div class="page">53 / 56</div></section><section class="slide" id="s54"><div class="kicker">NEW EXPERIENCE</div><h1>7. 改版后的完整用户流程</h1><div class="subtitle">用户不再自己拼信息，而是在每一步获得当前最重要的判断</div><div class="new-flow">
+<div><span>01</span><b>描述这次出行</b><p>同行人员、目的、时间、交通、预算和能力</p></div><em>→</em>
+<div><span>02</span><b>获得少量可执行路线</b><p>系统解释为什么适合，以及需要接受什么代价</p></div><em>→</em>
+<div><span>03</span><b>查看真实过程</b><p>分段难度、照片、设施、风险和核心体验节点</p></div><em>→</em>
+<div><span>04</span><b>生成完整行程</b><p>交通、住宿、停车、天气、装备与返程</p></div><em>→</em>
+<div><span>05</span><b>途中持续判断</b><p>偏航、体力、时间、封路与退出方案</p></div><em>→</em>
+<div><span>06</span><b>安全完成并反馈</b><p>沉淀可被下一位相似用户直接参考的经验</p></div>
+</div><div class="page">54 / 56</div></section><section class="slide" id="s55"><div class="kicker">PRIORITY</div><h1>8. 方案优先级</h1><div class="subtitle">先解决用户能不能做出决定，再解决能不能顺利完成</div><div class="priority-stack"><div class="priority p1"><strong>P1</strong><div><b>先解决“选不出来”</b><p>场景化需求识别、个性化适配、真实过程地图</p></div></div><div class="priority p2"><strong>P2</strong><div><b>解决“选了却无法执行”</b><p>交通、住宿、停车、天气、时间和完整返程规划</p></div></div><div class="priority p3"><strong>P3</strong><div><b>解决“到了现场才后悔”</b><p>途中动态调整、即时偏航、短线与安全退出</p></div></div><div class="priority p4"><strong>P4</strong><div><b>建立长期可信信息</b><p>结构化反馈、相似用户参考和路况时效更新</p></div></div></div><div class="page">55 / 56</div></section><section class="slide" id="s56"><div class="kicker">FINAL DIRECTION</div><h1>9. 最终设计方向</h1><div class="subtitle">让两步路从户外内容与轨迹平台，升级为完整的出行决策与执行支持系统</div><div class="final-card"><small>最终项目主线</small><h2>帮助不同经验、不同同行关系的用户，在出发前判断“这条路线是否适合我们”，并在行程变化时继续提供可执行的调整方案，直到安全完成</h2><div class="final-flow"><span>理解出行意图</span><b>→</b><span>推荐可执行路线</span><b>→</b><span>解释真实过程</span><b>→</b><span>生成完整行程</span><b>→</b><span>途中动态调整</span><b>→</b><span>沉淀可信经验</span></div><div class="analysis-note" style="margin-top:22px;font-size:15px;line-height:1.5;opacity:.72;max-width:1380px">本轮重点已从页面表现问题收敛到任务失败：无法确认、无法执行、现场后悔、被迫中止、转向其他平台，以及可能升级为安全风险的关键节点。</div></div><div class="page">56 / 56</div></section></div><div class="controls"><button onclick="prev()">上一页</button><button onclick="next()">下一页</button></div><script>let index=0;const slides=[...document.querySelectorAll('.slide')];function go(i){index=Math.max(0,Math.min(slides.length-1,i));slides[index].scrollIntoView({behavior:'smooth',block:'start'})}function next(){go(index+1)}function prev(){go(index-1)}window.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}});window.addEventListener('scroll',()=>{let best=0,d=Infinity;slides.forEach((s,i)=>{const x=Math.abs(s.getBoundingClientRect().top);if(x<d){d=x;best=i}});index=best});function scale(){const sc=Math.min(1,(window.innerWidth-24)/1920);slides.forEach(s=>{s.style.transform=`scale(${sc})`;s.style.transformOrigin='top center';s.style.marginBottom=`${36-(1080*(1-sc))}px`})}window.addEventListener('resize',scale);scale();</script></body></html>
