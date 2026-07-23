@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>两步路 APP｜场景问题分析与方案梳理</title>
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --ink:#172033;
+    --sub:#5c667a;
+    --muted:#8791a5;
+    --blue:#2f6df6;
+    --blue2:#e9f0ff;
+    --green:#16a36b;
+    --green2:#eaf8f2;
+    --orange:#f08a24;
+    --orange2:#fff3e7;
+    --line:#e6eaf2;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink)}
+  .deck{width:100%;padding:24px 0 56px}
+  .slide{width:1280px;height:720px;margin:0 auto 28px;background:white;border-radius:24px;box-shadow:0 20px 60px rgba(22,32,55,.10);position:relative;overflow:hidden;padding:54px 64px}
+  .slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 8%, rgba(47,109,246,.10), transparent 32%),radial-gradient(circle at 8% 92%, rgba(22,163,107,.08), transparent 28%);pointer-events:none}
+  .slide>*{position:relative;z-index:1}
+  .cover{background:linear-gradient(135deg,#f8fbff 0%,#ffffff 58%,#eef4ff 100%)}
+  .eyebrow{font-size:18px;letter-spacing:.08em;color:var(--blue);font-weight:700;margin-bottom:18px}
+  h1{font-size:56px;line-height:1.1;margin:0 0 22px;font-weight:800;letter-spacing:-.02em}
+  h2{font-size:38px;line-height:1.18;margin:0 0 26px;font-weight:800;letter-spacing:-.015em}
+  h3{font-size:22px;line-height:1.35;margin:0 0 12px;font-weight:800}
+  p{font-size:20px;line-height:1.72;color:var(--sub);margin:0}
+  .lead{font-size:26px;line-height:1.6;color:#2c3548;max-width:920px}
+  .big-quote{margin-top:38px;padding:30px 34px;background:#101a30;color:white;border-radius:24px;font-size:30px;line-height:1.55;font-weight:700;max-width:980px}
+  .meta{position:absolute;left:64px;bottom:42px;color:var(--muted);font-size:17px}
+  .page{position:absolute;right:42px;bottom:32px;color:#a8b0c0;font-size:16px;font-weight:700}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 8px 22px rgba(22,32,55,.04)}
+  .card.blue{background:var(--blue2);border-color:#d8e4ff}
+  .card.green{background:var(--green2);border-color:#d5f0e4}
+  .card.orange{background:var(--orange2);border-color:#ffe2c4}
+  .tag{display:inline-flex;align-items:center;border-radius:999px;padding:7px 12px;background:#f1f4f9;color:#566178;font-size:15px;font-weight:700;margin-bottom:12px}
+  .tag.blue{background:var(--blue2);color:var(--blue)}
+  .tag.green{background:var(--green2);color:var(--green)}
+  .tag.orange{background:var(--orange2);color:var(--orange)}
+  ul{margin:10px 0 0 0;padding-left:22px;color:var(--sub);font-size:18px;line-height:1.62}
+  li{margin:5px 0}
+  .flow{display:flex;align-items:center;gap:12px;margin-top:54px}
+  .node{flex:1;background:white;border:1px solid var(--line);border-radius:18px;padding:18px 16px;text-align:center;font-size:19px;font-weight:800;line-height:1.35;box-shadow:0 8px 20px rgba(22,32,55,.04)}
+  .arrow{font-size:26px;color:#a5aec0;font-weight:800}
+  .section-label{display:flex;gap:10px;align-items:center;margin:16px 0 10px;font-weight:800;font-size:18px;color:#25304a}
+  .section-label::before{content:"#";color:var(--blue);font-size:22px}
+  .compact p{font-size:18px;line-height:1.62}
+  .compact ul{font-size:17px;line-height:1.52}
+  .two-col{display:grid;grid-template-columns:420px 1fr;gap:30px;margin-top:20px}
+  .problem{background:#fff7f7;border-color:#ffe0e0}
+  .solution{background:#f7fbff;border-color:#dce9ff}
+  .best{background:#f8fff9;border-color:#d6f2df}
+  .mini-flow{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:8px}
+  .mini-flow span{background:#f1f4f9;border-radius:999px;padding:8px 12px;font-size:15px;color:#536078;font-weight:700}
+  .mini-flow b{color:#a8b0c0}
+  .priority{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start;margin:20px 0;padding:22px 24px;border:1px solid var(--line);border-radius:22px;background:#fff}
+  .num{font-size:42px;font-weight:900;color:var(--blue);line-height:1}
+  .footer-note{position:absolute;left:64px;right:64px;bottom:40px;padding-top:18px;border-top:1px solid var(--line);font-size:16px;color:var(--muted)}
+  .toolbar{position:fixed;right:22px;bottom:22px;display:flex;gap:10px;z-index:10}
+  .toolbar button{border:none;border-radius:999px;background:#172033;color:white;padding:12px 18px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+  @media print{
+    body{background:white}
+    .deck{padding:0}
+    .slide{margin:0;border-radius:0;box-shadow:none;width:100vw;height:56.25vw;page-break-after:always}
+    .toolbar{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">打印 / 导出PDF</button></div>
+<div class="deck">
+
+<section class="slide cover">
+  <div class="eyebrow">两步路 APP 改版</div>
+  <h1>场景问题分析<br/>与方案梳理</h1>
+  <p class="lead">从核心用户、典型流程、具体卡点出发，分析用户为什么看到了很多线路，仍然无法判断哪条适合自己</p>
+  <div class="big-quote">核心不是“线路不够多”，而是用户缺少做选择的判断依据</div>
+  <div class="meta">UX Portfolio Case｜t1 场景问题分析</div>
+  <div class="page">01</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">1. 核心问题</div>
+  <h2>用户看到很多线路，但仍然选不出来</h2>
+  <div class="grid2">
+    <div class="card blue">
+      <h3>表面问题</h3>
+      <p>用户能看到距离、耗时、爬升、难度、评分和线路照片，但这些信息更多是在介绍线路</p>
+    </div>
+    <div class="card green">
+      <h3>真正问题</h3>
+      <p>用户需要判断的是：结合我的体力、目的、时间、交通、同行人员和当天环境，这条线路到底适不适合我</p>
+    </div>
+  </div>
+  <div class="card orange" style="margin-top:28px">
+    <h3>设计目标</h3>
+    <p>把产品从“线路展示工具”，升级为“线路决策工具”：在每个关键环节帮助用户做判断，而不是让用户自己拼信息</p>
+  </div>
+  <div class="page">02</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">2. 核心用户群体</div>
+  <h2>先定义用户，再分析场景</h2>
+  <div class="grid3 compact">
+    <div class="card"><span class="tag blue">2.1 新手独行</span><h3>怕走不完，也怕不安全</h3><p>平时很少徒步，想一个人出去放松，但担心迷路、信号、体力和突发风险</p></div>
+    <div class="card"><span class="tag blue">2.2 临时休闲</span><h3>想快速出发</h3><p>没有提前计划，只想找一条附近、轻松、交通方便、能当天完成的线路</p></div>
+    <div class="card"><span class="tag green">2.3 家庭同行</span><h3>要照顾最弱成员</h3><p>带孩子、老人或婴儿车，不能只判断成年人能不能走</p></div>
+    <div class="card"><span class="tag green">2.4 目的体验</span><h3>不是为了走路</h3><p>为了拍照、约会、看日落、赏花或城市观光，更关心沿途体验</p></div>
+    <div class="card"><span class="tag orange">2.5 进阶挑战</span><h3>想找独特路线</h3><p>能看懂基础数据，更关心挑战性、独特性、人流量和是否值得专门去</p></div>
+    <div class="card orange"><span class="tag orange">跨用户条件</span><h3>限制会叠加</h3><p>无车、临时出发、雨后路况、同行人员，都会改变一条线路是否合适</p></div>
+  </div>
+  <div class="page">03</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">3. 典型使用流程</div>
+  <h2>按流程拆问题，避免场景散乱</h2>
+  <div class="flow">
+    <div class="node">产生<br/>出行想法</div><div class="arrow">→</div>
+    <div class="node">浏览 / 搜索<br/>线路</div><div class="arrow">→</div>
+    <div class="node">初步<br/>筛选</div><div class="arrow">→</div>
+    <div class="node">查看<br/>详情</div><div class="arrow">→</div>
+    <div class="node">对比<br/>候选</div><div class="arrow">→</div>
+    <div class="node">出发前<br/>确认</div><div class="arrow">→</div>
+    <div class="node">实际<br/>徒步</div>
+  </div>
+  <div class="card blue" style="margin-top:58px">
+    <h3>分析原则</h3>
+    <p>每个问题都要放回流程里看：用户此时正在做什么、具体卡在哪里、为什么会导致他无法继续决策</p>
+  </div>
+  <div class="page">04</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.1 产生出行想法</div>
+  <h2>临时想出去走走，却不知道该找什么线路</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>周日下午，用户心情不好，想立刻出去透透气。他没有装备，只想找一条两三个小时能结束、交通方便、有树荫和休息点的线路</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>他只有“轻松走走”的模糊想法，但不知道要筛距离、难度、交通还是耗时。热门线路越多，他越不知道从哪条开始看</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加“现在出发 / 两小时轻松走 / 公交可达 / 无装备可走”等快捷入口，再用三步条件补充完成快速选线</p>
+        <ul><li>方案一：快捷场景入口</li><li>方案二：三步快速选线</li><li>方案三：AI 描述需求</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>快捷场景入口＋三步条件补充，AI 作为复杂需求补充</p>
+        <div class="mini-flow"><span>现在出发</span><b>→</b><span>选时间</span><b>→</b><span>选交通</span><b>→</b><span>推荐可完成线路</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">05</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.2 浏览 / 搜索线路</div>
+  <h2>线路很多，但每条看起来都差不多</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>新手搜索“北京周边徒步”，看到几十条线路。大部分都是 8-12 公里、两星难度、3-5 小时、评分 4.7 以上</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>用户看不出哪条适合一个人、哪条交通方便、哪条需要装备、哪条适合拍照。结果只能一条条点进去看</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>重构线路卡片，让卡片直接展示“适合谁、为什么适合、有什么限制”，而不是只展示统一数据</p>
+        <ul><li>场景标签：新手友好、公交通达、亲子适合</li><li>一句话判断：适合第一次独行，但后半段信号弱</li><li>动态卡片：根据用户条件调整展示内容</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>动态线路卡片＋一句话结论＋2-3 个关键标签</p>
+        <div class="mini-flow"><span>选择条件</span><b>→</b><span>重新排序</span><b>→</b><span>展示原因和限制</span><b>→</b><span>快速排除</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">06</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.3 初步筛选线路</div>
+  <h2>看到了距离和爬升，却不知道自己能不能走完</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>久坐用户看到一条线路：10 公里、爬升 500 米、两星难度、预计 4 小时。他不知道 500 米爬升到底有多累</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>他卡在“保留还是排除”这一步。太谨慎会错过能走的线路，判断错误又可能到了现场才发现难度超出能力</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>把专业数据翻译成用户能理解的体感说明，并结合经验等级给出适配判断</p>
+        <ul><li>通俗难度：前40分钟连续爬坡，普通体力会明显喘</li><li>经验等级：第一次 / 偶尔 / 经常徒步</li><li>个人档案：后期结合历史运动数据</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>通俗说明＋经验等级适配，后期升级为个人历史判断</p>
+        <div class="mini-flow"><span>看数据</span><b>→</b><span>看体感说明</span><b>→</b><span>选经验</span><b>→</b><span>看最难路段</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">07</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.3 初步筛选线路</div>
+  <h2>线路写着“简单”，但家长还是不敢带孩子去</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>一家三口周末出行，孩子还需要推婴儿车。家长看到“7公里、难度简单”，但仍然担心台阶、厕所、休息点、围栏和中途退出</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>成年人觉得简单，不代表儿童或婴儿车也适合。一旦判断错，可能走到一半孩子走不动，或者婴儿车无法通过</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加同行人员设置，按同行中最弱成员重新判断线路，并生成家庭版路线</p>
+        <ul><li>亲子标签：婴儿车可通行、厕所较多</li><li>同行设置：孩子年龄、是否携带婴儿车</li><li>家庭版路线：缩短距离，优先经过休息点和安全路段</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>同行人员设置＋家庭版路线＋设施地图</p>
+        <div class="mini-flow"><span>选择带孩子</span><b>→</b><span>补充情况</span><b>→</b><span>重算适配</span><b>→</b><span>确认家庭版路线</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">08</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.4 查看线路详情</div>
+  <h2>一个人去徒步，却不知道这条线路是否安全</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>新手准备独自去北京周边徒步。线路距离和难度都合适，但她担心人少路段、信号死角、危险路段、蛇虫、求助和退出点</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>她卡在安全确认阶段：线路可能走得完，但不知道一个人走是否安全。不确定风险，就很可能放弃这条线路</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加安全地图和独行模式，既帮助选择前判断风险，也覆盖实际徒步中的安全提醒</p>
+        <ul><li>安全标签：全程信号良好、夜间不建议独行</li><li>安全地图：信号弱区、救援点、退出位置</li><li>独行模式：行程分享、紧急联系人、偏航提醒</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>安全地图＋独行模式</p>
+        <div class="mini-flow"><span>选择独行</span><b>→</b><span>看安全概况</span><b>→</b><span>设置联系人</span><b>→</b><span>出发监测</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">09</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.4 查看线路详情</div>
+  <h2>想拍照、看日落，却不知道这条线路能不能满足</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>情侣想通过徒步约会，希望路线不要太累，沿途能赏花、拍照，最好能看到日落。但他们不知道打卡点在哪、几点到合适、能否缩短路线</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>用户卡在体验确认：知道有风景，但不知道能不能获得自己想要的约会和拍照体验</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加体验地图和时间节奏规划，把“哪里值得停留”和“什么时候去”结合起来</p>
+        <ul><li>体验标签：日落观景、赏花、轻松约会</li><li>体验地图：拍照点、休息区、咖啡馆</li><li>时间规划：倒推建议出发时间和停留时长</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>体验地图＋时间节奏规划</p>
+        <div class="mini-flow"><span>选择目的</span><b>→</b><span>看体验节点</span><b>→</b><span>算出发时间</span><b>→</b><span>生成缩短路线</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">10</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.4 查看线路详情</div>
+  <h2>老手能看懂数据，却不知道这条线路值不值得去</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>有经验的用户想找人少、有挑战、地貌特别的线路。他能看懂海拔、距离和坡度，但不知道和自己走过的路线相比，是否真的有新鲜感</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>老手卡在价值判断：知道自己能走，但不知道是否值得专门去。如果所有线路只展示统一数据，就很难发现真正适合自己的路线</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加历史线路对标和进阶探索模式，让老手判断线路差异，而不是自己消化更多专业数据</p>
+        <ul><li>进阶数据：坡度分布、技术路段、人流量</li><li>历史对比：比你走过的XX难度更高</li><li>探索模式：人少、高难度、特殊地貌、非跟团</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>历史线路对标＋进阶探索模式</p>
+        <div class="mini-flow"><span>进阶模式</span><b>→</b><span>建立基准</span><b>→</b><span>推荐挑战路线</span><b>→</b><span>展示差异</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">11</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.5 对比候选线路</div>
+  <h2>收藏了几条线路，反而越看越难选</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>用户收藏了三条距离和评分都很接近的线路。他想比较哪条更安全、交通更方便、适合拍照、人更少、适合孩子，但这些信息散落在不同详情页</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>用户卡在最终决策：信息很多，但无法直接比较。来回切换页面会增加记忆成本，最后可能随便选一条或继续拖延</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加动态对比功能，根据用户目的自动选择比较维度，并给出推荐理由</p>
+        <ul><li>固定对比表：距离、难度、交通、补给</li><li>自选维度：安全、亲子、拍照、人流</li><li>系统结论：按当前目标推荐A或B</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>动态对比＋推荐理由＋用户可修改条件</p>
+        <div class="mini-flow"><span>加入对比</span><b>→</b><span>选关键维度</span><b>→</b><span>看优势限制</span><b>→</b><span>获得推荐</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">12</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.6 出发前确认</div>
+  <h2>线路本身合适，但现在出发可能来不及</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>用户下午两点临时想出去，看到线路预计 3 小时，觉得晚上能回来。但实际还要考虑到起点的时间、天黑、景区关闭、末班车和返程难度</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>用户卡在执行判断：线路平时能走，不代表现在出发还能走。一旦判断错误，可能到了起点才发现时间不够</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>根据当前位置、当前时间、去返程和线路耗时，判断这条线路今天是否还能完成</p>
+        <ul><li>显示最晚出发时间</li><li>计算完整往返时间</li><li>根据当前时间推荐可完成线路</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>实时完整行程判断</p>
+        <div class="mini-flow"><span>读取位置时间</span><b>→</b><span>算去程</span><b>→</b><span>算徒步返程</span><b>→</b><span>提示风险</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">13</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">4.7 实际徒步</div>
+  <h2>知道怎么走，却不知道接下来最需要注意什么</h2>
+  <div class="two-col compact">
+    <div class="card problem">
+      <div class="section-label">人物 / 场景</div>
+      <p>用户已经开始徒步，可能会遇到信号死角、坡度突然变陡、距离下一个厕所很远、最佳拍照点即将错过，或按当前速度无法在天黑前完成</p>
+      <div class="section-label">需求 / 问题</div>
+      <p>导航只解决方向问题，但没有持续帮助用户处理风险和体验重点。用户知道往哪走，却不知道接下来应该注意什么</p>
+    </div>
+    <div>
+      <div class="card solution">
+        <div class="section-label">建议改动方案</div>
+        <p>增加关键节点提醒和动态行程调整，根据位置、速度、时间和环境持续更新提醒</p>
+        <ul><li>地图静态标记</li><li>关键节点前提醒</li><li>根据速度和时间动态调整行程</li></ul>
+      </div>
+      <div class="card best" style="margin-top:18px">
+        <div class="section-label">最优方案</div>
+        <p>关键节点提醒＋动态行程调整</p>
+        <div class="mini-flow"><span>开始线路</span><b>→</b><span>展示下一段重点</span><b>→</b><span>节点提醒</span><b>→</b><span>动态调整</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page">14</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">5. 改版后整体流程</div>
+  <h2>从“自己研究线路”变成“系统辅助决策”</h2>
+  <div class="flow" style="margin-top:34px">
+    <div class="node">明确<br/>出行目的</div><div class="arrow">→</div>
+    <div class="node">补充<br/>条件</div><div class="arrow">→</div>
+    <div class="node">获得<br/>匹配线路</div><div class="arrow">→</div>
+    <div class="node">快速<br/>筛选</div><div class="arrow">→</div>
+    <div class="node">查看<br/>适配体验</div><div class="arrow">→</div>
+    <div class="node">确认<br/>可执行</div><div class="arrow">→</div>
+    <div class="node">动态<br/>陪伴</div>
+  </div>
+  <div class="grid2" style="margin-top:44px">
+    <div class="card problem"><h3>改版前</h3><p>用户看大量线路，自己研究数据，反复切换页面，再去其他软件查交通和天气，最后仍然不确定</p></div>
+    <div class="card green"><h3>改版后</h3><p>用户先表达目的和限制，系统在筛选、详情、对比、出发确认和徒步过程中持续给判断依据</p></div>
+  </div>
+  <div class="page">15</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">6. 方案优先级</div>
+  <h2>先解决“选不出来”，再解决“选了去不了”</h2>
+  <div class="priority"><div class="num">01</div><div><h3>第一优先级：解决选不出来</h3><p>场景化选线、动态线路卡片、通俗难度解释、个人适配判断、线路对比</p></div></div>
+  <div class="priority"><div class="num">02</div><div><h3>第二优先级：解决选了但去不了</h3><p>时间判断、公共交通往返、同行人员适配、天气和实时路况</p></div></div>
+  <div class="priority"><div class="num">03</div><div><h3>第三优先级：提升实际体验</h3><p>独行安全模式、体验地图、关键节点提醒、动态行程调整</p></div></div>
+  <div class="page">16</div>
+</section>
+
+<section class="slide cover">
+  <div class="eyebrow">7. 最终设计方向</div>
+  <h2>不要只做“AI 推荐线路”，而是解决完整决策问题</h2>
+  <div class="big-quote" style="max-width:1040px">先理解用户这次为什么出发，再结合经验、时间、交通和同行人员筛选线路；选中后确认当天是否能顺利执行；实际徒步时再帮助用户避开风险、获得想要的体验</div>
+  <div class="grid3 compact" style="margin-top:38px">
+    <div class="card"><h3>选前</h3><p>帮用户明确目的、筛选线路、理解是否适合自己</p></div>
+    <div class="card"><h3>出发前</h3><p>帮用户确认交通、时间、天气、装备和同行风险</p></div>
+    <div class="card"><h3>途中</h3><p>帮用户识别关键节点、避开风险、动态调整行程</p></div>
+  </div>
+  <div class="page">17</div>
+</section>
+
+</div>
+</body>
+</html>
