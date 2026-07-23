@@ -59,7 +59,7 @@
     fields.forEach(el=>{const v=localStorage.getItem('mentor_profile_'+el.dataset.key);if(v){el.innerHTML=v;el.classList.remove('placeholder')}el.addEventListener('input',()=>el.classList.remove('placeholder'))});
     const photoInput=document.querySelector('#photoInput'),photoImg=document.querySelector('#photoImg'),photoText=document.querySelector('#photoText');
     document.querySelector('.photo').onclick=()=>photoInput.click();
-    const oldPhoto=localStorage.getItem('mentor_profile_photo');if(oldPhoto){photoImg.src=oldPhoto;photoImg.hidden=false;photoText.hidden=true}
+    const photoVersion='vintage_portrait_20260723';if(localStorage.getItem('mentor_profile_photo_version')!==photoVersion){localStorage.removeItem('mentor_profile_photo');localStorage.setItem('mentor_profile_photo_version',photoVersion)}const oldPhoto=localStorage.getItem('mentor_profile_photo');if(oldPhoto){photoImg.src=oldPhoto;photoImg.hidden=false;photoText.hidden=true}
     photoInput.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{photoImg.src=r.result;photoImg.hidden=false;photoText.hidden=true;localStorage.setItem('mentor_profile_photo',r.result)};r.readAsDataURL(f)};
     function toast(){const t=document.querySelector('#saved');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1400)}
     function saveLocal(){fields.forEach(el=>localStorage.setItem('mentor_profile_'+el.dataset.key,el.innerHTML));toast()}
