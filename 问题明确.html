@@ -795,4 +795,98 @@ html,body{background:#E9ECF3;color:var(--ink)}
 <div><span>04</span><b>生成完整行程</b><p>交通、住宿、停车、天气、装备与返程</p></div><em>→</em>
 <div><span>05</span><b>途中持续判断</b><p>偏航、体力、时间、封路与退出方案</p></div><em>→</em>
 <div><span>06</span><b>安全完成并反馈</b><p>沉淀可被下一位相似用户直接参考的经验</p></div>
-</div><div class="page">54 / 56</div></section><section class="slide" id="s55"><div class="kicker">PRIORITY</div><h1>8. 方案优先级</h1><div class="subtitle">先解决用户能不能做出决定，再解决能不能顺利完成</div><div class="priority-stack"><div class="priority p1"><strong>P1</strong><div><b>先解决“选不出来”</b><p>场景化需求识别、个性化适配、真实过程地图</p></div></div><div class="priority p2"><strong>P2</strong><div><b>解决“选了却无法执行”</b><p>交通、住宿、停车、天气、时间和完整返程规划</p></div></div><div class="priority p3"><strong>P3</strong><div><b>解决“到了现场才后悔”</b><p>途中动态调整、即时偏航、短线与安全退出</p></div></div><div class="priority p4"><strong>P4</strong><div><b>建立长期可信信息</b><p>结构化反馈、相似用户参考和路况时效更新</p></div></div></div><div class="page">55 / 56</div></section><section class="slide" id="s56"><div class="kicker">FINAL DIRECTION</div><h1>9. 最终设计方向</h1><div class="subtitle">让两步路从户外内容与轨迹平台，升级为完整的出行决策与执行支持系统</div><div class="final-card"><small>最终项目主线</small><h2>帮助不同经验、不同同行关系的用户，在出发前判断“这条路线是否适合我们”，并在行程变化时继续提供可执行的调整方案，直到安全完成</h2><div class="final-flow"><span>理解出行意图</span><b>→</b><span>推荐可执行路线</span><b>→</b><span>解释真实过程</span><b>→</b><span>生成完整行程</span><b>→</b><span>途中动态调整</span><b>→</b><span>沉淀可信经验</span></div><div class="analysis-note" style="margin-top:22px;font-size:15px;line-height:1.5;opacity:.72;max-width:1380px">本轮重点已从页面表现问题收敛到任务失败：无法确认、无法执行、现场后悔、被迫中止、转向其他平台，以及可能升级为安全风险的关键节点。</div></div><div class="page">56 / 56</div></section></div><div class="controls"><button onclick="prev()">上一页</button><button onclick="next()">下一页</button></div><script>let index=0;const slides=[...document.querySelectorAll('.slide')];function go(i){index=Math.max(0,Math.min(slides.length-1,i));slides[index].scrollIntoView({behavior:'smooth',block:'start'})}function next(){go(index+1)}function prev(){go(index-1)}window.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}});window.addEventListener('scroll',()=>{let best=0,d=Infinity;slides.forEach((s,i)=>{const x=Math.abs(s.getBoundingClientRect().top);if(x<d){d=x;best=i}});index=best});function scale(){const sc=Math.min(1,(window.innerWidth-24)/1920);slides.forEach(s=>{s.style.transform=`scale(${sc})`;s.style.transformOrigin='top center';s.style.marginBottom=`${36-(1080*(1-sc))}px`})}window.addEventListener('resize',scale);scale();</script></body></html>
+</div><div class="page">54 / 56</div></section><section class="slide" id="s55"><div class="kicker">PRIORITY</div><h1>8. 方案优先级</h1><div class="subtitle">先解决用户能不能做出决定，再解决能不能顺利完成</div><div class="priority-stack"><div class="priority p1"><strong>P1</strong><div><b>先解决“选不出来”</b><p>场景化需求识别、个性化适配、真实过程地图</p></div></div><div class="priority p2"><strong>P2</strong><div><b>解决“选了却无法执行”</b><p>交通、住宿、停车、天气、时间和完整返程规划</p></div></div><div class="priority p3"><strong>P3</strong><div><b>解决“到了现场才后悔”</b><p>途中动态调整、即时偏航、短线与安全退出</p></div></div><div class="priority p4"><strong>P4</strong><div><b>建立长期可信信息</b><p>结构化反馈、相似用户参考和路况时效更新</p></div></div></div><div class="page">55 / 56</div></section><section class="slide" id="s56"><div class="kicker">FINAL DIRECTION</div><h1>9. 最终设计方向</h1><div class="subtitle">让两步路从户外内容与轨迹平台，升级为完整的出行决策与执行支持系统</div><div class="final-card"><small>最终项目主线</small><h2>帮助不同经验、不同同行关系的用户，在出发前判断“这条路线是否适合我们”，并在行程变化时继续提供可执行的调整方案，直到安全完成</h2><div class="final-flow"><span>理解出行意图</span><b>→</b><span>推荐可执行路线</span><b>→</b><span>解释真实过程</span><b>→</b><span>生成完整行程</span><b>→</b><span>途中动态调整</span><b>→</b><span>沉淀可信经验</span></div><div class="analysis-note" style="margin-top:22px;font-size:15px;line-height:1.5;opacity:.72;max-width:1380px">本轮重点已从页面表现问题收敛到任务失败：无法确认、无法执行、现场后悔、被迫中止、转向其他平台，以及可能升级为安全风险的关键节点。</div></div><div class="page">56 / 56</div></section></div><div class="controls"><button onclick="prev()">上一页</button><button onclick="next()">下一页</button></div><script>let index=0;const slides=[...document.querySelectorAll('.slide')];function go(i){index=Math.max(0,Math.min(slides.length-1,i));slides[index].scrollIntoView({behavior:'smooth',block:'start'})}function next(){go(index+1)}function prev(){go(index-1)}window.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}});window.addEventListener('scroll',()=>{let best=0,d=Infinity;slides.forEach((s,i)=>{const x=Math.abs(s.getBoundingClientRect().top);if(x<d){d=x;best=i}});index=best});function scale(){const sc=Math.min(1,(window.innerWidth-24)/1920);slides.forEach(s=>{s.style.transform=`scale(${sc})`;s.style.transformOrigin='top center';s.style.marginBottom=`${36-(1080*(1-sc))}px`})}window.addEventListener('resize',scale);scale();</script>
+<!-- portfolio-image-viewer -->
+<style>
+  img[data-project-preview]{cursor:zoom-in}
+  #portfolioImageViewer{
+    position:fixed;inset:0;z-index:99999;display:none;
+    background:rgba(7,10,16,.94);overflow:auto;
+    padding:56px 18px 28px;overscroll-behavior:contain;
+  }
+  #portfolioImageViewer.is-open{display:grid;place-items:center}
+  #portfolioImageViewer img{
+    display:block;max-width:min(96vw,1800px);max-height:calc(100vh - 92px);
+    width:auto;height:auto;object-fit:contain;border-radius:8px;
+    box-shadow:0 24px 80px rgba(0,0,0,.48);cursor:zoom-in;
+    touch-action:pinch-zoom;
+  }
+  #portfolioImageViewer img.is-original{
+    max-width:none;max-height:none;cursor:zoom-out;
+  }
+  #portfolioImageViewerClose{
+    position:fixed;right:18px;top:14px;z-index:2;width:42px;height:42px;
+    border:1px solid rgba(255,255,255,.35);border-radius:50%;
+    background:rgba(0,0,0,.5);color:#fff;font-size:28px;line-height:1;
+    cursor:pointer;
+  }
+  #portfolioImageViewerHint{
+    position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+    padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.62);
+    color:#fff;font-size:12px;white-space:nowrap;pointer-events:none;
+  }
+  body.portfolio-viewer-open{overflow:hidden}
+  @media(max-width:640px){
+    #portfolioImageViewer{padding:54px 8px 22px}
+    #portfolioImageViewer img{max-width:98vw;max-height:calc(100vh - 82px)}
+    #portfolioImageViewerHint{font-size:11px}
+  }
+  @media print{#portfolioImageViewer{display:none!important}}
+</style>
+<div id="portfolioImageViewer" role="dialog" aria-modal="true" aria-label="图片大图查看">
+  <button id="portfolioImageViewerClose" type="button" aria-label="关闭大图">×</button>
+  <img id="portfolioImageViewerImage" alt="">
+  <div id="portfolioImageViewerHint">点击图片查看原尺寸 · 点击空白处或按 Esc 关闭</div>
+</div>
+<script>
+(() => {
+  const viewer = document.getElementById('portfolioImageViewer');
+  const viewerImage = document.getElementById('portfolioImageViewerImage');
+  const closeButton = document.getElementById('portfolioImageViewerClose');
+  const images = [...document.querySelectorAll('img')].filter(
+    image => image.id !== 'portfolioImageViewerImage'
+  );
+
+  const closeViewer = () => {
+    viewer.classList.remove('is-open');
+    viewerImage.classList.remove('is-original');
+    viewerImage.removeAttribute('src');
+    document.body.classList.remove('portfolio-viewer-open');
+  };
+
+  images.forEach(image => {
+    image.dataset.projectPreview = '';
+    image.setAttribute('tabindex', '0');
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `查看大图：${image.alt || '项目图片'}`);
+    const openViewer = () => {
+      viewerImage.src = image.currentSrc || image.src;
+      viewerImage.alt = image.alt || '项目图片大图';
+      viewer.classList.add('is-open');
+      document.body.classList.add('portfolio-viewer-open');
+      closeButton.focus();
+    };
+    image.addEventListener('click', openViewer);
+    image.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openViewer();
+      }
+    });
+  });
+
+  viewerImage.addEventListener('click', event => {
+    event.stopPropagation();
+    viewerImage.classList.toggle('is-original');
+  });
+  closeButton.addEventListener('click', closeViewer);
+  viewer.addEventListener('click', event => {
+    if (event.target === viewer) closeViewer();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && viewer.classList.contains('is-open')) closeViewer();
+  });
+})();
+</script>
+
+</body></html>
